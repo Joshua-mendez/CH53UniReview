@@ -1,0 +1,86 @@
+*{margin: 0; padding:0 ; box-sizing: border-box;} /* quitamos margenes */
+
+body{
+    background-color: #c7b5d7;
+}
+
+h1{
+    background-color: #a06ec4;
+    padding: 30px 0px 30px 0px;
+    margin-top: 20px;
+    text-align: center;
+    font-family: "Rubik Mono One", monospace;
+    font-size: 90px;
+    border:thick double #3f3649;
+}
+
+nav{
+    list-style-type: none;
+    margin-top: 10px;
+    margin: 0px;
+    overflow: hidden;
+    background-color: #573d7f;
+    position: sticky;
+    top: 0px;
+}
+
+nav a{
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 20px 30px;
+    margin: 0px;
+    text-decoration: none;
+    font-family: "Rubik Mono One", monospace;
+    font-size: 15px;
+}
+
+nav a:hover{
+    background-color: #ac8bee;
+    color: #3f3649;
+}
+
+p{
+    font-family: "Big Shoulders Inline", sans-serif;
+    font-size: 25px;
+    text-align: justify;
+    background-color: #c7b5d7;
+    padding: 30px 60px 30px 60px;
+}
+
+img{
+    display: block;
+    margin: auto;
+}
+
+h5, h2{
+    font-family: "Big Shoulders Inline", sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+h6{
+    font-family: "Big Shoulders Inline", sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+
+ol{
+    font-family: "Big Shoulders Inline", sans-serif;
+    font-size: 25px;
+    text-align: justify;
+    margin: 0px 0px 70px 90px;
+    list-style: decimal;
+}
+
+form{
+    font-family: "Big Shoulders Inline", sans-serif;
+    font-size: 25px;
+}
+
+.encuesta{
+    max-width: 600px;
+    padding: 20px;
+    margin-top: 40px;
+}
