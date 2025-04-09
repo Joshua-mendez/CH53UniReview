@@ -9,24 +9,32 @@
   <link rel="stylesheet" href="./styles/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap"
+    rel="stylesheet">
 </head>
 
-<body style="background-color: blue;">
+<body>
   <!-- Navbar -->
 
   <!-- Carrusel automatica -->
-  <div class="container">
+  <div class="container-fluid carrusel-nosotros">
+    <h1 class="header-page-light">Nuestro equipo</h1>
+    <hr>
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
-        <div class="carousel-item active"> <!-- Primero -->
-          <div class="row row-cols-1 row-cols-md-3 g-4">
-
+        <div class="carousel-item active"> <!-- Primer slide -->
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-1"> <!-- Filas con múltiples columnas -->
+            <!-- Primer perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image5.webp" class="card-img-top" alt="Raúl Ramírez González">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image5.webp" class="imagen-circular mx-auto d-block mt-3p"
+                  alt="Raúl Ramírez González">
                 <div class="card-body">
-                  <h5 class="card-title">Raúl Ramírez González</h5>
-                  <p>Rol: Miembro SCRUM team </p>
+                  <h5>Raúl Ramírez González</h5>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
                   <p class="card-text" style="text-align: center;">Soy Raúl Ramírez González, un desarrollador Java Full
                     Stack con formación y experiencia en Ingeniería en Mecatrónica. Siempre busco cosas nuevas por hacer
                     y aprender, poseo habilidades en el área de modelado 3D, robótica y programación orientada a
@@ -36,27 +44,30 @@
               </div>
             </div>
 
+            <!-- Segundo perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image7.webp" class="card-img-top" alt="Joshua Yurem Mendez Mendoza">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image7.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt="Joshua Yurem Mendez Mendoza">
                 <div class="card-body">
-                  <h5 class="card-title">Joshua Yurem Mendez Mendoza</h5>
-                  <p>Rol: Miembro del SCRUM Team</p>
-                  <p class="card-text" style="text-align: center;">Me llamo Joshua Yurem Mendez Mendoza y soy
-                    Desarrollador FullStack interesado por la tecnologia abierto a cualquier tipo de aprendizaje con un
+                  <h5>Joshua Yurem Mendez Mendoza</h5>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
+                  <p class="card-text" style="text-align: center;">
+                    Desarrollador FullStack interesado por la tecnologia, abierto a cualquier tipo de aprendizaje con un
                     buen pensamiento critico, adaptable a cualquier tipo de escenario o necesidades, con buen manejo de
-                    estres y trabajo bajo presion con una mentalidad de crecimiento en el area de la tecnologia y con un
+                    estrés y trabajo bajo presion con una mentalidad de crecimiento y con un
                     pensamiento proactivo que me ayuda a anticiparme a los problemas.</p>
                 </div>
               </div>
             </div>
-
+            <!-- Tercer perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image8.webp" class="card-img-top" alt="Maria Luisa Montes Ramirez">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image8.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt="Maria Luisa Montes Ramirez">
                 <div class="card-body">
                   <h5 class="card-title">María Luisa Montes Ramírez</h5>
-                  <p> Rol: Miembro del SCRUM Team</p>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
                   <p class="card-text">Desarrolladora Java Full Stack, egresada en Ingeniería en TIC’s.
                     Cuento con un enfoque analítico y autodidacta, también tengo experiencia desarrollando aplicaciones
                     Java, páginas web y API REST, colaborando con equipos multidisciplinarios, realizando pruebas
@@ -65,17 +76,14 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="carousel-item"> <!-- Segunda -->
-          <!--<img src="..." class="d-block w-100" alt="...">-->
-          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Cuarto perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image6.webp" class="card-img-top" alt="Samantha Garcia Fotografia">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image6.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt="Samantha Garcia Fotografia">
                 <div class="card-body">
                   <h5 class="card-title">Samantha García Martínez</h5>
-                  <p> Rol: Miembro del SCRUM Team</p>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
                   <p class="card-text">Soy Samantha García, una profesional apasionada por desarrollar soluciones
                     tecnológicas que mejoren la experiencia del usuario. Con experiencia en el desarrollo de soluciones
                     escalables y la mejora de flujos de trabajo, creando formas innovadoras de enfrentar desafíos y
@@ -85,12 +93,21 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+
+
+        <div class="carousel-item"> <!-- Segundo Slide -->
+          <!--<img src="..." class="d-block w-100" alt="...">-->
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
+            <!-- Primer perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image3.webp" class="card-img-top" alt="kenya Gutierrez Rivera">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image3.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt="kenya Gutierrez Rivera">
                 <div class="card-body">
                   <h5 class="card-title">Kenya Nayara Gutierrez Rivera</h5>
-                  <p> Rol: Miembro del SCRUM Team </p>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
                   <p class="card-text">Soy Kenya Gutiérrez desarrolladora Java Full Stack con una ingeniería en TICS,
                     con un gran interés en la innovación y la tecnología, con experiencia en desarrollo web, soporte
                     técnico y marketing digital, mi enfoque me ha llevado a expandir mis conocimientos hacia la
@@ -100,12 +117,14 @@
                 </div>
               </div>
             </div>
+            <!-- Segundo perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image4.webp" class="card-img-top" alt="Luis Angel Caballero Cedillo">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image4.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt="Luis Angel Caballero Cedillo">
                 <div class="card-body">
                   <h5 class="card-title">Luis Angel Caballero Cedillo</h5>
-                  <p> Rol: Miembro del SCRUM Team</p>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
                   <p class="card-text">Soy Angel Caballero, un desarrollador full stack con una gran pasión por el
                     desarrollo web, análisis de datos y ciberseguridad. Como desarrollador full stack cuento con una
                     mentalidad analítica y siempre en busca de soluciones creativas a los problemas. Me considero
@@ -114,34 +133,33 @@
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-        <div class="carousel-item"> <!-- Tercero -->
-          <img src="..." class="d-block w-100" alt="...">
-          <div class="row row-cols-1 row-cols-md-3 g-4">
+            <!-- Tercer perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image1.webp" class="card-img-top" alt=" Itzel Annet Muñoz Espinosa">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image1.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt=" Itzel Annet Muñoz Espinosa">
                 <div class="card-body">
                   <h5 class="card-title"> Itzel Annet Muñoz Espinosa </h5>
-                  <p> Rol: Miembro del SCRUM Team</p>
-                  <p class="card-text">Soy Itzel Muñoz, soy desarrolladora Java Full Stack con una carrera en Ing.
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
+                  <p class="card-text">Desarrolladora Java Full Stack con una carrera en Ing.
                     Telemática, tengo experiencia en el desarrollo de software utilizando diversos lenguajes de
                     programación, en creación y administración de bases de datos y en la gestión de redes. Mi compromiso
                     y perseverancia me permiten enfrentar cualquier reto, y mi habilidad para aprender y adaptarme hace
-                    que pueda superar obstáculos, asumir nuevas responsabilidades y crecer continuamente en entornos
-                    cambiantes. </p>
+                    que pueda superar obstáculos. </p>
                 </div>
               </div>
             </div>
+            <!-- Cuarto Perfil -->
             <div class="col">
-              <div class="card">
-                <img src="./assets/Nosotros/image2.webp" class="card-img-top" alt="José Diego Ángeles López">
+              <div class="card transparent-card">
+                <img src="./assets/Nosotros/image2.webp" class="imagen-circular mx-auto d-block mt-3"
+                  alt="José Diego Ángeles López">
                 <div class="card-body">
                   <h5 class="card-title"> José Diego Ángeles López </h5>
-                  <p> Rol: Miembro del Scrum Team</p>
+                  <p style="font-style: italic;">Miembro SCRUM team </p>
                   <p class="card-text"> Soy un desarrollador Java Jr. Me apasiona desarrollar aplicaciones que mejoren
-                    la vida de las personas. Cómo desarrollador Java, combino mi formación del Bootcamp de Generation con mi experiencia en análisis y resolución de
+                    la vida de las personas. Cómo desarrollador Java, combino mi formación del Bootcamp de Generation
+                    con mi experiencia en análisis y resolución de
                     problemas. Además mi carrera en arquitectura me dado una visión estructurada y habilidades de
                     comunicación que aplico al diseño de software claro y funcional.</p>
                 </div>
