@@ -1,86 +1,90 @@
-*{margin: 0; padding:0 ; box-sizing: border-box;} /* quitamos margenes */
+/* Títulos (h1-h2): 48-36 px
+Subtítulos (h3 - h4): 30-24 px
+Cuerpo: 16px para contenido y 14px para cláusulas.
+ */
 
-body{
-    background-color: #c7b5d7;
-}
+ html{   
+    font-family: "DM Sans", sans-serif !important;
+ }
+ 
+ h1{
+    font-family: "Josefin Sans", sans-serif !important;
+     font-size: 48px;
+ }
+ 
+ h2{
+     font-size: 36px;
+ }
+ 
+ h3{
+     font-size: 30px;
+ }
+ 
+ h4{
+     font-size: 24px;
+ }
+ 
+ h5{
+    
+     font-size: 18px !important;
+     font-weight: 600 !important;
+ }
+ 
+ p{
+     font-size: 14px;
+ }
 
-h1{
-    background-color: #a06ec4;
-    padding: 30px 0px 30px 0px;
-    margin-top: 20px;
+ 
+ .header-page-light{
+    color: #F6F4F0 !important;
     text-align: center;
-    font-family: "Rubik Mono One", monospace;
-    font-size: 90px;
-    border:thick double #3f3649;
-}
+ }
 
-nav{
-    list-style-type: none;
-    margin-top: 10px;
-    margin: 0px;
-    overflow: hidden;
-    background-color: #573d7f;
-    position: sticky;
-    top: 0px;
-}
-
-nav a{
-    float: right;
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 20px 30px;
-    margin: 0px;
-    text-decoration: none;
-    font-family: "Rubik Mono One", monospace;
-    font-size: 15px;
-}
-
-nav a:hover{
-    background-color: #ac8bee;
-    color: #3f3649;
-}
-
-p{
-    font-family: "Big Shoulders Inline", sans-serif;
-    font-size: 25px;
-    text-align: justify;
-    background-color: #c7b5d7;
-    padding: 30px 60px 30px 60px;
-}
-
-img{
-    display: block;
-    margin: auto;
-}
-
-h5, h2{
-    font-family: "Big Shoulders Inline", sans-serif;
-    font-size: 30px;
-    text-align: center;
-}
-
-h6{
-    font-family: "Big Shoulders Inline", sans-serif;
-    font-size: 25px;
-    text-align: center;
-}
-
-ol{
-    font-family: "Big Shoulders Inline", sans-serif;
-    font-size: 25px;
-    text-align: justify;
-    margin: 0px 0px 70px 90px;
-    list-style: decimal;
-}
-
-form{
-    font-family: "Big Shoulders Inline", sans-serif;
-    font-size: 25px;
-}
-
-.encuesta{
-    max-width: 600px;
-    padding: 20px;
-    margin-top: 40px;
-}
+ .transparent-card{
+     background-color: transparent !important;
+     border: none !important; 
+     box-shadow: none !important;
+     color: #F6F4F0 !important;
+     text-align: center;
+ }
+ 
+ .imagen-circular{
+     width: 200px;
+     height: 200px;
+     object-fit: cover;
+     border-radius: 50%;
+ }
+ 
+ .carrusel-nosotros{
+    padding-top: 10px;
+     height: 100vh;
+     background-color: #EB5A3C;
+     padding-left: 5% !important;
+     padding-right: 5% !important;
+ }
+ 
+ .carousel-inner {
+     position: relative !important;
+   }
+   
+   /* Estilo de las flechas */
+   .carousel-control-prev,
+   .carousel-control-next {
+     position: absolute !important; /* Esto asegura que las flechas estén posicionadas de forma absoluta */
+     top: 50% !important; /* Centra verticalmente las flechas */
+     transform: translateY(-50%) !important; /* Ajusta la posición para que esté centrado */
+     z-index: 10 !important; /* Asegura que las flechas estén por encima del contenido */
+     width: 5% !important; /* Ajusta el tamaño de las flechas si es necesario */
+     height: 100% !important; /* Para cubrir toda la altura del carrusel */
+   }
+   
+   /* Flecha anterior (izquierda) */
+   .carousel-control-prev {
+     left: -20px !important; /* Ajusta la distancia del borde izquierdo */
+   }
+   
+   /* Flecha siguiente (derecha) */
+   .carousel-control-next {
+     right: -20px !important; /* Ajusta la distancia del borde derecho */
+   }
+   
