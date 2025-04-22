@@ -1,0 +1,15 @@
+body {
+  background-color: whitesmoke;
+}
+div.container {
+background-color: orangered;
+border-radius: 10px;
+}
+label.form-label{
+  color: white;
+}
+h2 {
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  margin-top: 60px;
+}
