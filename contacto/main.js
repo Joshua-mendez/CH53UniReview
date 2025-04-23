@@ -1,7 +1,7 @@
 const nombre = document.getElementById("nombre");
 const correo = document.getElementById("correo");
 const telefono = document.getElementById("telefono");
-const mensaje = document.getElementById("mensaje");
+const mensaje = document.getElementById("mensajevalidacion");
 const btnEnviar = document.getElementById("btnEnviar");
 const alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
 const alertValidaciones = document.getElementById("alertValidaciones");
@@ -25,30 +25,33 @@ btnEnviar.addEventListener("click", function(event){
     const correovalidacion = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
     const telefonovalidacion = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
 
+    alertValidacionesTexto.innerHTML = ""; // Limpiar primero
+    alertValidaciones.style.display = "none";
+
     if(nombre.value.length <= 3){
         nombre.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML="<strong>Favor de poner tu nombre de forma correcta</strong>";
+        alertValidacionesTexto.innerHTML +="<strong>Favor de poner tu nombre de forma correcta</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
     if(!correovalidacion.test(correo.value)){
         correo.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML="<strong>Favor de insertar un correo Valido</strong>";
+        alertValidacionesTexto.innerHTML +="<strong>Favor de insertar un correo Valido</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
     if(!telefonovalidacion.test(telefono.value)){
         telefono.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML="<strong>Ingresa un numero de Telefono Valido</strong>";
+        alertValidacionesTexto.innerHTML +="<strong>Ingresa un numero de Telefono Valido</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
     if(mensaje.value.length <= 10 || length >= 20){
         mensaje.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML="<strong>Minimo 10 Caracteres, maximo 20</strong>";
+        alertValidacionesTexto.innerHTML +="<strong>Minimo 10 Caracteres, maximo 20</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
