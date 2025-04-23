@@ -14,7 +14,10 @@ const alertValidaciones = document.getElementById("alertValidaciones");
 
 btnEnviar.addEventListener("click", function(event){
     event.preventDefault();
-
+    // nombre.style.border="";
+    // correo.style.border="";
+    // telefono.style.border="";
+    // mensaje.style.border="";
     let isValid = true;
 
     nombre.value = nombre.value.trim();
@@ -30,35 +33,35 @@ btnEnviar.addEventListener("click", function(event){
 
     if(nombre.value.length <= 3){
         nombre.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML +="<strong>Favor de poner tu nombre de forma correcta</strong><br/>";
+        alertValidacionesTexto.innerHTML +="<strong>Favor de escribir tu nombre de forma correcta</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
     if(!correovalidacion.test(correo.value)){
         correo.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML +="<strong>Favor de insertar un correo Valido</strong><br/>";
+        alertValidacionesTexto.innerHTML +="<strong>Favor de ingresar un correo válido</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
     if(!telefonovalidacion.test(telefono.value)){
         telefono.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML +="<strong>Ingresa un numero de Telefono Valido</strong><br/>";
+        alertValidacionesTexto.innerHTML +="<strong>Ingresa un número de teléfono válido</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
-    if(mensaje.value.length <= 10 || length >= 20){
+    if(mensaje.value.length < 10 || mensaje.value.length > 20){
         mensaje.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML +="<strong>Minimo 10 Caracteres, maximo 20</strong><br/>";
+        alertValidacionesTexto.innerHTML +="<strong>Mínimo 10 Caracteres, máximo 20</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
      if(isValid){
          Swal.fire({
-         title: "Mensaje Enviado!",
+         title: "¡Mensaje Enviado!",
              icon: "success",
              draggable: true
            });
