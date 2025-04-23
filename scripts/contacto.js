@@ -66,12 +66,25 @@ btnEnviar.addEventListener("click", function(event){
              draggable: true
            });
 
+           let formulario = document.getElementById("formContacto");
+           emailjs.init("8BlLdWkC8T6g5Fb1i");
+
+
+         emailjs.sendForm('service_hfue3gs', 'template_v79d4bl', formulario)
+           .then(function() {
+             console.log('Correo enviado con éxito.');
+           }, function(error) {
+             console.error('Error al enviar:', error);
+           });
+       
+         formulario.reset();
+
         //    let formulario = document.getElementById("formContacto");
         //    if(formulario){
         //     emailjs.sendForm('service_qm0r3m8', 'template_v79d4bl', this);
         //    }
           
 
-           document.getElementById("formContacto").reset(); // <- Esto borra los datos
+           //document.getElementById("formContacto").reset(); // <- Esto borra los datos
      } 
 });
