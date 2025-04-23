@@ -29,16 +29,16 @@ div.mb-3{
   height: 50px;
 }
 div#logo{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 35%;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  width: auto;
 }
 div#formulario{
 width: 450px;
 }
 img{
-  width: 150px;
+  width: 250px;
 }
 .formulario{
   display: flex;
