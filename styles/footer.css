@@ -1,9 +1,15 @@
 html, body{
     margin: 0;
     padding: 0;
-    color:#F6F4F0 !important ;
     background-color: #09122C;
     font-family: "Josefin Sans", sans-serif !important;
+}
+#logo{
+  color:#F6F4F0  !important;
+  text-decoration: none !important;
+}
+#enlace-pagina{
+  color:#F6F4F0  !important;
 }
 div.fluid-container{
     width: 100%;

@@ -2,17 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+    <!-- Estilos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="./styles/styles.css">
+
+
 </head>
 <body>
-    <h1>UniReview</h1>
-    <a href="">Foro</a>
-    <a href="">Universidad</a>
-    <a href="">Opiniones</a>
-    <a href="./contacto.html">Contacto</a>
-    
-    <p>Ve las carreras mejor valoradas en base a alumos graduados!</p>
+    <!-- Navbar -->
+    <div id="navbar"></div>
 
+    <!-- Contenido main -->
+    <div class="container">
+        <h1 style="text-align: center;">Inicio</h1>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+    <!-- Sripts para cargar navbar y footer -->
+
+    <!-- Navbar script -->
+    <script>
+        fetch('./navbar.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+          });
+    </script>
+
+    <!-- Footer script -->
+
+    <script>
+        fetch('./footer.html')
+          .then(res => res.text())
+          .then(data => {
+            document.getElementById('footer').innerHTML = data;
+          });
+    </script>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <!-- Alertas -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

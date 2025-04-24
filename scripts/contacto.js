@@ -6,18 +6,13 @@ const btnEnviar = document.getElementById("btnEnviar");
 const alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
 const alertValidaciones = document.getElementById("alertValidaciones");
 
-// function enviarEmail(){
-//     emailjs.init("8BlLdWkC8T6g5Fb1i");
-// }
-
-// enviarEmail();
 
 btnEnviar.addEventListener("click", function(event){
     event.preventDefault();
-    // nombre.style.border="";
-    // correo.style.border="";
-    // telefono.style.border="";
-    // mensaje.style.border="";
+    nombre.style.border="";
+    correo.style.border="";
+    telefono.style.border="";
+    mensaje.style.border="";
     let isValid = true;
 
     nombre.value = nombre.value.trim();
