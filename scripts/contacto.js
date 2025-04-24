@@ -54,32 +54,28 @@ btnEnviar.addEventListener("click", function(event){
         isValid=false;
     }
 
-     if(isValid){
-         Swal.fire({
-         title: "¡Mensaje Enviado!",
-             icon: "success",
-             draggable: true
-           });
-
+//////////////// Envia el mensaje por correo a traves de emialJS///////////////////// 
            let formulario = document.getElementById("formContacto");
            emailjs.init("8BlLdWkC8T6g5Fb1i");
 
-
          emailjs.sendForm('service_hfue3gs', 'template_v79d4bl', formulario)
-           .then(function() {
-             console.log('Correo enviado con éxito.');
-           }, function(error) {
-             console.error('Error al enviar:', error);
-           });
-       
+        //    .then(function() { //revisa si funciona el correo
+        //      console.log('Correo enviado con éxito.');
+        //    }, function(error) {
+        //      console.error('Error al enviar:', error);
+        //    });
+       console.log("se mando el mensaje")
+
+        if(isValid){
+            Swal.fire({
+            title: "¡Mensaje Enviado!",
+                icon: "success",
+                draggable: true
+              });
+
+              console.log("alerta")
+
          formulario.reset();
-
-        //    let formulario = document.getElementById("formContacto");
-        //    if(formulario){
-        //     emailjs.sendForm('service_qm0r3m8', 'template_v79d4bl', this);
-        //    }
-          
-
            //document.getElementById("formContacto").reset(); // <- Esto borra los datos
      } 
 });
