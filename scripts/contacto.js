@@ -9,52 +9,55 @@ const alertValidaciones = document.getElementById("alertValidaciones");
 
 btnEnviar.addEventListener("click", function(event){
     event.preventDefault();
-    nombre.style.border="";
-    correo.style.border="";
-    telefono.style.border="";
-    mensaje.style.border="";
+     nombre.style.border="";
+     correo.style.border="";
+     telefono.style.border="";
+     mensaje.style.border="";
     let isValid = true;
 
     nombre.value = nombre.value.trim();
     correo.value = correo.value.trim();
     telefono.value = telefono.value.trim();
+   // const telefonoLimpio = telefono.value.replace(/\D/g, ''); // con este se pueden permitir espacios y guiones. 
+   // Esta constante limpia el numero para que se pueda validar. Si se usa, hay que descomentar, usar la constante como parametro de validacion en if de la validacion del telefono 
     mensaje.value = mensaje.value.trim();
 
-    const correovalidacion = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
-    const telefonovalidacion = new RegExp("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$");
-
-    alertValidacionesTexto.innerHTML = ""; // Limpiar primero
+    const correoValidacion = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
+    const telefonoValidacion = new RegExp("^(?!0{10})\\d{10}$");
+   
+    alertValidacionesTexto.innerHTML = ""; 
     alertValidaciones.style.display = "none";
 
-    if(nombre.value.length <= 3){
+    if(nombre.value.length <= 2){
         nombre.style.border="solid medium red";
         alertValidacionesTexto.innerHTML +="<strong>Favor de escribir tu nombre de forma correcta</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
-    if(!correovalidacion.test(correo.value)){
+    if(!correoValidacion.test(correo.value)){
         correo.style.border="solid medium red";
         alertValidacionesTexto.innerHTML +="<strong>Favor de ingresar un correo válido</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
-    if(!telefonovalidacion.test(telefono.value)){
+    if(!telefonoValidacion.test(telefono.value)){
         telefono.style.border="solid medium red";
         alertValidacionesTexto.innerHTML +="<strong>Ingresa un número de teléfono válido</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
-
-    if(mensaje.value.length < 10 || mensaje.value.length > 20){
+ 
+    if(mensaje.value.length < 10 || mensaje.value.length > 100){
         mensaje.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML +="<strong>Mínimo 10 Caracteres, máximo 20</strong><br/>";
+        alertValidacionesTexto.innerHTML +="<strong>El mensaje debe contener mínimo 10 carácteres</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
 
-//////////////// Envia el mensaje por correo a traves de emialJS///////////////////// 
+//////////////// Envia el mensaje por correo a traves de emialJS/////////////////////
+ 
            let formulario = document.getElementById("formContacto");
            emailjs.init("8BlLdWkC8T6g5Fb1i");
 
@@ -64,7 +67,6 @@ btnEnviar.addEventListener("click", function(event){
         //    }, function(error) {
         //      console.error('Error al enviar:', error);
         //    });
-       console.log("se mando el mensaje")
 
         if(isValid){
             Swal.fire({
@@ -73,9 +75,6 @@ btnEnviar.addEventListener("click", function(event){
                 draggable: true
               });
 
-              console.log("alerta")
-
          formulario.reset();
-           //document.getElementById("formContacto").reset(); // <- Esto borra los datos
      } 
 });
