@@ -56,7 +56,10 @@ btnEnviar.addEventListener("click", function(event){
         isValid=false;
     }
 
-//////////////// Envia el mensaje por correo a traves de emialJS/////////////////////
+
+
+        if(isValid){
+            //////////////// Envia el mensaje por correo a traves de emialJS/////////////////////
  
            let formulario = document.getElementById("formContacto");
            emailjs.init("8BlLdWkC8T6g5Fb1i");
@@ -65,10 +68,9 @@ btnEnviar.addEventListener("click", function(event){
         //    .then(function() { //revisa si funciona el correo
         //      console.log('Correo enviado con éxito.');
         //    }, function(error) {
-        //      console.error('Error al enviar:', error);
-        //    });
-
-        if(isValid){
+         //      console.error('Error al enviar:', error);
+              //    }); 
+              
             Swal.fire({
             title: "¡Mensaje Enviado!",
                 icon: "success",

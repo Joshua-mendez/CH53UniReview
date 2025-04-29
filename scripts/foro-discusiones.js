@@ -1,4 +1,6 @@
+let selectedRating = 0;
 const listComments= document.getElementById("list-comments")
+
 function addItem(item) {
     
     listComments.insertAdjacentHTML ("afterbegin",`<div class="card mb-3"><div class="card-body d-flex">
@@ -11,6 +13,28 @@ function addItem(item) {
 </div>`);
 
 }
+document.querySelectorAll(".star").forEach(star => {
+    star.addEventListener("mouseover", function () {
+      highlightStars(this.dataset.value);
+    });
+  
+    star.addEventListener("mouseout", function () {
+      highlightStars(selectedRating);
+    });
+  
+    star.addEventListener("click", function () {
+      selectedRating = this.dataset.value;
+      document.getElementById("rating-value").textContent = "Tu calificación: " + selectedRating;
+    });
+  });
+  function highlightStars(rating) {
+    document.querySelectorAll(".star").forEach(star => {
+      star.classList.remove("selected");
+      if (star.dataset.value <= rating) {
+        star.classList.add("selected");
+      }
+    });
+  }
 
 /* <div class="card mb-3">
 <div class="card-body d-flex">
