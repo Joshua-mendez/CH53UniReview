@@ -2,7 +2,8 @@ let selectedRating = 0;
 const listComments= document.getElementById("list-comments"); //Contenedor para comentarios
 const btnPublicar = document.getElementById("btnPublicar"); //Botón publicar
 const ratingValue = document.getElementById('rating-value'); //texto de valor de estrellas
-
+//Alerta
+const alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
 //Campos de formulario
 const txtUser = document.getElementById("txtUser"); //Nombre de usuario
 const schoolSelect = document.getElementById("schoolSelect");//Selección de escuela
@@ -19,6 +20,7 @@ txtComment.addEventListener('input', () => {
 
   if(longitud>=551){
     charCounter.style.color="red";
+    txtComment.style.border="solid medium red"; //pone en rojo el borde si el comentario es menor a 15
   }
 
 });
@@ -209,6 +211,7 @@ if(positionIndicator==1){
     </div>`);
 }//renderComment
 
+
 //Botón para agregar nuevos comentarios desde el formulario
 btnPublicar.addEventListener("click", function(event){
   event.preventDefault();
@@ -220,11 +223,52 @@ btnPublicar.addEventListener("click", function(event){
   schoolSelect.style.border=""; //sin estilo para escuela
   careerSelect.style.border=""; //sin estilo para carrera
   txtComment.style.border=""; //sin estilo para comentario
+  txtUser.style.border=""; //sin estilo para usuario
 
-  // alertValidacionesTexto.innerHTML="" //sin mensaje
-  // alertValidaciones.style.display="none";  //oculto
+  const validarUsuario = new RegExp("^[a-zA-Z0-9.-]{8,20}$"); //limitacion que debe de tener el nombre de usuario
+
+  alertValidacionesTexto.innerHTML="" //sin mensaje
+  alertValidaciones.style.display="none";  //oculto
 
   txtComment.value = txtComment.value.trim(); //quita espacios vacios al inicio y al final del comentario
+  txtUser.value = txtUser.value.trim(); //quita espacios vacios al inicio y al final del nombre de usuario, ES TEMPORAL
+
+  //Validaciones
+  if(!validarUsuario.test(txtUser.value)){ //valida que el usuario cumpla parametros de 8-20 carcateres, puede utilizar numeros y/o guiones, puntos.
+    txtUser.style.border = "solid medium red";
+    alertValidacionesTexto.innerHTML +="<strong> El nombre de usuario debe tener entre 8-20 caracteres, y puede incluir números, así como los caracteres punto (.) y/o guion (-). </strong><br/>";
+    alertValidaciones.style.display="block";
+    isValid=false;
+  }
+
+  if(schoolSelect.value === ""){ //valida que el campo de escuela tengo una opcion.
+    schoolSelect.style.border = "solid medium red";
+    alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para Escuela. </strong><br/>";
+    alertValidaciones.style.display="block";
+    isValid=false;
+  }
+
+  if(careerSelect.value === ""){//el campo de carrera debe de estar seleccionado
+    careerSelect.style.border = "solid medium red";
+    alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para Carrera. </strong><br/>";
+    alertValidaciones.style.display="block";
+    isValid=false;
+  }
+
+  if(selectedRating == 0){ // si no contiene una calificacion, cambia el texto y lo pone en rojo
+    ratingValue.textContent = "No hay calificación";
+    ratingValue.style.color="red";
+    alertValidacionesTexto.innerHTML +="<strong> No se ingresó una calificación. </strong><br/>";
+    alertValidaciones.style.display="block";
+    isValid=false;
+  }
+
+  if(txtComment.value.length <= 15){ //el comentariodebe de tener minimo 15 caracteres para ser enviado
+    txtComment.style.border = "solid medium red";
+    alertValidacionesTexto.innerHTML +="<strong> Tu comentario debe de tener de 15 a 550 caracteres. </strong><br/>";
+    alertValidaciones.style.display="block";
+    isValid=false;
+  }
 
   if(isValid){
 
@@ -268,5 +312,6 @@ btnPublicar.addEventListener("click", function(event){
 }
 
 });
+
 
 
