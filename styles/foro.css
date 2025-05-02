@@ -13,3 +13,45 @@ html{
   .star:hover ~ .star {
     color: gold;
   }
+  .contenedor-fijo {
+    position: fixed;
+    top: 70px;
+    bottom: 70px;
+    left: 20px; /* Separación del borde izquierdo */
+    width: 270px;
+    background-color: #EB5A3C;
+    font-family: 'Josefin Sans', sans-serif;
+    text-align:le;
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 12px;
+  }
+  
+  /* Mover el contenido a la derecha considerando el menú + margen */
+  main.container {
+    margin-left: 310px; /* 270 de ancho del menú + 20px left + 20px espacio extra */
+    max-width: 800px;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .contenedor-fijo {
+      position: static; /* ya no es fijo */
+      width: 100%;      
+      margin-top: 20px;  /* espacio arriba */
+      padding: 15px;
+      background-color: #EB5A3C;
+      color: white;
+      border-radius: 12px;
+      font-family: 'Josefin Sans', sans-serif;
+    }
+  
+    main.container {
+      margin-left: 0; /* sin espacio lateral */
+    }
+  }
+  ul {
+    list-style-type: none;
+  }

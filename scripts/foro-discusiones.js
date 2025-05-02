@@ -327,5 +327,33 @@ btnPublicar.addEventListener("click", function(event){
 
 });
 
+function mostrarTopCarreras() {
+  // Ordenar por estrellas de mayor a menor
+  const ordenadas = [...allComments].sort((a, b) => b.stars - a.stars);
 
+  //  Se crea un Set para evitar repetir carreras con el mismo nombre
+  const carrerasUnicas = new Set();
+  const topCarreras = [];
+
+  for (let carrera of ordenadas) {
+    const nombre = carrera.career.trim();
+    if (!carrerasUnicas.has(nombre)) {
+      carrerasUnicas.add(nombre);
+      topCarreras.push(nombre);
+    }
+    if (topCarreras.length === 10) break;
+  }
+
+  const lista = document.getElementById("listaCarreras");
+  lista.innerHTML = ""; // Limpiar si ya hay contenido
+
+  topCarreras.forEach((carrera, index) => {
+    lista.insertAdjacentHTML(
+      "beforeend",
+      `<li>${index + 1}. ${carrera}</li>`
+    );
+  });
+}
+
+document.addEventListener("DOMContentLoaded", mostrarTopCarreras);
 
