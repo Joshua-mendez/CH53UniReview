@@ -286,9 +286,20 @@ btnPublicar.addEventListener("click", function(event){
     //Recargando el array actualizado al local storage
     localStorage.setItem("comments", JSON.stringify(allComments));
 
-    console.log(elemento);
+    //console.log(elemento);
     // Renderiza el nuevo comentario
     renderComment(elemento,1);
+
+    //Alerta -> Se subio publicacion 
+    Swal.fire({
+      title: "Bien!",
+      text: "Tu opinión ha sido publicada",
+      imageUrl: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExb2tpdnZ5NXZ6dGF5dzFka296emk2OGd3ZDZrM3NmYmdhbW94NTVnayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/10uJ0IFxlCA06I/giphy.gif",
+      imageWidth: 240,
+      imageHeight: 168,
+      imageAlt: "Custom image",
+      confirmButtonColor: "#EB5A3C"
+    });
 
     //Limpia los campos después de agregarlos a la tabla
     txtUser.value="";
