@@ -19,7 +19,6 @@ txtComment.addEventListener('input', () => {
   charCounter.innerText = `${longitud}/550`;
 
   if(longitud>=551){
-    charCounter.style.color="red";
     txtComment.style.border="solid medium red"; //pone en rojo el borde si el comentario es menor a 15
   }
 
@@ -43,6 +42,7 @@ interactiveStars.forEach(star => {
   star.addEventListener("click", function () {
     //Convirtiendo el valor a numero ya que dataset guarda strings
     selectedRating = parseInt(this.dataset.value);
+    ratingValue.style.color = "black";
     ratingValue.textContent = `Tu calificación: ${selectedRating}`; // Actualiza el texto dinámicamente
     // Puedes guardar o mostrarlo donde quieras
    // console.log("Seleccionaste: ", selectedRating);
@@ -263,11 +263,14 @@ btnPublicar.addEventListener("click", function(event){
     isValid=false;
   }
 
-  if(txtComment.value.length <= 15){ //el comentariodebe de tener minimo 15 caracteres para ser enviado
+  if(txtComment.value.length <= 15 || txtComment.value.length > 550){ //el comentariodebe de tener minimo 15 caracteres para ser enviado
     txtComment.style.border = "solid medium red";
+    charCounter.style.color="red";
     alertValidacionesTexto.innerHTML +="<strong> Tu comentario debe de tener de 15 a 550 caracteres. </strong><br/>";
     alertValidaciones.style.display="block";
     isValid=false;
+  }else{
+    charCounter.style.color="";
   }
 
   if(isValid){
