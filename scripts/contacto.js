@@ -51,7 +51,7 @@ btnEnviar.addEventListener("click", function(event){
  
     if(mensaje.value.length < 10 || mensaje.value.length > 100){
         mensaje.style.border="solid medium red";
-        alertValidacionesTexto.innerHTML +="<strong>El mensaje debe contener mínimo 10 carácteres</strong><br/>";
+        alertValidacionesTexto.innerHTML +="<strong>El mensaje debe contener entre 10 y 100 caracteres</strong><br/>";
         alertValidaciones.style.display="block";
         isValid=false;
     }
