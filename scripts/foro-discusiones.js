@@ -16,10 +16,13 @@ txtComment.addEventListener('input', () => {
 
   const longitud = txtComment.value.length;
 
-  charCounter.innerText = `${longitud}/550`;
+  charCounter.innerText = `${longitud}/830`;
 
-  if(longitud>=551){
-    txtComment.style.border="solid medium red"; //pone en rojo el borde si el comentario es menor a 15
+  if(longitud>=831){
+    //txtComment.style.border="solid medium red"; //pone en rojo el borde si el comentario es menor a 15
+    charCounter.style.color="red"; //pone en rojo el contador
+  }else{
+    charCounter.style.color="";
   }
 
 });
@@ -263,10 +266,10 @@ btnPublicar.addEventListener("click", function(event){
     isValid=false;
   }
 
-  if(txtComment.value.length <= 15 || txtComment.value.length > 550){ //el comentariodebe de tener minimo 15 caracteres para ser enviado
+  if(txtComment.value.length < 15 || txtComment.value.length > 830){ //el comentariodebe de tener minimo 15 caracteres para ser enviado
     txtComment.style.border = "solid medium red";
     charCounter.style.color="red";
-    alertValidacionesTexto.innerHTML +="<strong> Tu comentario debe de tener de 15 a 550 caracteres. </strong><br/>";
+    alertValidacionesTexto.innerHTML +="<strong> Tu comentario debe de tener de 15 a 830 caracteres. </strong><br/>";
     alertValidaciones.style.display="block";
     isValid=false;
   }else{
