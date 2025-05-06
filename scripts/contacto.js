@@ -23,7 +23,7 @@ btnEnviar.addEventListener("click", function(event){
     mensaje.value = mensaje.value.trim();
 
     const correoValidacion = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
-    const telefonoValidacion = new RegExp("^(?!0{10})\\d{10}$");
+    const telefonoValidacion = new RegExp("^(?!.*(\\d)\\1{4})[0-9]{10}$");
    
     alertValidacionesTexto.innerHTML = ""; 
     alertValidaciones.style.display = "none";

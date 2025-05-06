@@ -1,0 +1,31 @@
+.container{
+  background-color: #00A5CF;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 15px;
+}
+.mb-3{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  margin: 20px auto;
+}
+.form-label{
+  flex: 1;
+  text-align: left;
+  margin-right: 10px;
+}
+.form-control{
+  flex: 2;
+  padding: 8px;
+  text-align: right;
+  border-radius: 100px;
+}
+#dentro{
+  align-items: center;
+  margin-bottom: 50px;
+}
