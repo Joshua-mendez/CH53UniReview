@@ -3,15 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantilla</title>
+    <title>Registro de Usuario</title>
     
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
+  <!-- Íconos -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+
     <!-- Estilos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/styles.css">
+  <!-- <link rel="stylesheet" href="./styles/styles.css"> -->
   <link rel="stylesheet" href="./styles/registro.css">
 
 </head>
@@ -22,45 +26,79 @@
 
 
     <!-- Contenido main -->
-    <h1 style="text-align: center;">Nuevo Usuario</h1>
+    <h1 style="text-align: center;">Registro de Nuevo Usuario</h1>
     <div class="container">
-
-      <form>
-        <div id="dentro">
-
-        <div class="mb-3">
-          <label for="txtName" class="form-label">Nombre completo:</label>
-          <input type="text" class="form-control" id="txtName">
+      <div id="alerta" class="super d-flex justify-content-center">
+        <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidaciones">
+          <p id="alertValidacionesTexto" class="mb-0"></p>
         </div>
-
-        <div class="mb-3">
-          <label for="txtTel" class="form-label">Numero de telefono:</label>
-          <input type="number" class="form-control" id="txtTel">
-        </div>
-
-        <div class="mb-3">
-          <label for="txtEmail" class="form-label">E-mail:</label>
-          <input type="email" class="form-control" id="txtEmail">
-        </div>
-
-        <div class="mb-3">
-          <label for="txtPass" class="form-label">Contraseña:</label>
-          <input type="password" class="form-control" id="txtPass">
-        </div>
-
-        <div class="mb-3">
-          <label for="txtConfirmPass" class="form-label">Confirmar contraseña:</label>
-          <input type="password" class="form-control" id="txtConfirmPass">
-        </div>
-
-        
-        <button type="submit" class="btn btn-primary">Cancelar</button>
-        <button type="submit" class="btn btn-primary" id="btnSubmit">Registrarse</button>
-
       </div>
+
+      <form class="container-fluid">
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtName" class="form-label">Nombre completo:</label>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12" >
+            <input type="text" class="form-control input-bgc " id="txtName" placeholder="Escribe tu nombre completo" required>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtTel" class="form-label">Numero de telefono:</label>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <input type="tel" class="form-control input-bgc" id="txtTel" placeholder="Escribe tu número de teléfono" required>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtEmail" class="form-label">E-mail:</label>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <input type="email" class="form-control input-bgc" id="txtEmail" placeholder="tucorreo@dominio.com" required>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtPass" class="form-label">Contraseña:
+              <i class="bi bi-info-circle" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="right" 
+                title="La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un número.">
+              </i>
+            </label>
+          </div>
+            <!-- Campo de contraseña -->
+          <div class="col-lg-6 col-md-6 col-sm-12 position-relative">
+            <input type="password" class="form-control input-bgc" id="txtPass" placeholder="Escribe una contraseña significativa" required>
+              <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 toggle-password" 
+                data-target="txtPass" style="cursor: pointer;"></i>
+            </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtConfirmPass" class="form-label">Confirmar contraseña:</label>
+          </div>
+          <!-- Confirmar contraseña -->
+          <div class="col-lg-6 col-md-6 col-sm-12 position-relative">
+            <input type="password" class="form-control input-bgc" id="txtConfirmPass" placeholder="Repite tu contraseña" required>
+            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 toggle-password" 
+              data-target="txtConfirmPass" style="cursor: pointer;"></i>
+          </div>
+        </div>
+        <!-- Botones -->
+        <div class="d-flex justify-content-center gap-5 mt-5">
+          <button type="button" id="btnCancel" class="btn btn-light border-danger text-danger rounded-pill btn-lg me-5">Cancelar</button>
+          <button type="submit" id="btnRegister" class="btn btn-dark rounded-pill btn-lg">Registrarse</button>
+        </div>
+
       </form>
     </div>
-
 
 
     <!-- Footer -->
@@ -89,9 +127,30 @@
 
     <!-- Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+
+    <!-- Activar icono de información -->
+    <script>
+      const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+      const tooltipList = [...tooltipTriggerList].map(el => new bootstrap.Tooltip(el))
+    </script>
+
+    <!-- Mostrar/Ocultar contraseña -->
+    <script>
+      document.querySelectorAll('.toggle-password').forEach(icon => {
+        icon.addEventListener('click', () => {
+          const inputId = icon.getAttribute('data-target');
+          const input = document.getElementById(inputId);
+          const isPassword = input.type === 'password';
+          input.type = isPassword ? 'text' : 'password';
+          icon.classList.toggle('bi-eye');
+          icon.classList.toggle('bi-eye-slash');
+        });
+      });
+    </script>
+
     <!-- Alertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <!--JS-->
-    <script src="./scripts/registro.js"></script>
+    <!-- JS -->
+     <script src="./scripts/registro.js"></script>
 </body>
 </html>
