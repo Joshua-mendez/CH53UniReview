@@ -46,17 +46,28 @@ if (localStorage.getItem("users")) {
     txtName.value = txtName.value.trim();
     txtEmail.value = txtEmail.value.trim();
     txtTel.value = txtTel.value.trim();
+    txtConfirmPass.value = txtConfirmPass.value.trim();
+    txtPass.value = txtPass.value.trim();
     
     //Regex
     const correoValidacion = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
     const telefonoValidacion = new RegExp("^(?!.*(\\d)\\1{4})[0-9]{10}$");
     const passwordValidacion = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")
 
+    
+    if(txtName.value==="" && txtEmail.value === "" && txtTel.value === "" && txtPass.value === "" && txtConfirmPass.value === ""){
+      [txtName, txtEmail, txtTel, txtPass, txtConfirmPass].forEach(el => el.style.border = "solid medium red");
+      alertValidacionesTexto.innerHTML = "<strong>Todos los campos son requeridos.</strong><br/>";
+      alertValidaciones.style.display = "block";
+      isValid = false;
+      return; // ← IMPORTANTE: detiene la ejecución
+    }
+
 
     //Si el nombre es menor o igual a 2
     if(txtName.value.length <= 2){
       txtName.style.border="solid medium red";
-      alertValidacionesTexto.innerHTML +="<strong>Favor de escribir tu nombre de forma correcta</strong><br/>";
+      alertValidacionesTexto.innerHTML +="<strong>Favor de escribir tu nombre de forma correcta.</strong><br/>";
       alertValidaciones.style.display="block";
       isValid=false;
     }
@@ -64,7 +75,7 @@ if (localStorage.getItem("users")) {
     //Si el teléfono no es válido
     if(!telefonoValidacion.test(txtTel.value)){
       txtTel.style.border="solid medium red";
-      alertValidacionesTexto.innerHTML +="<strong>Ingresa un número de teléfono válido (10 dígitos)</strong><br/>";
+      alertValidacionesTexto.innerHTML +="<strong>Ingresa un número de teléfono válido (10 dígitos).</strong><br/>";
       alertValidaciones.style.display="block";
       isValid=false;
     }
@@ -72,7 +83,7 @@ if (localStorage.getItem("users")) {
     //Si el correo no es correcto
     if(!correoValidacion.test(txtEmail.value)){
       txtEmail.style.border="solid medium red";
-      alertValidacionesTexto.innerHTML +="<strong>Favor de ingresar un correo válido</strong><br/>";
+      alertValidacionesTexto.innerHTML +="<strong>Favor de ingresar un correo válido.</strong><br/>";
       alertValidaciones.style.display="block";
       isValid=false;
     }
@@ -93,7 +104,7 @@ if (localStorage.getItem("users")) {
 
 
       if (emailExists) {
-      alertValidacionesTexto.innerHTML += "<strong>Este correo ya está registrado</strong><br/>";
+      alertValidacionesTexto.innerHTML += "<strong>Este correo ya está registrado.</strong><br/>";
       alertValidaciones.style.display = "block";
       txtEmail.style.border = "solid medium red";
       isValid = false;
@@ -103,9 +114,9 @@ if (localStorage.getItem("users")) {
       txtPass.style.border="solid medium red";
       alertValidacionesTexto.innerHTML +=`<strong>Ingresa una contraseña válida:</strong><br/>
       <ul style = "text-align : center">
-        <li>Al menos una letra minúscula. ([a-z]</li>
-        <li>Al menos una letra mayúscula. ([A-Z]</li>
-        <li>Al menos un número. ([0-9]</li>
+        <li>Al menos una letra minúscula. [a-z]</li>
+        <li>Al menos una letra mayúscula. [A-Z]</li>
+        <li>Al menos un número. [0-9]</li>
         <li>Mínimo 8 caracteres.</li>
       </ul>`;
       alertValidaciones.style.display="block";
@@ -114,7 +125,7 @@ if (localStorage.getItem("users")) {
 
     if(!(txtPass.value === txtConfirmPass.value) || txtConfirmPass.value=== ""){
       txtConfirmPass.style.border="solid medium red";
-      alertValidacionesTexto.innerHTML +="<strong>Captura ambas contraseñas, estas deben ser iguales</strong><br/>";
+      alertValidacionesTexto.innerHTML +="<strong>Captura ambas contraseñas, estas deben ser iguales.</strong><br/>";
       alertValidaciones.style.display="block";
       isValid=false;
     }

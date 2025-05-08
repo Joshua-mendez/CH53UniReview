@@ -311,29 +311,12 @@
 
   <div id="footer"></div>
 
-  <!-- Llamando a navbar y footer -->
-
-  <script>
-    fetch('./navbar.html')
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById('navbar').innerHTML = data;
-      });
-  </script>
-
-<script>
-  fetch('./footer.html')
-    .then(res => res.text())
-    .then(data => {
-      document.getElementById('footer').innerHTML = data;
-    });
-</script>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
     <!-- JS  -->
-    <script src="./scripts/nabvar.js"></script>
+    <script src="./scripts/load-scripts.js"></script>
+    
 </body>
 
 </html>
