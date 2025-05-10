@@ -353,7 +353,7 @@ function mostrarTopCarreras() {
   topCarreras.forEach((carrera, index) => {
     lista.insertAdjacentHTML(
       "beforeend",
-      `<li>${index + 1}. ${carrera}</li>`
+      `<li style="line-height: 1.8; margin-bottom: 6px;">${index + 1}. ${carrera}</li>`
     );
   });
 }
