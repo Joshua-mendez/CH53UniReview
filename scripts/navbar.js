@@ -1,10 +1,10 @@
 
 (function () {
-  console.log("Si entro");
+  //console.log("Si entro");
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-  console.log(currentUser);
+  //console.log(currentUser);
   if (currentUser && currentUser.userEmail) {
-    console.log("Entro en condicion");
+    //console.log("Entro en condicion");
     const email = currentUser.userEmail;
     const username = email.split("@")[0];
 
@@ -12,7 +12,7 @@
     const registroItem = document.getElementById("navRegistro");
     console.log(registroItem);
     if (registroItem!=undefined) {
-      console.log("Entro en condicion remove");
+      //console.log("Entro en condicion remove");
       registroItem.remove();
     }
 
