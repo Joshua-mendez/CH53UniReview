@@ -1,0 +1,285 @@
+[
+ {
+  "nombre_carrera": "Ing. Tecnologías de la Información y Comunicaciones",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-en-tecnologia-de-la-informacion-comunicaciones/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Ing. Química",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-en-quimica/",
+  "rama": "Ciencias Básicas"
+ },
+ {
+  "nombre_carrera": "Ing. Mecánica",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-mecanica/",
+  "rama": "Ciencias Automotrices"
+ },
+ {
+    "nombre_carrera": "Ing. Mecánica",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/ingenieria-mecanica/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Ing. En Materiales",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-en-materiales/"
+ },
+ {
+  "nombre_carrera": "Ing. Industrial",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-industrial/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+    "nombre_carrera": "Ing. Industrial",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/ingenieria-industrial/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Ing. Gestión Empresarial",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-en-gestion-empresarial/"
+ },
+ {
+  "nombre_carrera": "Ing. Electrónica",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-electronica/"
+ },
+ {
+    "nombre_carrera": "Ing. Electrónica",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Ing. Eléctrica",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-electrica/"
+ },
+ {
+  "nombre_carrera": "Ing. En Semiconductores",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-en-semiconductores/"
+ },
+ {
+  "nombre_carrera": "Ing. En Ciberseguridad",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/ingenieria-en-ciberseguridad/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Lic. en Administración de Empresas",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "TecNM",
+  "enlace": "https://aguascalientes.tecnm.mx/licenciatura-en-administracion/",
+  "rama": "Ciencias Económicas y Administrativas"
+ },
+ {
+    "nombre_carrera": "Lic. en Administración de Empresas",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Económicas y Administrativas"
+ },
+ {
+    "nombre_carrera": "Lic. en Administración de Empresas",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-administracion-de-empresas/",
+  "rama": "Ciencias Económicas y Administrativas"
+ },
+ {
+    "nombre_carrera": "Lic. en Administración de Empresas",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "Universidad Autónoma de Baja California (UABC)",
+  "enlace": "https://www.uabc.mx/oferta-ed-programas-educativos/",
+  "rama": "Ciencias Económicas y Administrativas"
+ },
+ {
+  "nombre_carrera": "Ing. En Agronomía",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Agropecuarias"
+ },
+ {
+  "nombre_carrera": "Ing. En Alimentos",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Agropecuarias"
+ },
+ {
+  "nombre_carrera": "Médico Veterinario Zootecnista",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Agropecuarias"
+ },
+ {
+  "nombre_carrera": "Ing. Bioquímica",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Básicas"
+ },
+ {
+  "nombre_carrera": "Ing. En Sistemas Computacionales",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/"
+ },
+ {
+  "nombre_carrera": "Ing.  Industrial Estadístico",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Básicas"
+ },
+ {
+  "nombre_carrera": "Lic. Biología",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Básicas"
+ },
+ {
+  "nombre_carrera": "Lic. Biotecnología",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Básicas"
+ },
+ {
+  "nombre_carrera": "Lic. Nutrición",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Básicas"
+ },
+ {
+  "nombre_carrera": "Lic. Contador Público",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-contador-publico-internacional/",
+  "rama": "Ciencias Económicas y Administrativas"
+ },
+ {
+    "nombre_carrera": "Lic. Contador Público",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "Universidad Autónoma de Baja California (UABC)",
+  "enlace": "https://www.uabc.mx/oferta-ed-programas-educativos/",
+  "rama": "Ciencias Económicas y Administrativas"
+ },
+ {
+  "nombre_carrera": "Lic. Diseño Gráfico",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias del Diseño y Marketing"
+ },
+ {
+    "nombre_carrera": "Lic. Diseño Gráfico",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-diseno-grafico/",
+  "rama": "Ciencias del Diseño y Marketing"
+ },
+ {
+  "nombre_carrera": "Lic. En Mercadotecnia",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-administracion-de-mercadotecnia/",
+  "rama": "Ciencias del Diseño y Marketing"
+ },
+ {
+    "nombre_carrera": "Lic. En Mercadotecnia",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "Universidad Autónoma de Baja California (UABC)",
+  "enlace": "https://www.uabc.mx/oferta-ed-programas-educativos/",
+  "rama": "Ciencias del Diseño y Marketing"
+ },
+
+ {
+  "nombre_carrera": "Lic. En Negocios Internacionales",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-negocios-internacionales/",
+  "rama": "Ciencias Empresariales"
+ },
+ 
+ {
+  "nombre_carrera": "Ing. Mecatrónica",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/ingenieria-mecatronica/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Ing. Software",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/ingenieria-de-software/",
+  "rama": "Ciencias de la Ingeniería"
+ },
+ {
+  "nombre_carrera": "Lic. Derecho",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-derecho/",
+  "rama": "Ciencias Políticas"
+ },
+ {
+    "nombre_carrera": "Lic. Derecho",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "Universidad Autónoma de Baja California (UABC)",
+  "enlace": "https://www.uabc.mx/oferta-ed-programas-educativos/",
+  "rama": "Ciencias Políticas"
+ },
+ {
+  "nombre_carrera": "Lic. Psicología Clínica",
+  "ubicacion": "Aguascalientes",
+  "nombre_escuela": "Universidad Autónoma de Aguascalientes (UAA)",
+  "enlace": "https://www.uaa.mx/portal/oferta-educativa/licenciaturas/",
+  "rama": "Ciencias Sociales y Humanidades"
+ },
+ {
+    "nombre_carrera": "Lic. Psicología Clínica",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "CETYS",
+  "enlace": "https://www.cetys.mx/programas/licenciatura-en-psicologia-clinica/",
+  "rama": "Ciencias Sociales y Humanidades"
+ },
+ {
+  "nombre_carrera": "Lic. Gastronomía",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "Universidad Autónoma de Baja California (UABC)",
+  "enlace": "https://www.uabc.mx/oferta-ed-programas-educativos/",
+  "rama": "Ciencias del Turismo y Mercadotecnia"
+ },
+ {
+  "nombre_carrera": "Lic. Gestión Turística",
+  "ubicacion": "Baja California",
+  "nombre_escuela": "Universidad Autónoma de Baja California (UABC)",
+  "enlace": "https://www.uabc.mx/oferta-ed-programas-educativos/",
+  "rama": "Ciencias del Turismo y Mercadotecnia"
+ }
+]

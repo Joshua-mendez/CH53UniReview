@@ -26,8 +26,6 @@ h1{
     display: flex;
   }
   .contenedor-fijo {
-    position: sticky;
-    top: 80px;
     bottom: 80px;
    /* Separación del borde izquierdo */
     width: 270px;
@@ -39,27 +37,47 @@ h1{
     box-sizing: border-box;
     overflow-y: auto;
     border-radius: 12px;  
-    min-height: 80vh; /* 👉 esto es lo nuevo */
+    /* min-height: 80vh; 👉 esto es lo nuevo 
+      Se cambió esta línea al media query*/
   }
+  /* Para estilos de bootstrap select  */
+ .bootstrap-select.is-invalid .dropdown-toggle {
+  border: 2px solid red !important;
+}
+.tarjeta-resena {
+  border-left: 1px solid #f0f0f0;
+}
   
   /* Mover el contenido a la derecha considerando el menú + margen */
   /* main.container {
     margin: 20px; /* sin espacio lateral */
-   
-  
-  @media (max-width: 768px) {
-    .contenedor-fijo {
-      position: static; /* ya no es fijo */
-      width: 100%;      
-      margin-top: 20px;  /* espacio arriba */
-      padding: 15px;
-      background-color: #EB5A3C;
-      color: white;
-      border-radius: 12px;
-      font-family: 'Josefin Sans', sans-serif;
-    }
-   
+ 
+@media (min-width: 1025px) {
+  .contenedor-fijo {
+    width: 100%; /*  Así se adapta al ancho de su columna Bootstrap */
+    max-width: 100%; /* por seguridad */
+    position: sticky;
+    top: 80px;
+    min-height: 80vh;
   }
+}
+  
+@media (max-width: 1024px) {
+  .contenedor-fijo {
+    position: static;
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    /* padding-left: 5px; */
+    background-color: #EB5A3C;
+    color: white;
+    border-radius: 12px;
+    font-family: 'Josefin Sans', sans-serif;
+    overflow: visible; 
+    min-height: unset;  /* elimina altura mínima en móvil */
+  }
+}
+
   ul {
     list-style-type: none;
   }

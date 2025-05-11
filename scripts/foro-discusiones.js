@@ -4,6 +4,8 @@ const btnPublicar = document.getElementById("btnPublicar"); //Botón publicar
 const ratingValue = document.getElementById('rating-value'); //texto de valor de estrellas
 //Alerta
 const alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
+const alertValidaciones = document.getElementById("alertValidaciones");
+
 //Campos de formulario
 const txtUser = document.getElementById("txtUser"); //Nombre de usuario
 const schoolSelect = document.getElementById("schoolSelect");//Selección de escuela
@@ -67,7 +69,7 @@ let allComments = [
 {
   'username': 'Maru.97',
   'img': './assets/profile-pictures/user-2.webp',
-  'career': 'Ing. TIC’s',
+  'career': 'Ing. Tecnologías de la Información y Comunicaciones',
   'school': 'TenNM',
   'stars': 4,
   'message': 'Mi experiencia estudiando Ing. TICs en el Tec de Reynosa fue buena en general, el temario fue completo, se vieron temas desde programación, soporte técnico y fundamentos de redes. Lo único a considerar es la asistencia de los profesores y la atención individual que brindan, ya que la mayoría no cuenta con la apertura para salirse del temario para explicar otras dudas técnicas que no forman parte del plan de retícula.',
@@ -87,7 +89,7 @@ let allComments = [
 {
   'username': 'Samantha9705',
   'img': './assets/profile-pictures/user-5.webp',
-  'career': 'Comunicación y Periodismo',
+  'career': 'Lic. Comunicación y Periodismo',
   'school': 'UNAM',
   'stars': 2,
   'message': 'La ubicación de Fes Aragón no es la mejor, pero tiene el plan de estudios más actualizado del área. Los primeros semestres son de teoría, pero en su mayoría la carrera es muy práctica. Antes de titularse, tienes la opción de elegir el área profesional que quieres (prensa, radio, tv). Si eres sociable y te gusta saber de todo un poco, la recomiendo 100%. ¡También diría que es una carrera que necesita amor a la profesión, si solo te llama un poco la atención, piensa dos veces tu decisión! ',
@@ -107,7 +109,7 @@ let allComments = [
 {
   'username': 'Keny.Gtz',
   'img': './assets/profile-pictures/user-9.webp',
-  'career': 'Ing en Tic´s',
+  'career': 'Ing. Tecnologías de la Información y Comunicaciones',
   'school' : 'TecNM',
   'stars': 4,
   'message': 'La carrera es buena, pues a lo largo de mi formación, el temario fue concreto. La experiencia fue muy enriquecedora porque te enfocan a desarrollar diferentes habilidades, aplicar conocimientos en problemas planteados de casos reales.',
@@ -117,8 +119,8 @@ let allComments = [
 {
   'username': 'Joshua.Mendez',
   'img': './assets/profile-pictures/user-4.webp',
-  'career': 'Lic en Educacion Fisica',
-  'school' : 'Escuela Superior de Educacion Fisica',
+  'career': 'Lic. Educación Física',
+  'school' : 'Escuela Superior de Educación Física',
   'stars': 4,
   'message': 'Es una carrera enfocada en la formación integral de docentes especializados en el movimiento humano, con énfasis en la enseñanza de la actividad física, el deporte y la promoción de estilos de vida saludable, esta licenciatura está dirigida a personas con vocación educativa y gusto por el deporte, trabajo en equipo y promoción del bienestar físico y emocional.',
   'date': '18-02-2025'
@@ -147,7 +149,7 @@ let allComments = [
 {
   'username': 'hugo970500',
   'img': './assets/profile-pictures/user-7.webp',
-  'career': 'Comunicación',
+  'career': 'Lic. Comunicación',
   'school': 'UAEM',
   'stars': 1,
   'message': 'La carrera es muy teórica, el plan de estudios es bueno pero desactualizado.  Fuera de eso, las instalaciones de la universidad son muy buenas, hay oportunidades de poder desarrollarte profesionalmente. Hay que tener en cuenta que la sede de la institución está en Toluca.',
@@ -157,7 +159,7 @@ let allComments = [
 {
   'username': 'Mar1392',
   'img': './assets/profile-pictures/user-8.webp',
-  'career': 'Ing en Sistemas Computacionales',
+  'career': 'Ing. En Sistemas Computacionales',
   'school' : 'IPN',
   'stars': 4,
   'message': 'La carrera es buena, hay profesores preparados. Es recomendable que tengas carrera técnica en algo similar a sistemas o aprender lo básico antes para que no te sientas desorientado al inicio. La carrera se siente pesada, son 9 semestres, pero vale la pena. Te puedes titular con un proyecto.',
@@ -186,6 +188,7 @@ window.addEventListener("load", function(event){
 
 });//Window load
 
+//RENDER COMMENT FUNCTION
 function renderComment(comment,positionIndicator=0) {//positionIndicator, si es 0 se toma como beforend, si es 1 se toma como afterbegirn
   // Al renderizar las estrellas (convertir rating a número):
   const rating = parseInt(comment.stars) || 0;
@@ -214,7 +217,7 @@ if(positionIndicator==1){
     </div>`);
 }//renderComment
 
-
+//ADD COMMENT
 //Botón para agregar nuevos comentarios desde el formulario
 btnPublicar.addEventListener("click", function(event){
   event.preventDefault();
@@ -223,8 +226,8 @@ btnPublicar.addEventListener("click", function(event){
   let isValid=true;
 
   //Limpiando formatos de alerta e input
-  schoolSelect.style.border=""; //sin estilo para escuela
-  careerSelect.style.border=""; //sin estilo para carrera
+  schoolSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
+  careerSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
   txtComment.style.border=""; //sin estilo para comentario
   txtUser.style.border=""; //sin estilo para usuario
 
@@ -237,6 +240,19 @@ btnPublicar.addEventListener("click", function(event){
   txtUser.value = txtUser.value.trim(); //quita espacios vacios al inicio y al final del nombre de usuario, ES TEMPORAL
 
   //Validaciones
+
+  //Si todos los campos están vacíos a la vez
+  if(txtUser.value==="" && schoolSelect.value === "" && careerSelect.value === "" && selectedRating == 0 && txtComment.value===""){
+      [txtUser, txtComment].forEach(el => el.style.border = "solid medium red");
+      schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
+      careerSelect.closest('.bootstrap-select').classList.add('is-invalid');
+      ratingValue.style.color = "red";
+      alertValidacionesTexto.innerHTML = "<strong>Todos los campos son requeridos.</strong><br/>";
+      alertValidaciones.style.display = "block";
+      isValid = false;
+      return; // ← IMPORTANTE: detiene la ejecución
+  }
+
   if(!validarUsuario.test(txtUser.value)){ //valida que el usuario cumpla parametros de 8-20 carcateres, puede utilizar numeros y/o guiones, puntos.
     txtUser.style.border = "solid medium red";
     alertValidacionesTexto.innerHTML +="<strong> El nombre de usuario debe tener entre 8-20 caracteres, y puede incluir números, así como los caracteres punto (.) y/o guion (-). </strong><br/>";
@@ -245,17 +261,24 @@ btnPublicar.addEventListener("click", function(event){
   }
 
   if(schoolSelect.value === ""){ //valida que el campo de escuela tengo una opcion.
-    schoolSelect.style.border = "solid medium red";
+    schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
     alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para Escuela. </strong><br/>";
     alertValidaciones.style.display="block";
     isValid=false;
+  }else{
+    // Si el valor es válido, eliminamos la clase is-invalid
+    schoolSelect.closest('.bootstrap-select').classList.remove('is-invalid');
   }
+  
 
   if(careerSelect.value === ""){//el campo de carrera debe de estar seleccionado
-    careerSelect.style.border = "solid medium red";
+    careerSelect.closest('.bootstrap-select').classList.add('is-invalid');
     alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para Carrera. </strong><br/>";
     alertValidaciones.style.display="block";
     isValid=false;
+  }else{
+    // Si el valor es válido, eliminamos la clase is-invalid
+    careerSelect.closest('.bootstrap-select').classList.remove('is-invalid');
   }
 
   if(selectedRating == 0){ // si no contiene una calificacion, cambia el texto y lo pone en rojo
@@ -309,8 +332,9 @@ btnPublicar.addEventListener("click", function(event){
 
     //Limpia los campos después de agregarlos a la tabla
     txtUser.value="";
-    schoolSelect.value="";
-    careerSelect.value="";
+    //Elimina visualmente los valores
+    $('#schoolSelect').selectpicker('val', '');
+    $('#careerSelect').selectpicker('val', '');
     txtComment.value="";
     
 
