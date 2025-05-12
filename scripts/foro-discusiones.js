@@ -263,14 +263,17 @@ btnPublicar.addEventListener("click", function(event){
 
   if(nameUser==="Inicia sesión para poder comentar"){
     isValid = false;
-    Swal.fire({
-      icon: "error",
-      title: "No has iniciado sesión",
-      text: "Queremos saber tu experiencia, pero antes dirígete a la página de inicio de sesión para continuar navegando",
-      footer: '<a href="./inicio-sesion.html">Inicio de sesión</a>'
-    });
-    
-  }
+   Swal.fire({
+               title: "¡Oh no!",
+               text: "No has iniciado sesión",
+               text: "Queremos saber tu experiencia, pero antes dirígete a la página de inicio de sesión para continuar navegando",
+               imageUrl: "../assets/elemento-triste.jpg",
+               imageWidth: 150,
+               imageHeight: 300,
+               imageAlt: "Inicia Sesión",
+               confirmButtonColor: "#EB5A3C"
+             });
+  } 
 
   if(schoolSelect.value === "" && careerSelect.value === "" && selectedRating == 0 && txtComment.value===""){
       [txtComment].forEach(el => el.style.border = "solid medium red");
