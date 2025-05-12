@@ -130,3 +130,59 @@ h1{
 #topCarreras ul {
   padding-left: 1rem;
 }
+
+.filtro-contenedor {
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 25px 15px 15px 15px;
+  margin-bottom: 20px;
+  /* border-left: 4px solid #fd6b4d; */
+}
+
+.current-user-fullname{
+  color: #00A5CF !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 20px !important;
+}
+
+.filtro-titulo {
+  color: #fd6b4d !important;
+  position: absolute;
+  /* text-align: right; */
+  top: -12px;
+  left: 15px;
+  background: #fff;
+  padding: 0 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.comentarios-titulo {
+  color: #fd6b4d !important;
+  position: absolute;
+  text-align: right; 
+  top: -12px;
+  /* left: 15px; */
+  background: #fff;
+  padding: 0 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.comentario-card {
+  border: none !important;
+  box-shadow: -4px 4px 8px -2px rgba(0, 0, 0, 0.3); /* izquierda y abajo */
+  border-radius: 0 5px 5px 0;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+select {
+  appearance: auto !important;
+  -webkit-appearance: auto !important;
+  -moz-appearance: auto !important;
+}
+

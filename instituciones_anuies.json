@@ -1,5 +1,10 @@
 [
   {
+    "estado": "Ciudad de México",
+    "nombre": "Escuela Superior de Educación Física",
+    "pagina_web": "https://www.aefcm.gob.mx/dgenam/ESEF/"
+  },
+  {
     "estado": "Aguascalientes",
     "nombre": "Instituto Tecnológico de Aguascalientes",
     "pagina_web": "https://aguascalientes.tecnm.mx/"
@@ -736,7 +741,7 @@
   },
   {
     "estado": "Aguascalientes",
-    "nombre": "Enseñanza e Investigación Superior, A.C.  (UNIVERSIDAD TECMILENIO)",
+    "nombre": "Enseñanza e Investigación Superior, A.C. (UNIVERSIDAD TECMILENIO)",
     "pagina_web": "https://www.tecmilenio.mx/es"
   },
   {
@@ -1105,7 +1110,7 @@
     "pagina_web": "https://nlaredo.tecnm.mx/"
   },
   {
-    "estado": "Aguascalientes",
+    "estado": "Tamaulipas",
     "nombre": "Instituto Tecnológico de Reynosa",
     "pagina_web": "https://www.reynosa.tecnm.mx/"
   },

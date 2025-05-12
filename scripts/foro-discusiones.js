@@ -2,16 +2,18 @@ let selectedRating = 0;
 const listComments= document.getElementById("list-comments"); //Contenedor para comentarios
 const btnPublicar = document.getElementById("btnPublicar"); //Botón publicar
 const ratingValue = document.getElementById('rating-value'); //texto de valor de estrellas
+const labelUserFullName = document.getElementById('labelUserFullName'); //Nombre completo de usuario
 //Alerta
 const alertValidacionesTexto = document.getElementById("alertValidacionesTexto");
 const alertValidaciones = document.getElementById("alertValidaciones");
 
 //Campos de formulario
-const txtUser = document.getElementById("txtUser"); //Nombre de usuario
+//const txtUser = document.getElementById("txtUser"); //Nombre de usuario
 const schoolSelect = document.getElementById("schoolSelect");//Selección de escuela
 const careerSelect = document.getElementById("careerSelect");//Selección de carrera
 const txtComment = document.getElementById("txtComment"); //Comentario
 const charCounter = document.getElementById("charCounter")//contador de limite de caracteres en mensaje
+
 
 //contador dinámico de caracteres
 txtComment.addEventListener('input', () => {
@@ -31,6 +33,20 @@ txtComment.addEventListener('input', () => {
 
 //Fecha actual
 const isoDate = new Date().toISOString().split('T')[0];
+
+//Colocando nombre de currentUser al inicio del formulario
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+const userName = currentUser?.userName;
+const userNameEmail = currentUser?.userEmail?.split("@")[0] || "";
+let nameUser = "";
+
+if (userName) {
+  nameUser = `Comentando como ${userName}`;
+} else {
+  nameUser = "Inicia sesión para poder comentar";
+}
+
+labelUserFullName.innerText = nameUser;
 
 //Funcionalidad de estrellas
 const interactiveStars = document.querySelectorAll(".interactive-rating .star");
@@ -70,7 +86,7 @@ let allComments = [
   'username': 'Maru.97',
   'img': './assets/profile-pictures/user-2.webp',
   'career': 'Ing. Tecnologías de la Información y Comunicaciones',
-  'school': 'TenNM',
+  'school': 'Instituto Tecnológico de Reynosa',
   'stars': 4,
   'message': 'Mi experiencia estudiando Ing. TICs en el Tec de Reynosa fue buena en general, el temario fue completo, se vieron temas desde programación, soporte técnico y fundamentos de redes. Lo único a considerar es la asistencia de los profesores y la atención individual que brindan, ya que la mayoría no cuenta con la apertura para salirse del temario para explicar otras dudas técnicas que no forman parte del plan de retícula.',
   'date': '29-04-2025'
@@ -80,7 +96,7 @@ let allComments = [
   'username': 'Itzel.Annet',
   'img': './assets/profile-pictures/user-3.webp',
   'career': 'Ing. Telemática',
-  'school' : 'IPN',
+  'school' : 'Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional',
   'stars': 3,
   'message': 'La carrera puede resultar demandante, ya que abarca una amplia variedad de temas relacionados con las telecomunicaciones. Entre ellos se encuentran el estudio de señales AM y FM, antenas, conexión de redes y los distintos protocolos de Internet. Además, se incluyen asignaturas de programación, siempre orientadas al ámbito de las telecomunicaciones. Es importante mencionar que las matemáticas tienen un papel fundamental a lo largo de los cinco años de estudio, por lo que, si no existe afinidad por esta área, podría no ser la opción más adecuada. Asimismo, el conocimiento del idioma inglés representa una herramienta valiosa, ya que gran parte de los libros y referencias técnicas se encuentran en este idioma. Comprenderlo facilita el aprendizaje y la comprensión de los conceptos relacionados con las telecomunicaciones.',
   'date': '25-03-2025'
@@ -90,7 +106,7 @@ let allComments = [
   'username': 'Samantha9705',
   'img': './assets/profile-pictures/user-5.webp',
   'career': 'Lic. Comunicación y Periodismo',
-  'school': 'UNAM',
+  'school': 'Universidad Nacional Autónoma de México',
   'stars': 2,
   'message': 'La ubicación de Fes Aragón no es la mejor, pero tiene el plan de estudios más actualizado del área. Los primeros semestres son de teoría, pero en su mayoría la carrera es muy práctica. Antes de titularse, tienes la opción de elegir el área profesional que quieres (prensa, radio, tv). Si eres sociable y te gusta saber de todo un poco, la recomiendo 100%. ¡También diría que es una carrera que necesita amor a la profesión, si solo te llama un poco la atención, piensa dos veces tu decisión! ',
   'date': '18-03-2025'
@@ -100,7 +116,7 @@ let allComments = [
   'username': 'Diego.Angeles3',
   'img': './assets/profile-pictures/user-1.webp',
   'career': 'Lic. Arquitectura',
-  'school': 'UNAM',
+  'school': 'Universidad Nacional Autónoma de México',
   'stars': 4,
   'message': 'La carrera de arquitectura es muy buena, si te gusta la parte de las matemáticas, el diseño, los materiales, la creatividad y sobre todo un compromiso social. La arquitectura te da las herramientas para  crear espacios con un sentido de pertenencia y buscar las opciones más óptimas para hacerlo realidad.',
   'date': '03-03-2025'
@@ -110,7 +126,7 @@ let allComments = [
   'username': 'Keny.Gtz',
   'img': './assets/profile-pictures/user-9.webp',
   'career': 'Ing. Tecnologías de la Información y Comunicaciones',
-  'school' : 'TecNM',
+  'school' : 'Instituto Tecnológico de Tláhuac',
   'stars': 4,
   'message': 'La carrera es buena, pues a lo largo de mi formación, el temario fue concreto. La experiencia fue muy enriquecedora porque te enfocan a desarrollar diferentes habilidades, aplicar conocimientos en problemas planteados de casos reales.',
   'date': '22-02-2025'
@@ -127,9 +143,9 @@ let allComments = [
 },
 //Objeto 7
 {
-  'username': 'Raúl.Ramírez',
+  'username': 'Raul.ramirez',
   'img': './assets/profile-pictures/user-6.webp',
-  'career': 'Ing. en Mecatrónica',
+  'career': 'Ing. Mecatrónica',
   'school' : 'Universidad Tecmilenio',
   'stars': 4,
   'message': 'La carrera es muy buena, y las instalaciones que proporciona la universidad para ello, en ocasiones, son malas. Algunas partes de los laboratorios son inservibles, nunca llegué a usarlos en los 4 años que estudié ahí. Algunos profesores eran muy buenos y se les notaba que les gustaba enseñar, unos otros solo estaban ahí por compromiso y en ocasiones pareciese que no sabían lo que explicaban. Sí, recomiendo la carrera, más no la universidad.',
@@ -137,10 +153,10 @@ let allComments = [
 },
 //Objeto 8
 {
-  'username': 'Jennifer.González',
+  'username': 'Jennifer.gonzalez',
   'img': './assets/profile-pictures/user-10.webp',
   'career': ' Ing. Mecatrónica',
-  'school' : 'IPN',
+  'school' : 'Instituto Tecnológico de Puebla',
   'stars': 5,
   'message': 'Mi experiencia en mecatrónica fue buena, los maestros están bien preparados y el temario fue lo que esperaba, lo malo es que solo tienes oportunidad de recursar dos materias a la vez por lo que se debe tener en cuenta si por tema de tiempos o trabajo no puedes llevar ese ritmo de estudio, ya que al igual las materias se aprueban con un mínimo de 8.',
   'date': '12-02-2025'
@@ -149,8 +165,8 @@ let allComments = [
 {
   'username': 'hugo970500',
   'img': './assets/profile-pictures/user-7.webp',
-  'career': 'Lic. Comunicación',
-  'school': 'UAEM',
+  'career': 'Lic. Psicología Clínica',
+  'school': 'Centro de Enseñanza Técnica y Superior',
   'stars': 1,
   'message': 'La carrera es muy teórica, el plan de estudios es bueno pero desactualizado.  Fuera de eso, las instalaciones de la universidad son muy buenas, hay oportunidades de poder desarrollarte profesionalmente. Hay que tener en cuenta que la sede de la institución está en Toluca.',
   'date': '3-02-2025'
@@ -160,7 +176,7 @@ let allComments = [
   'username': 'Mar1392',
   'img': './assets/profile-pictures/user-8.webp',
   'career': 'Ing. En Sistemas Computacionales',
-  'school' : 'IPN',
+  'school' : 'Universidad Autónoma de Aguascalientes (UAA)',
   'stars': 4,
   'message': 'La carrera es buena, hay profesores preparados. Es recomendable que tengas carrera técnica en algo similar a sistemas o aprender lo básico antes para que no te sientas desorientado al inicio. La carrera se siente pesada, son 9 semestres, pero vale la pena. Te puedes titular con un proyecto.',
   'date': '28-01-2025'
@@ -201,7 +217,7 @@ if(positionIndicator==1){
   orderprint="afterbegin";
 }
   listComments.insertAdjacentHTML (orderprint,`
-    <div class="card mb-3"><div class="card-body d-flex">
+    <div class="card mb-3 comentario-card"><div class="card-body d-flex">
       <img src="${comment.img}" class="rounded-circle me-3" alt="Foto de usuario" width="60" height="60">
       <div>
         <h4 class="card-title mb-1">${comment.username}</h4>
@@ -229,7 +245,7 @@ btnPublicar.addEventListener("click", function(event){
   schoolSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
   careerSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
   txtComment.style.border=""; //sin estilo para comentario
-  txtUser.style.border=""; //sin estilo para usuario
+  //txtUser.style.border=""; //sin estilo para usuario
 
   const validarUsuario = new RegExp("^[a-zA-Z0-9.-]{8,20}$"); //limitacion que debe de tener el nombre de usuario
 
@@ -237,13 +253,27 @@ btnPublicar.addEventListener("click", function(event){
   alertValidaciones.style.display="none";  //oculto
 
   txtComment.value = txtComment.value.trim(); //quita espacios vacios al inicio y al final del comentario
-  txtUser.value = txtUser.value.trim(); //quita espacios vacios al inicio y al final del nombre de usuario, ES TEMPORAL
+  charCounter.innerText = `${txtComment.value.trim().length}/830`; //Reseteando contador
+  //txtUser.value = txtUser.value.trim(); //quita espacios vacios al inicio y al final del nombre de usuario, ES TEMPORAL
 
   //Validaciones
 
   //Si todos los campos están vacíos a la vez
-  if(txtUser.value==="" && schoolSelect.value === "" && careerSelect.value === "" && selectedRating == 0 && txtComment.value===""){
-      [txtUser, txtComment].forEach(el => el.style.border = "solid medium red");
+  //txtUser.value==="" && 
+
+  if(nameUser==="Inicia sesión para poder comentar"){
+    isValid = false;
+    Swal.fire({
+      icon: "error",
+      title: "No has iniciado sesión",
+      text: "Queremos saber tu experiencia, pero antes dirígete a la página de inicio de sesión para continuar navegando",
+      footer: '<a href="./inicio-sesion.html">Inicio de sesión</a>'
+    });
+    
+  }
+
+  if(schoolSelect.value === "" && careerSelect.value === "" && selectedRating == 0 && txtComment.value===""){
+      [txtComment].forEach(el => el.style.border = "solid medium red");
       schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
       careerSelect.closest('.bootstrap-select').classList.add('is-invalid');
       ratingValue.style.color = "red";
@@ -253,12 +283,14 @@ btnPublicar.addEventListener("click", function(event){
       return; // ← IMPORTANTE: detiene la ejecución
   }
 
-  if(!validarUsuario.test(txtUser.value)){ //valida que el usuario cumpla parametros de 8-20 carcateres, puede utilizar numeros y/o guiones, puntos.
-    txtUser.style.border = "solid medium red";
-    alertValidacionesTexto.innerHTML +="<strong> El nombre de usuario debe tener entre 8-20 caracteres, y puede incluir números, así como los caracteres punto (.) y/o guion (-). </strong><br/>";
-    alertValidaciones.style.display="block";
-    isValid=false;
-  }
+  
+
+  // if(!validarUsuario.test(txtUser.value)){ //valida que el usuario cumpla parametros de 8-20 carcateres, puede utilizar numeros y/o guiones, puntos.
+  //   txtUser.style.border = "solid medium red";
+  //   alertValidacionesTexto.innerHTML +="<strong> El nombre de usuario debe tener entre 8-20 caracteres, y puede incluir números, así como los caracteres punto (.) y/o guion (-). </strong><br/>";
+  //   alertValidaciones.style.display="block";
+  //   isValid=false;
+  // }
 
   if(schoolSelect.value === ""){ //valida que el campo de escuela tengo una opcion.
     schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
@@ -302,7 +334,7 @@ btnPublicar.addEventListener("click", function(event){
   if(isValid){
 
     let elemento =  { //Creando OBJETO con notación JSON (clave, valor)
-                        "username" : txtUser.value,
+                        "username" : userNameEmail,
                         "img" : "",
                         "career" : careerSelect.value,
                         "school" : schoolSelect.value,
@@ -331,11 +363,12 @@ btnPublicar.addEventListener("click", function(event){
     });
 
     //Limpia los campos después de agregarlos a la tabla
-    txtUser.value="";
+    //txtUser.value="";
     //Elimina visualmente los valores
     $('#schoolSelect').selectpicker('val', '');
     $('#careerSelect').selectpicker('val', '');
     txtComment.value="";
+    charCounter.innerText = `${txtComment.value.trim().length}/830`;
     
 
     // Elimina clase 'selected' de todas las estrellas

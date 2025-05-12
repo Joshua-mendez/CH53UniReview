@@ -62,10 +62,13 @@
               <p id="alertValidacionesTexto" class="mb-0"></p>
             </div>
           </div>
-          <div class="mb-3">
+          <div>
+            <span class="current-user-fullname" id="labelUserFullName"></span>
+          </div>
+          <!--<div class="mb-3">
             <label for="txtUser" class="form-label"> Usuario: </label>
             <input type="text" class="form-control" id="txtUser" autofocus>
-          </div>
+          </div> -->
           <div class="mb-3">
             <label for="schoolSelect">Universidad:</label>
             
@@ -99,29 +102,70 @@
             <textarea class="form-control" id="txtComment" rows="3"></textarea>
             <div class="form-text" id="charCounter" style="text-align: right;">0/830 </div>
          
-             
-        <button type="button" class="btn btn-primary" id="btnPublicar"> Publicar </button>
-
+        <div class="text-center">
+            <button type="button" class="btn btn-primary btn-lg" id="btnPublicar"> Publicar </button>
+        </div>
       
         <br>
         <br>
-        <div id="list-comments" >
-          <!-- Aqui se generan los comentarios mediante foro-discusiones.js -->
-        </div>
-      </main>
-      <!-- ASIDE: TOP 10 -->
-      <aside class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
-      <!-- style="font-size: 15px; margin-top: 20px;" -->
-        <div class="contenedor-fijo" id="topCarreras">
-          <strong class="h5 mb-3 fw-bold" style="line-height: 1.8;">Carreras mejor evaluadas</strong>
-          <div style="width: 60px; height: 3px; background-color: #00A5CF; margin: 0px 0px 10px 10px;"></div>
+        <!-- FILTROS DE BÚSQUEDA -->
+        <div class="filtro-contenedor">
+          <span class="filtro-titulo">Filtros de Búsqueda</span>
+          <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <label for="careerFilter">Filtro por carrera:</label>
+              <select id="careerFilter" class="form-control">
+                
+              </select>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12" >
+              <label for="schoolFilter">Filtro por Universidad:</label>
+              <select id="schoolFilter" class="form-control">
+                
+              </select>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <label for="locationFilter">Filtro por Ciudad:</label>
+              <select id="locationFilter" class="form-control">
+                
+              </select>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12">
+              <label for="ratingFilter">Filtro por Calificación:</label>
+              <select id="ratingFilter" class="form-control">
+              </select>
+              
+            </div>
+            
+          </div>
 
-          <ul id="listaCarreras"></ul>
+          <button id="btnResetFilters" class="btn btn-outline-secondary ms-2 mt-4" title="Limpiar filtros">
+                  <i class="bi bi-trash3"></i> Limpiar filtros
+          </button>
         </div>
-      </aside>
-   </div>
-  </div>
-  
+
+                <!-- LISTA DE COMENTARIOS -->
+                 <div class="filtro-contenedor">
+                    <span class="comentarios-titulo">Comentarios</span>
+                    <div id="list-comments">
+                    <!-- Aqui se generan los comentarios mediante foro-discusiones.js -->
+                    </div>
+                 </div>
+                
+              </main>
+              <!-- ASIDE: TOP 10 -->
+              <aside class="col-12 col-md-4 col-lg-3 order-2 order-md-1">
+              <!-- style="font-size: 15px; margin-top: 20px;" -->
+                <div class="contenedor-fijo" id="topCarreras">
+                  <strong class="h5 mb-3 fw-bold" style="line-height: 1.8;">Carreras mejor evaluadas</strong>
+                  <div style="width: 60px; height: 3px; background-color: #00A5CF; margin: 0px 0px 10px 10px;"></div>
+
+                  <ul id="listaCarreras"></ul>
+                </div>
+              </aside>
+          </div>
+          </div>
+          
 
 
     <!-- Footer -->
@@ -146,63 +190,7 @@
       <script src="./scripts/load-scripts.js"></script>
      <script src="./scripts/foro-discusiones.js"></script>
      <script src="./scripts/foro-ranking.js"></script>
-
-     <!-- leer archivo json de universidades -->
-     <script>
-  $(document).ready(function () {
-    const select = $('#schoolSelect');
-
-    if (select.data('loaded')) return; // evitar ejecución doble
-
-    $.getJSON('instituciones_anuies.json', function (data) {
-      console.log("Universidades cargadas:", data.length);
-
-      select.empty(); // elimina todas las opciones
-      select.append('<option value="">Selecciona tu universidad</option>'); // reinsertar la opción inicial
-
-      const nombresAgregados = new Set(); // para evitar duplicados
-      data.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
-      data.forEach(item => {
-        if (!nombresAgregados.has(item.nombre)) {
-          select.append(new Option(item.nombre, item.nombre));
-          nombresAgregados.add(item.nombre);
-        }
-      });
-
-      select.selectpicker('destroy');
-      select.selectpicker();
-      select.data('loaded', true); // marca como cargado
-    });
-  });
-</script>
-
-<!-- Cargando las carreras de carreras.json -->
- <script>
-  $(document).ready(function () {
-    const careerSelect = $('#careerSelect');
-
-    $.getJSON('carreras.json', function (data) {
-      careerSelect.empty();
-      careerSelect.append('<option value="">Selecciona tu carrera</option>');
-
-      const carrerasAgregadas = new Set();
-
-      // Ordenar por nombre de carrera
-      data
-        .filter(item => item.nombre_carrera) // ignorar entradas vacías
-        .sort((a, b) => a.nombre_carrera.localeCompare(b.nombre_carrera, 'es', { sensitivity: 'base' }))
-        .forEach(item => {
-          if (!carrerasAgregadas.has(item.nombre_carrera)) {
-            careerSelect.append(new Option(item.nombre_carrera, item.nombre_carrera));
-            carrerasAgregadas.add(item.nombre_carrera);
-          }
-        });
-
-      careerSelect.selectpicker('destroy');
-      careerSelect.selectpicker();
-    });
-  });
-</script>
+     <script src="./scripts/options-select-foro.js"></script>
      
 </body>
 </html>

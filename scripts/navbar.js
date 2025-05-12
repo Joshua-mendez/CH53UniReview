@@ -10,7 +10,7 @@
 
     // Eliminar enlace de Registro
     const registroItem = document.getElementById("navRegistro");
-    console.log(registroItem);
+    //console.log(registroItem);
     if (registroItem!=undefined) {
       //console.log("Entro en condicion remove");
       registroItem.remove();
