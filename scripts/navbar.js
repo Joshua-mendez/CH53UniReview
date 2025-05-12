@@ -1,3 +1,21 @@
+const iniciarSesion = document.getElementById("btnLogin");
+const registro = document.getElementById("btnRegister");
+
+
+iniciarSesion.addEventListener("click", function(event){
+event.preventDefault();
+
+window.location.href = "./inicio-sesion.html";
+
+});
+
+registro.addEventListener("click", function(event){
+  event.preventDefault();
+  
+  window.location.href = "./registro-usuario.html";
+  
+});
+
 
 (function () {
   //console.log("Si entro");
@@ -9,11 +27,16 @@
     const username = email.split("@")[0];
 
     // Eliminar enlace de Registro
-    const registroItem = document.getElementById("navRegistro");
+    const registroItem = document.getElementById("btnRegister");
+    const inicioSesion = document.getElementById("btnLogin");
     //console.log(registroItem);
     if (registroItem!=undefined) {
       //console.log("Entro en condicion remove");
       registroItem.remove();
+    }
+    if (inicioSesion!=undefined) {
+      //console.log("Entro en condicion remove");
+      inicioSesion.remove();
     }
 
     const navList = document.querySelector(".navbar-nav");
@@ -35,7 +58,7 @@
       // Evento al hacer clic
       logoutBtn.addEventListener("click", function () {
         localStorage.removeItem("currentUser");
-        location.href= "./index.html" // Manda a inicio
+        location.href= "./inicio-sesion.html" // Manda a inicio
       });
 
       // Agregar al navbar

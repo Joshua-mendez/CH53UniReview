@@ -52,7 +52,7 @@ if (localStorage.getItem("users")) {
     //Regex
     const correoValidacion = new RegExp("[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+");
     const telefonoValidacion = new RegExp("^(?!.*(\\d)\\1{4})[0-9]{10}$");
-    const passwordValidacion = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$")
+    const passwordValidacion = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$");
 
     
     if(txtName.value==="" && txtEmail.value === "" && txtTel.value === "" && txtPass.value === "" && txtConfirmPass.value === ""){
@@ -131,27 +131,27 @@ if (localStorage.getItem("users")) {
     }
 
 
-
+    //Se paso currentUser a la pagina de inicio de sesion
     if(isValid){
-        let currentUser = {
-            "userName" : txtName.value,
-            "userTel" : txtTel.value,
-            "userEmail" : txtEmail.value,
-            "userPass" : txtPass.value,
-        }
+         let currentUser = {
+             "userName" : txtName.value,
+             "userTel" : txtTel.value,
+             "userEmail" : txtEmail.value,
+             "userPass" : txtPass.value,
+          }
 
         allUsers.unshift(currentUser);
         localStorage.setItem("users", JSON.stringify(allUsers));
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        // localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
         //SwetAlert2 
         Swal.fire({
             title: "Ususario Registrado",
-            text: "Serás redirigido a la página principal",
+            text: "Serás redirigido a la página de inicio de sesión",
             icon: "success"
           }).then((result) => {
             if (result.isConfirmed) {
-              window.location.href = "./index.html"; 
+              window.location.href = "./inicio-sesion.html"; 
             }
           });;
     };

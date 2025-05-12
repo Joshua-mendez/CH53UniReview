@@ -11,18 +11,70 @@
 
     <!-- Estilos -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./styles/styles.css">
-
+  <!-- <link rel="stylesheet" href="./styles/styles.css"> -->
+  <link rel="stylesheet" href="./styles/registro.css">
+  <link rel="stylesheet" href="./styles/enlaceRedireccion.css">
 
 </head>
 <body>
     <!-- Navbar -->
     <div id="navbar"></div>
 
-    <!-- Contenido main -->
+    <!-- Contenido main --> 
+    <h1 style="text-align: center;">Inicio de sesión</h1>
+        
     <div class="container">
-        <h1 style="text-align: center;">Inicio de sesión</h1>
+      <div id="alerta" class="super d-flex justify-content-center">
+        <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidaciones">
+          <p id="alertValidacionesTexto" class="mb-0"></p>
+        </div>
+      </div>
+
+      <form class="container-fluid">
+
+
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtEmail" class="form-label">E-mail:</label>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <input type="email" class="form-control input-bgc" id="txtEmailLogin" placeholder="tucorreo@dominio.com" required>
+          </div>
+        </div>
+
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtPass" class="form-label">Contraseña:
+              <i class="bi bi-info-circle" 
+                data-bs-toggle="tooltip" 
+                data-bs-placement="right" 
+                title="La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un número.">
+              </i>
+            </label>
+          </div>
+            <!-- Campo de contraseña -->
+          <div class="col-lg-6 col-md-6 col-sm-12 position-relative">
+            <input type="password" class="form-control input-bgc" id="txtPassLogin" placeholder="Escribe tu contraseña" required>
+              <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 toggle-password" 
+                data-target="txtPass" style="cursor: pointer;"></i>
+            </div>
+        </div>
+
+
+        <!-- Botones -->
+        <div class="d-flex justify-content-center gap-5 mt-5">
+          <button type="submit" id="btnLogin" class="btn btn-dark rounded-pill btn-lg">Iniciar Sesión</button>
+        </div>
+
+        <div id="enlaceRedireccion">
+            <span>¿No tienes cuenta? <a href="./registro-usuario.html">Regístrate</a></span>
+        </div>
+
+
+      </form>
     </div>
+
 
     <!-- Footer -->
     <div id="footer"></div>
@@ -33,5 +85,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JS  -->
     <script src="./scripts/load-scripts.js"></script>
+    <script src="./scripts/inicio-sesion.js"></script>
 </body>
 </html>
