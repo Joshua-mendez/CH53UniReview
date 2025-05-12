@@ -1,11 +1,11 @@
 h1{
   position: relative;
   top: 50px;
-  margin-bottom: 25px !important;
+  margin-bottom: 50px !important;
   text-align: center;
 }
 body {
-  background-color: whitesmoke;
+  background-color: #F6F4F0 !important;
   text-align: center;
   padding-top: 80px;
 }
@@ -125,6 +125,27 @@ h2 {
     font-size: 14px;
     padding: 8px 16px;
   }
+}
+
+.boton-enviar {
+  background-color: #1A8FBF; /* Azul oscuro */
+  color: #FFFFFF; /* Letra blanca */
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  max-width: 200px;
+  display: block;
+  margin: 20px auto 0; /* Centrado */
+}
+
+.boton-enviar:hover {
+  background-color: #00A5CF; /* Un azul más claro o diferente para hover */
+  transform: scale(1.03);
 }
 
 
