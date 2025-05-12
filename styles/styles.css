@@ -166,3 +166,7 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
   #aboutus{
     font-size: 22px;
   } 
+
+  li{
+     font-size: 18px;
+  }
