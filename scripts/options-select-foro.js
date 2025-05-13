@@ -60,7 +60,7 @@ function cargarFiltrosDesdeLocalStorage() {
   //Creando sets para que los valores no se repitan
   const careersOptions = new Set();
   const schoolsOptions = new Set();
-  const locationOptions = new Set();
+  const orderOptions = new Set();
   const starsOptions = new Set();
   
 
@@ -69,18 +69,19 @@ function cargarFiltrosDesdeLocalStorage() {
     if (comment.career) careersOptions.add(comment.career.trim());
     if (comment.school) schoolsOptions.add(comment.school.trim());
     if (comment.stars) starsOptions.add(comment.stars);
-    if (comment.location) locationOptions.add(comment.location);
-    // Si hubiera campo ciudad, aquí lo agregas
+    if (comment.orderOptions) orderOptions.add(comment.date);
   });
 
   const careerFilter = document.getElementById("careerFilter");
   const schoolFilter = document.getElementById("schoolFilter");
-  const locationFilter = document.getElementById("locationFilter");
+  const orderFilter = document.getElementById("orderFilter");
   const ratingFilter = document.getElementById("ratingFilter");
 
   careerFilter.innerHTML = '<option value="default">Todas las carreras</option>';
   schoolFilter.innerHTML = '<option value="default">Todas las universidades</option>';
-  locationFilter.innerHTML = '<option value="default">Todas las ciudades</option>';
+  orderFilter.innerHTML = `<option value="default">Selecciona el orden</option>
+                          <option value="asc">Más antiguos primero</option>
+                          <option value="desc">Más recientes primero</option>`;
   ratingFilter.innerHTML = '<option value="default">Todas las calificaciones</option>';
 
   // Ordenar alfabéticamente
@@ -100,12 +101,12 @@ function cargarFiltrosDesdeLocalStorage() {
       schoolFilter.insertAdjacentHTML("beforeend", `<option value="${s}">${s}</option>`);
     });
 
-  [...locationOptions]
-    // Se ordena alfabéticamente como si todo estuviera en minúsculas y sin acentos.
-    .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }))
-    .forEach(l => {
-      locationFilter.insertAdjacentHTML("beforeend", `<option value="${l}">${l}</option>`);
-    });
+  // [...orderOptions]
+  //   // Se ordena en orden descendente por defecto
+  //   .sort((a, b) => a.localeCompare(b, 'es', { sensitivity: 'base' }))
+  //   .forEach(l => {
+  //     orderFilter.insertAdjacentHTML("beforeend", `<option value="${l}">${l}</option>`);
+  //   });
 
   // Ordenar estrellas de mayor a menor
   [...starsOptions]
@@ -122,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Agrega listeners una vez que el DOM está listo
   document.getElementById("careerFilter").addEventListener("change", aplicarFiltros);
   document.getElementById("schoolFilter").addEventListener("change", aplicarFiltros);
-  document.getElementById("locationFilter").addEventListener("change", aplicarFiltros);
+  document.getElementById("orderFilter").addEventListener("change", aplicarFiltros);
   document.getElementById("ratingFilter").addEventListener("change", aplicarFiltros);
 });
 
@@ -131,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function aplicarFiltros() {
   const careerValue = document.getElementById("careerFilter").value;
   const schoolValue = document.getElementById("schoolFilter").value;
-  const locationValue = document.getElementById("locationFilter").value;
+  const orderValue = document.getElementById("orderFilter").value;
   const ratingValue = document.getElementById("ratingFilter").value;
 
   // Limpia comentarios previos
@@ -142,9 +143,16 @@ function aplicarFiltros() {
   const comentariosFiltrados = allComments.filter(comment => {
     return (careerValue === "default" || comment.career === careerValue) &&
            (schoolValue === "default" || comment.school === schoolValue) &&
-           (locationValue === "default" || comment.location === locationValue) &&
            (ratingValue === "default" || comment.stars == ratingValue);
   });
+
+  
+     // Ordenar por fecha si se eligió ascendente o descendente
+    if (orderValue === "asc") {
+        comentariosFiltrados.sort((a, b) => new Date(a.date) - new Date(b.date));
+    }else if (orderValue === "desc") {
+        comentariosFiltrados.sort((a, b) => new Date(b.date) - new Date(a.date));
+    }
 
   // Renderiza los comentarios que sí coinciden
   comentariosFiltrados.forEach(comment => renderComment(comment));
@@ -153,7 +161,7 @@ function aplicarFiltros() {
 //Limpiando filtros con boton de trash
 document.getElementById("btnResetFilters").addEventListener("click", () => {
   // Reinicia cada select a "default"
-  ["careerFilter", "schoolFilter", "locationFilter", "ratingFilter"].forEach(id => {
+  ["careerFilter", "schoolFilter", "orderFilter", "ratingFilter"].forEach(id => {
     const select = document.getElementById(id);
     if (select) {
       select.value = "default";
