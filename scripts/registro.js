@@ -145,11 +145,15 @@ if (localStorage.getItem("users")) {
         // localStorage.setItem("currentUser", JSON.stringify(currentUser));
 
         //SwetAlert2 
-        Swal.fire({
-            title: "Ususario Registrado",
-            text: "Serás redirigido a la página de inicio de sesión",
-            icon: "success"
-          }).then((result) => {
+         Swal.fire({
+               title: "¡Ya estás registrado!",
+               text: "Vamos a la página principal",
+               imageUrl: "../assets/grafic-element.png",
+               imageWidth: 150,
+               imageHeight: 300,
+               imageAlt: "Mensaje enviado",
+               confirmButtonColor: "#EB5A3C"
+             }).then((result) => {
             if (result.isConfirmed) {
               window.location.href = "./inicio-sesion.html"; 
             }

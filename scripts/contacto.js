@@ -72,10 +72,15 @@ btnEnviar.addEventListener("click", function(event){
               //    }); 
               
             Swal.fire({
-            title: "¡Mensaje Enviado!",
-                icon: "success",
-                draggable: true
-              });
+               title: "¡Mensaje Evíado!",
+               text: "En breve nos pondremos en contacto",
+               imageUrl: "https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmM0dmJpdnYzeGh6NGVrNnRoeHRhcnl0cjdicjlhdHBxdnN2Y3JqayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/146OjNh4dvjAKk/giphy.gif",
+               imageWidth: 300,
+               imageHeight: 190,
+               imageAlt: "Mensaje enviado",
+               confirmButtonColor: "#EB5A3C"
+             });
+
 
          formulario.reset();
      } 
