@@ -266,7 +266,7 @@ btnPublicar.addEventListener("click", function(event){
     Swal.fire({
       icon: "error",
       title: "No has iniciado sesión",
-      text: "Queremos saber tu experiencia, pero antes dirígete a la página de inicio de sesión para continuar navegando",
+      text: "Queremos saber más sobre tu experiencia, pero antes dirígete a la página de inicio de sesión para continuar navegando",
       footer: '<a href="./inicio-sesion.html">Inicio de sesión</a>'
     });
     
@@ -360,6 +360,8 @@ btnPublicar.addEventListener("click", function(event){
       imageHeight: 168,
       imageAlt: "Custom image",
       confirmButtonColor: "#EB5A3C"
+    }).then(() => {
+        listComments.scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
     });
 
     //Limpia los campos después de agregarlos a la tabla
@@ -376,13 +378,8 @@ btnPublicar.addEventListener("click", function(event){
     star.classList.remove("selected");
     star.style.color = ""; // Limpia estilos inline si los hay
     });
-
-   // Reinicia calificación seleccionada
-    selectedRating = 0;
-    ratingValue.textContent = "Tu calificación: 0";
-
-    //Regresa el puntero a el primer campo para seguir escribiendo
-    txtUser.focus(); 
+    //Actualiza el top carreras tomando en cuenta al último comentario
+    mostrarTopCarreras();
 }
 
 });
