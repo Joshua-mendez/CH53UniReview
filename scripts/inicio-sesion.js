@@ -61,12 +61,14 @@ btnLogin.addEventListener("click", function(event){
       alertValidacionesTexto.innerHTML += "<strong>Este correo no ha sido registrado.</strong><br/>";
       alertValidaciones.style.display = "block";
       txtEmail.style.border = "solid medium red";
+      txtPass.style.border = "solid medium red";
       isValid = false;
       
       }else if (userCheck.userPass !== passwordCheck) {
-        alertValidacionesTexto.innerHTML += "<strong>La contraseña es incorrecta.</strong><br/>";
+        alertValidacionesTexto.innerHTML += "<strong>Credenciales incorrectas.</strong><br/>";
         alertValidaciones.style.display = "block";
         txtPass.style.border = "solid medium red";
+        txtEmail.style.border = "solid medium red";
         isValid = false;
       }
       if(isValid){
