@@ -1,0 +1,149 @@
+const txtDatosUsuario = document.getElementById("datos-usuario");
+const tablaDatos = document.getElementById("tabla-datos");
+const fotoPerfil = document.getElementById("fotoPerfil");
+
+//DOM de Tabla
+const tdNombreLS = document.getElementById("tdNombreLS");
+const tdCorreoLS = document.getElementById("tdCorreoLS");
+const tdTelefonoLS = document.getElementById("tdTelefonoLS");
+const tdFechaNacimientoLS = document.getElementById("tdFechaNacimientoLS");
+
+//Obteniendo información de Local Storage
+const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+
+// Actualizando los campos
+tdNombreLS.innerText = currentUser.userName || "";
+tdCorreoLS.innerText = currentUser.userEmail || "";
+tdTelefonoLS.innerText = currentUser.userTel || "";
+tdFechaNacimientoLS.innerText = currentUser.userDateBirth || "";
+
+// Imagen de perfil
+fotoPerfil.src = currentUser.userPP || "./assets/profile-pictures/blank-pp.webp";
+
+
+txtDatosUsuario.innerHTML = "";
+txtDatosUsuario.insertAdjacentHTML("afterbegin", 
+    `<div>
+        <h3>${currentUser.userName || ""}</h3>
+        <h5>${currentUser.userEmail || ""}</h5>
+    </div>`);
+
+//Uso de Cloudinary en overlay de foto de perfil
+document.querySelector('.foto-overlay').addEventListener('click', function () {
+  cloudinary.openUploadWidget({
+    cloudName: 'dnnna4gud',
+    uploadPreset: 'profile-pictures-unireview',
+    sources: ['local', 'url', 'camera'],
+    cropping: true,
+    multiple: false,
+    // folder: 'usuarios/fotos-perfil',
+    resourceType: 'image'
+  }, (error, result) => {
+    if (!error && result && result.event === "success") {
+        console.log("no ocurrio un error")
+      const imageUrl = result.info.secure_url;
+      document.getElementById('fotoPerfil').src = imageUrl;
+        // Actualiza la imagen mostrada
+        fotoPerfil.src = imageUrl;
+
+        // Modifica directamente el currentUser existente con la url obtenida
+        currentUser.userPP = imageUrl;
+        //Se coloca en el local storage el item actualizado
+        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+    }
+  });
+});
+
+// HISTORIAL DE COMENTARIOS EN PERFIL
+
+// Contenedor donde se colocarán los comentarios
+const historialContenedor = document.getElementById("historialComentarios");
+
+// Si hay comentarios en localStorage
+const allComments = JSON.parse(localStorage.getItem("comments")) || [];
+
+// Nombre de usuario basado en su correo (antes del @)
+const currentUserUsername = currentUser.userEmail?.split("@")[0] || "";
+
+// Filtramos solo los comentarios del usuario actual
+const comentariosUsuario = allComments.filter(comentario => comentario.username === currentUserUsername);
+
+// Si hay comentarios, renderízalos
+if (comentariosUsuario.length > 0) {
+  comentariosUsuario.forEach(comment => {
+    const rating = parseInt(comment.stars) || 0;
+    let starsHTML = "";
+    for (let i = 1; i <= 5; i++) {
+      starsHTML += `<span class="star ${i <= rating ? 'selected' : ''}" data-value="${i}">&#9733;</span>`;
+    }
+
+    historialContenedor.insertAdjacentHTML("beforeend", `
+    <div class="card mb-3 comentario-card p-3">
+        <div class="d-flex justify-content-between">
+        <div class="d-flex">
+            <img src="${comment.img}" class="rounded-circle me-3" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
+            <div>
+            <h4 class="card-title mb-1">${comment.username}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
+            <div class="d-flex align-items-center mb-2">
+                <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
+                <div class="rating d-flex static-rating">
+                ${starsHTML}
+                </div>
+            </div>
+            <p class="card-text mb-0">${comment.message}</p>
+            </div>
+        </div>
+        <div>
+            <button class="btn btn-sm btn-outline-danger btnEliminarComentario" data-fecha="${comment.date}" data-mensaje="${comment.message}">
+            <i class="bi bi-trash me-1"></i>Eliminar
+            </button>
+        </div>
+        </div>
+    </div>`);
+  });
+} else {
+  historialContenedor.innerHTML = `<p class="text-muted">No has publicado ningún comentario aún.</p>`;
+}
+
+//Eliminar comentario
+//Para cada boton generado en cada comentario, se agrega un event listener
+document.querySelectorAll(".btnEliminarComentario").forEach(btn => {
+  btn.addEventListener("click", function () {
+    const fecha = this.dataset.fecha;
+    const mensaje = this.dataset.mensaje;
+
+    // Confirmación con SweetAlert
+    Swal.fire({
+      title: '¿Eliminar comentario?',
+      text: 'Esta acción no se puede revertir.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#EB5A3C',
+      cancelButtonColor: '#6c757d',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // Cargar comentarios desde localStorage
+        let comentarios = JSON.parse(localStorage.getItem("comments") || "[]");
+
+        // Filtrar quitando el mensaje que coincide con la fecha y el mensaje del local storage
+        comentarios = comentarios.filter(c => !(c.date === fecha && c.message === mensaje));
+
+        // Actualizar localStorage
+        localStorage.setItem("comments", JSON.stringify(comentarios));
+
+        // Eliminar visualmente del DOM
+        this.closest(".comentario-card").remove();
+
+        Swal.fire({
+            title: 'Eliminado', 
+            text: 'Tu comentario ha sido eliminado.', 
+            icon: 'success',
+            confirmButtonColor: '#EB5A3C'
+        });
+      }
+    });
+  });
+});

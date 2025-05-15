@@ -338,7 +338,7 @@ btnPublicar.addEventListener("click", function(event){
 
     let elemento =  { //Creando OBJETO con notación JSON (clave, valor)
                         "username" : userNameEmail,
-                        "img" : "",
+                        "img" : currentUser.userPP,
                         "career" : careerSelect.value,
                         "school" : schoolSelect.value,
                         "stars" : selectedRating,

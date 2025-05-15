@@ -138,6 +138,7 @@ if (localStorage.getItem("users")) {
              "userTel" : txtTel.value,
              "userEmail" : txtEmail.value,
              "userPass" : txtPass.value,
+             "userPP" : './assets/profile-pictures/blank-pp.webp'
           }
 
         allUsers.unshift(currentUser);
