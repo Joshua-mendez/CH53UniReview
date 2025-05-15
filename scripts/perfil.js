@@ -70,48 +70,47 @@ const comentariosUsuario = allComments.filter(comentario => comentario.username 
 
 // Si hay comentarios, renderízalos
 if (comentariosUsuario.length > 0) {
-  comentariosUsuario.forEach(comment => {
-    const rating = parseInt(comment.stars) || 0;
-    let starsHTML = "";
-    for (let i = 1; i <= 5; i++) {
-      starsHTML += `<span class="star ${i <= rating ? 'selected' : ''}" data-value="${i}">&#9733;</span>`;
-    }
+comentariosUsuario.forEach(comment => {
+  const rating = parseInt(comment.stars) || 0;
+  let starsHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    starsHTML += `<span class="star ${i <= rating ? 'selected' : ''}" data-value="${i}">&#9733;</span>`;
+  }
 
-    historialContenedor.insertAdjacentHTML("beforeend", `
-    <div class="comentario-contenido d-flex flex-column flex-md-row justify-content-between">
+  // Crea el nodo desde string
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = `
+    <div class="card mb-3 comentario-card p-3">
+      <div class="d-flex justify-content-between comentario-contenido flex-column flex-md-row">
         <div class="d-flex flex-column flex-md-row">
-        <img src="${comment.img}" class="rounded-circle me-md-3 mb-2 mb-md-0 perfil-comentario-img" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
-        <div>
+          <img src="${comment.img}" class="rounded-circle me-md-3 mb-2 mb-md-0 perfil-comentario-img" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
+          <div>
             <h4 class="card-title mb-1">${comment.username}</h4>
             <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
             <div class="d-flex align-items-center mb-2">
-                <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
-                <div class="rating d-flex static-rating">
-                ${starsHTML}
-                </div>
+              <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
+              <div class="rating d-flex static-rating">${starsHTML}</div>
             </div>
             <p class="card-text mb-0">${comment.message}</p>
-            </div>
+          </div>
         </div>
         <div class="eliminar-contenedor mt-2 mt-md-0">
-            <button class="btn btn-sm btn-outline-danger btnEliminarComentario w-100 w-md-auto" data-fecha="${comment.date}" data-mensaje="${comment.message}">
-                <i class="bi bi-trash me-1"></i>Eliminar
-            </button>
+          <button class="btn btn-sm btn-outline-danger btnEliminarComentario w-100 w-md-auto" data-fecha="${comment.date}" data-mensaje="${comment.message}">
+            <i class="bi bi-trash me-1"></i>Eliminar
+          </button>
         </div>
-    </div>`);
-  });
-} else {
-  historialContenedor.innerHTML = `<p class="text-muted">No has publicado ningún comentario aún.</p>`;
-}
+      </div>
+    </div>`;
 
-//Eliminar comentario
-//Para cada boton generado en cada comentario, se agrega un event listener
-document.querySelectorAll(".btnEliminarComentario").forEach(btn => {
+  const commentNode = tempDiv.firstElementChild;
+  historialContenedor.appendChild(commentNode);
+
+  // Asignar evento justo después de insertarlo
+  const btn = commentNode.querySelector('.btnEliminarComentario');
   btn.addEventListener("click", function () {
     const fecha = this.dataset.fecha;
     const mensaje = this.dataset.mensaje;
 
-    // Confirmación con SweetAlert
     Swal.fire({
       title: '¿Eliminar comentario?',
       text: 'Esta acción no se puede revertir.',
@@ -123,25 +122,21 @@ document.querySelectorAll(".btnEliminarComentario").forEach(btn => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        // Cargar comentarios desde localStorage
         let comentarios = JSON.parse(localStorage.getItem("comments") || "[]");
-
-        // Filtrar quitando el mensaje que coincide con la fecha y el mensaje del local storage
         comentarios = comentarios.filter(c => !(c.date === fecha && c.message === mensaje));
-
-        // Actualizar localStorage
         localStorage.setItem("comments", JSON.stringify(comentarios));
 
-        // Eliminar visualmente del DOM
-        this.closest(".comentario-card").remove();
+        const card = this.closest(".comentario-card") || this.closest(".card");
+        if (card) card.remove();
 
         Swal.fire({
-            title: 'Eliminado', 
-            text: 'Tu comentario ha sido eliminado.', 
-            icon: 'success',
-            confirmButtonColor: '#EB5A3C'
+          title: 'Eliminado',
+          text: 'Tu comentario ha sido eliminado.',
+          icon: 'success',
+          confirmButtonColor: '#EB5A3C'
         });
       }
     });
   });
 });
+}
