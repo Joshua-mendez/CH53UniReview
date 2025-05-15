@@ -78,11 +78,10 @@ if (comentariosUsuario.length > 0) {
     }
 
     historialContenedor.insertAdjacentHTML("beforeend", `
-    <div class="card mb-3 comentario-card p-3">
-        <div class="d-flex justify-content-between">
-        <div class="d-flex">
-            <img src="${comment.img}" class="rounded-circle me-3" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
-            <div>
+    <div class="comentario-contenido d-flex flex-column flex-md-row justify-content-between">
+        <div class="d-flex flex-column flex-md-row">
+        <img src="${comment.img}" class="rounded-circle me-md-3 mb-2 mb-md-0 perfil-comentario-img" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
+        <div>
             <h4 class="card-title mb-1">${comment.username}</h4>
             <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
             <div class="d-flex align-items-center mb-2">
@@ -94,11 +93,10 @@ if (comentariosUsuario.length > 0) {
             <p class="card-text mb-0">${comment.message}</p>
             </div>
         </div>
-        <div>
-            <button class="btn btn-sm btn-outline-danger btnEliminarComentario" data-fecha="${comment.date}" data-mensaje="${comment.message}">
-            <i class="bi bi-trash me-1"></i>Eliminar
+        <div class="eliminar-contenedor mt-2 mt-md-0">
+            <button class="btn btn-sm btn-outline-danger btnEliminarComentario w-100 w-md-auto" data-fecha="${comment.date}" data-mensaje="${comment.message}">
+                <i class="bi bi-trash me-1"></i>Eliminar
             </button>
-        </div>
         </div>
     </div>`);
   });

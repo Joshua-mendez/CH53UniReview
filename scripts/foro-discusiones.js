@@ -217,18 +217,22 @@ if(positionIndicator==1){
   orderprint="afterbegin";
 }
   listComments.insertAdjacentHTML (orderprint,`
-    <div class="card mb-3 comentario-card"><div class="card-body d-flex">
-      <img src="${comment.img}" class="rounded-circle me-3" alt="Foto de usuario" width="60" height="60">
-      <div>
-        <h4 class="card-title mb-1">${comment.username}</h4>
-        <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
-        <div class="d-flex align-items-center mb-2">
-          <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
-          <div class="rating d-flex static-rating">
-            ${starsHTML}
+    <div class="card mb-3 comentario-card tarjeta-resena">
+      <div class="card-body comentario-contenido d-flex flex-column flex-md-row justify-content-between">
+        <div class="d-flex flex-column flex-md-row">
+          <img src="${comment.img}" class="rounded-circle mb-2 mb-md-0 me-md-3 perfil-comentario-img" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
+          <div>
+            <h4 class="card-title mb-1">${comment.username}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
+            <div class="d-flex align-items-center mb-2">
+              <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
+              <div class="rating d-flex static-rating">
+                ${starsHTML}
+              </div>
+            </div>
+            <p class="card-text mb-0">${comment.message}</p>
           </div>
         </div>
-        <p class="card-text">${comment.message}</p>
       </div>
     </div>`);
 }//renderComment

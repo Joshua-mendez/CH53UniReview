@@ -186,3 +186,14 @@ select {
   -moz-appearance: auto !important;
 }
 
+/* Acomodar foto de perfil arriba del comentario en vista móvil */
+@media (max-width: 768px) {
+  .comentario-contenido {
+    flex-direction: column !important;
+  }
+
+  .perfil-comentario-img {
+    align-self: center;
+    margin-bottom: 10px;
+  }
+}
