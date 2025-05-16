@@ -44,7 +44,7 @@ if (localStorage.getItem("users")) {
    
 
     txtName.value = txtName.value.trim();
-    txtEmail.value = txtEmail.value.trim();
+    txtEmail.value = txtEmail.value.trim().toLowerCase();
     txtTel.value = txtTel.value.trim();
     txtConfirmPass.value = txtConfirmPass.value.trim();
     txtPass.value = txtPass.value.trim();

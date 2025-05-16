@@ -378,7 +378,7 @@ btnPublicar.addEventListener("click", function(event){
     $('#careerSelect').selectpicker('val', '');
     txtComment.value="";
     charCounter.innerText = `${txtComment.value.trim().length}/830`;
-    
+    ratingValue.textContent = `Tu calificación: 0`;
 
     // Elimina clase 'selected' de todas las estrellas
     interactiveStars.forEach(star => {

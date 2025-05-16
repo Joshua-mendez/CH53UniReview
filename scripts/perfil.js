@@ -11,6 +11,13 @@ const tdFechaNacimientoLS = document.getElementById("tdFechaNacimientoLS");
 //Obteniendo información de Local Storage
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
 
+//Si no hay elemento en current user
+if(Object.keys(currentUser).length === 0){
+  const loginReminder = document.getElementById("loginReminder");
+  document.getElementById("mainContent").style.display = "none";
+  loginReminder.style.display = "block";
+}
+
 // Actualizando los campos
 tdNombreLS.innerText = currentUser.userName || "";
 tdCorreoLS.innerText = currentUser.userEmail || "";
@@ -40,20 +47,54 @@ document.querySelector('.foto-overlay').addEventListener('click', function () {
     resourceType: 'image'
   }, (error, result) => {
     if (!error && result && result.event === "success") {
-        console.log("no ocurrio un error")
+        //console.log("no ocurrio un error")
       const imageUrl = result.info.secure_url;
       document.getElementById('fotoPerfil').src = imageUrl;
         // Actualiza la imagen mostrada
         fotoPerfil.src = imageUrl;
-
-        // Modifica directamente el currentUser existente con la url obtenida
-        currentUser.userPP = imageUrl;
-        //Se coloca en el local storage el item actualizado
-        localStorage.setItem("currentUser", JSON.stringify(currentUser));
+        //Ejecuta el metodo para actualizar la foto de perfil con la imageUrl como parametro
+        actualizaLocalStorage(imageUrl);
     }
   });
 });
 
+function actualizaLocalStorage(imageUrl){
+  // Modifica directamente el currentUser existente con la url obtenida
+  currentUser.userPP = imageUrl;
+  //Se coloca en el local storage el item actualizado
+  localStorage.setItem("currentUser", JSON.stringify(currentUser));
+  //Actualizando el local storage de users para que guarde la foto
+  const allUsers = JSON.parse(localStorage.getItem("users")) || [];
+  //Iterando por todos los usuarios 
+  for(let i=0; i<allUsers.length; i++){
+    // console.log("Recorro el arreglo");
+    if(allUsers[i].userEmail.toLowerCase() === currentUser.userEmail.toLowerCase()){
+      //console.log("Entro en condicion");
+      allUsers[i].userPP = imageUrl;
+      break;
+    }//if email matches
+  }//for allUsers
+  //Asignando el arreglo actualizado al local storage
+  localStorage.setItem("users", JSON.stringify(allUsers));
+
+  const allComents = JSON.parse(localStorage.getItem("comments")) || [];
+  //Iterando por todos los comentarios 
+  for(let j=0; j<allComents.length; j++){
+    //console.log("Recorro el arreglo");
+    if(allComents[j].username.toLowerCase() === currentUser?.userEmail?.split("@")[0]){
+      //console.log("Entro en condicion");
+      allComents[j].img = imageUrl;
+    }//if email matches to username in comments
+  }//for allUsers
+  //Asignando el arreglo actualizado al local storage
+  localStorage.setItem("comments", JSON.stringify(allComents));
+
+  //ACTUALIZANDO IMAGENES DE LA LISTA DE COMENTARIOS DEL DOM
+  let listaImagenes = document.getElementsByClassName("perfil-comentario-img");
+  for(let i=0; i< listaImagenes.length; i++){
+    listaImagenes[i].src =  imageUrl ||  "./assets/profile-pictures/blank-pp.webp"; 
+  }
+}
 // HISTORIAL DE COMENTARIOS EN PERFIL
 
 // Contenedor donde se colocarán los comentarios
@@ -135,8 +176,20 @@ comentariosUsuario.forEach(comment => {
           icon: 'success',
           confirmButtonColor: '#EB5A3C'
         });
+        const tempDiv = document.createElement('divNoHayComentarios');
+        tempDiv.insertAdjacentHTML("afterbegin", 
+          `<p class="text-muted">Aún no has realizado ningún comentario. Ve a la página de Foro para compartir tus experiencias.</p>`
+        );
+        historialContenedor.appendChild(tempDiv);
       }
     });
   });
 });
+}else{
+  const tempDiv = document.createElement('divNoHayComentarios');
+  tempDiv.insertAdjacentHTML("afterbegin", 
+    `<p class="text-muted">Aún no has realizado ningún comentario. Ve a la página de Foro para compartir tus experiencias.</p>`
+  );
+  historialContenedor.appendChild(tempDiv);
+  
 }
