@@ -76,6 +76,7 @@ btnLogin.addEventListener("click", function(event){
             "userName" : userCheck.userName,
             "userTel" : userCheck.userTel,
             "userEmail" : userCheck.userEmail,
+            "userdateOfBirth" : userCheck.userdateOfBirth,
             "userPass" : userCheck.userPass,
             "userPP" : userCheck.userPP
         }

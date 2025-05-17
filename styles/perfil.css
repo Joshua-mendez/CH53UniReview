@@ -26,6 +26,17 @@ body{
     margin-top: 50px;
 }
 
+#tabla-datos td.table-header {
+    font-weight: bold;
+    color: #707070;
+}
+.colwidhtMain{
+  width: 34%;
+}
+.colwidht{
+  width: 33%;
+}
+
 .info-contenedor {
   position: relative;
   border: 1px solid #ccc;
@@ -113,6 +124,64 @@ body{
 .btnEditarInfo:hover{
 background-color: #fd6b4d;
   color: white;
+}
+
+/* Botón Guardar Info */
+
+.btnGuardarInfo{
+    color: green;         /* azul Bootstrap */
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btnGuardarInfo:hover{
+background-color: green;
+  color: white;
+}
+
+/* Botón Cancelar Info */
+
+.btnCancelarInfo{
+    color: rgb(190, 3, 3);         /* azul Bootstrap */
+    background: none;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.btnCancelarInfo:hover{
+background-color: rgb(190, 3, 3);
+  color: white;
+}
+
+.input-bgc {
+  /* border-color: #EB5A3C !important;  Borde naranja */
+  background-color: #ffe5e0 !important; 
+}
+
+.custom-input:focus {
+  border-color: #ff8800 !important; /* Color de borde al hacer focus */
+  box-shadow: 0 0 0 0.2rem rgba(255, 136, 0, 0.25) !important; /* Efecto de brillo */
+}
+
+/* selector para evitar clics en info que no se pueda editar */
+
+.btn-hover-disabled {
+  cursor: not-allowed !important;
+  color: gray !important;
+}
+
+.btnEditarInfo.btn-hover-disabled:hover {
+  background-color: #e0e0e0 !important;
+  color: gray !important;
 }
 
 /* Acordeón de comentarios */
