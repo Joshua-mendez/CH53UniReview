@@ -1,12 +1,13 @@
 html, body{
     margin: 0;
     padding: 0;
-    background-color: #09122C;
+
     font-family: "Josefin Sans", sans-serif !important;
 }
 #logo{
   color:#F6F4F0  !important;
   text-decoration: none !important;
+  font-size: 30px;
 }
 #enlace-pagina{
   color:#F6F4F0  !important;
