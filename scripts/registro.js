@@ -1,6 +1,7 @@
 const txtName = document.getElementById("txtName");
 const txtTel = document.getElementById("txtTel");
 const txtEmail = document.getElementById("txtEmail");
+const txtdateOfBirth = document.getElementById("txtdateOfBirth");
 const txtPass = document.getElementById("txtPass");
 const txtConfirmPass = document.getElementById("txtConfirmPass");
 const btnRegister = document.getElementById("btnRegister");
@@ -38,13 +39,14 @@ if (localStorage.getItem("users")) {
     txtTel.style.border="";
     txtPass.style.border="";
     txtEmail.style.border="";
+    txtdateOfBirth.style.border="";
 
     alertValidacionesTexto.innerHTML = ""; 
     alertValidaciones.style.display = "none";
    
 
     txtName.value = txtName.value.trim();
-    txtEmail.value = txtEmail.value.trim();
+    txtEmail.value = txtEmail.value.trim().toLowerCase();
     txtTel.value = txtTel.value.trim();
     txtConfirmPass.value = txtConfirmPass.value.trim();
     txtPass.value = txtPass.value.trim();
@@ -55,8 +57,8 @@ if (localStorage.getItem("users")) {
     const passwordValidacion = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d).{8,}$");
 
     
-    if(txtName.value==="" && txtEmail.value === "" && txtTel.value === "" && txtPass.value === "" && txtConfirmPass.value === ""){
-      [txtName, txtEmail, txtTel, txtPass, txtConfirmPass].forEach(el => el.style.border = "solid medium red");
+    if(txtName.value==="" && txtEmail.value === "" && txtTel.value === "" && txtPass.value === "" && txtConfirmPass.value === "" && txtdateOfBirth.value === ""){
+      [txtName, txtEmail, txtdateOfBirth, txtTel, txtPass, txtConfirmPass].forEach(el => el.style.border = "solid medium red");
       alertValidacionesTexto.innerHTML = "<strong>Todos los campos son requeridos.</strong><br/>";
       alertValidaciones.style.display = "block";
       isValid = false;
@@ -110,6 +112,14 @@ if (localStorage.getItem("users")) {
       isValid = false;
       }
 
+        //Si no se ingresa una fecha de nacimiento
+      if (txtdateOfBirth.value.trim() === "") {
+        alertValidacionesTexto.innerHTML += "<strong>Selecciona tu fecha de nacimiento.</strong><br/>";
+        alertValidaciones.style.display = "block";
+        txtdateOfBirth.style.border = "solid medium red";
+        isValid = false;
+      }
+
     if(!passwordValidacion.test(txtPass.value)){
       txtPass.style.border="solid medium red";
       alertValidacionesTexto.innerHTML +=`<strong>Ingresa una contraseña válida:</strong><br/>
@@ -137,7 +147,9 @@ if (localStorage.getItem("users")) {
              "userName" : txtName.value,
              "userTel" : txtTel.value,
              "userEmail" : txtEmail.value,
+             "userdateOfBirth" : txtdateOfBirth.value,
              "userPass" : txtPass.value,
+             "userPP" : './assets/profile-pictures/blank-pp.webp'
           }
 
         allUsers.unshift(currentUser);

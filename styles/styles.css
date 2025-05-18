@@ -37,6 +37,10 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
 
  }
 
+ div.card-body p{
+      text-align: center !important;
+ }
+
  
  .header-page-light{
     color: #F6F4F0 !important;

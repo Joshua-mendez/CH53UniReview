@@ -44,11 +44,22 @@ registro.addEventListener("click", function(event){
       // Contenedor para usuario + botón
       const userItem = document.createElement("li");
       userItem.classList.add("nav-item", "d-flex", "align-items-center", "gap-2");
+      // Mostrar nombre de usuario con ícono
+      const userNameLink = document.createElement("a");
+      userNameLink.classList.add("nav-link", "text-warning", "mb-0", "d-flex", "align-items-center", "gap-1");
+      userNameLink.href = "perfil.html";
 
-      // Mostrar nombre de usuario
-      const userNameSpan = document.createElement("span");
-      userNameSpan.classList.add("nav-link", "text-warning", "mb-0");
-      userNameSpan.textContent = username;
+      // Ícono
+      const icon = document.createElement("i");
+      icon.classList.add("bi", "bi-person-fill");
+
+      // Texto
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = username;
+
+      // Insertar ícono y texto en el <a>
+      userNameLink.appendChild(icon);
+      userNameLink.appendChild(nameSpan);
 
       // Botón cerrar sesión
       const logoutBtn = document.createElement("button");
@@ -62,7 +73,7 @@ registro.addEventListener("click", function(event){
       });
 
       // Agregar al navbar
-      userItem.appendChild(userNameSpan);
+      userItem.appendChild(userNameLink);
       userItem.appendChild(logoutBtn);
       navList.appendChild(userItem);
     }

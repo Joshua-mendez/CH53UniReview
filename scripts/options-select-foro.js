@@ -6,7 +6,7 @@
     if (select.data('loaded')) return; // evitar ejecución doble
 
     $.getJSON('instituciones_anuies.json', function (data) {
-      console.log("Universidades cargadas:", data.length);
+      //console.log("Universidades cargadas:", data.length);
 
       select.empty(); // elimina todas las opciones
       select.append('<option value="">Selecciona tu universidad</option>'); // reinsertar la opción inicial

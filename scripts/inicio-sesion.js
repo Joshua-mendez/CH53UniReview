@@ -58,15 +58,17 @@ btnLogin.addEventListener("click", function(event){
 
       //Si el correo no ha sido registrado
       if (!userCheck) {
-      alertValidacionesTexto.innerHTML += "<strong>Este correo no ha sido registrado.</strong><br/>";
+      alertValidacionesTexto.innerHTML += "<strong>Autenticación incorrecta. Verifica tus credenciales.</strong><br/>";
       alertValidaciones.style.display = "block";
       txtEmail.style.border = "solid medium red";
+      txtPass.style.border = "solid medium red";
       isValid = false;
       
       }else if (userCheck.userPass !== passwordCheck) {
-        alertValidacionesTexto.innerHTML += "<strong>La contraseña es incorrecta.</strong><br/>";
+        alertValidacionesTexto.innerHTML += "<strong>Autenticación incorrecta. Verifica tus credenciales.</strong><br/>";
         alertValidaciones.style.display = "block";
         txtPass.style.border = "solid medium red";
+        txtEmail.style.border = "solid medium red";
         isValid = false;
       }
       if(isValid){
@@ -74,7 +76,9 @@ btnLogin.addEventListener("click", function(event){
             "userName" : userCheck.userName,
             "userTel" : userCheck.userTel,
             "userEmail" : userCheck.userEmail,
+            "userdateOfBirth" : userCheck.userdateOfBirth,
             "userPass" : userCheck.userPass,
+            "userPP" : userCheck.userPP
         }
 
         localStorage.setItem("currentUser", JSON.stringify(currentUser));
