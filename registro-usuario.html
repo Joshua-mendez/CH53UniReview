@@ -28,11 +28,11 @@
 
     <!-- Contenido main -->
     <h1 style="text-align: center;">Registro de Nuevo Usuario</h1>
-    <div class="container">
-      <div id="alerta" class="super d-flex justify-content-center">
-        <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidaciones">
-          <p id="alertValidacionesTexto" class="mb-0"></p>
-        </div>
+      <div class="container">
+        <div id="alerta" class="super d-flex justify-content-center">
+          <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidaciones">
+            <p id="alertValidacionesTexto" class="mb-0"></p>
+          </div>
       </div>
 
       <form class="container-fluid">
@@ -60,6 +60,16 @@
           </div>
           <div class="col-lg-6 col-md-6 col-sm-12">
             <input type="email" class="form-control input-bgc custom-input" id="txtEmail" placeholder="tucorreo@dominio.com" required>
+          </div>
+        <!-- Fecha de Nacimiento -->
+        </div>
+        <div class="row justify-content-center mb-3">
+          <div class="col-lg-4 col-md-4 col-sm-12">
+            <label for="txtdateOfBirth" class="form-label">Fecha de Nacimiento:</label>
+          </div>
+          <div class="col-lg-6 col-md-6 col-sm-12">
+            <input type="date" class="form-control input-bgc custom-input" id="txtdateOfBirth" name="dateOfBirth"
+            min="1900-01-01" max="2010-12-31">
           </div>
         </div>
 

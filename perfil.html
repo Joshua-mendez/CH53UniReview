@@ -47,11 +47,27 @@
             </div>
           </div>
 
-  <!-- Info -->
-  <div id="datos-usuario" class="datos-usuario text-start">
-    <!-- Se insertan con JS -->
-  </div>
-</div>
+        <!-- Info -->
+        <div id="datos-usuario" class="datos-usuario text-start">
+          <!-- Se insertan con JS -->
+        </div>
+      </div>
+
+        <div id="alertaNombre" class="super d-flex justify-content-center">
+          <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidacionesNombre">
+            <p id="alertValidacionesTextoNombre" class="mb-0"></p>
+          </div>
+        </div>
+        <div id="alertaTel" class="super d-flex justify-content-center">
+          <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidacionesTel">
+            <p id="alertValidacionesTextoTel" class="mb-0"></p>
+          </div>
+        </div>
+        <div id="alertaFechaNacimiento" class="super d-flex justify-content-center">
+          <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidacionesFechaNacimiento">
+            <p id="alertValidacionesTextoFechaNacimiento" class="mb-0"></p>
+          </div>
+        </div>
 
         <div id="divTablaInformacion">
           <div class="info-contenedor">
@@ -59,47 +75,55 @@
             <div id="contenidoTabla">
                 <table id="tabla-datos" class="w-100">
                   <tr id="trNombre">
-                      <td id="tdNombre" class="table-header">
+                      <td id="tdNombre" class="table-header colwidhtMain">
                       Nombre Completo
                       </td>
-                      <td id="tdNombreLS">
+                      <td id="tdNombreLS" class="colwidht">
                       <!-- ${userFullName} -->
+                      <!-- Input oculto hasta que se haga clic en editar -->
                       </td>
-                      <td id="editarNombre">
-                      <button class= "btnEditarInfo">Editar</button>
+                      <td id="editarNombre" class="colwidht">
+                      <button class= "btnEditarInfo" id="btnEditarNombre">Editar</button>
+                      <button class= "btnGuardarInfo" id="btnGuardarNombre" style="display: none;">Guardar</button>
+                      <button class= "btnCancelarInfo" id="btnCancelarNombre" style="display: none;">Cancelar</button>
                       </td>
                   </tr>
                   <tr id="trCorreo">
-                      <td id="tdCorreo" class="table-header">
+                      <td id="tdCorreo" class="table-header colwidhtMain">
                       Correo Electrónico
                       </td>
-                      <td id="tdCorreoLS">
+                      <td id="tdCorreoLS" class="colwidht">
                       <!-- ${userEmail} -->
                       </td>
-                      <td id="editarEmail">
-                      <button class= "btnEditarInfo">Editar</button>
+                      <td id="editarEmail" class="colwidht">
+                      <button class= "btnEditarInfo btn-hover-disabled">Editar</button>
                       </td>
                   </tr>
                   <tr id="trTelefono">
-                      <td id="tdTelefono" class="table-header">
+                      <td id="tdTelefono" class="table-header colwidhtMain">
                       Número de Teléfono
                       </td>
-                      <td id="tdTelefonoLS">
-                      <!-- ${userEmail} -->
+                      <td id="tdTelefonoLS" class="colwidht">
+                      <!-- ${userTel} -->
+                      <!-- Input oculto hasta que se haga clic en editar -->
                       </td>
-                      <td id="editarEmail">
-                      <button class= "btnEditarInfo">Editar</button>
+                      <td id="editarEmail" class="colwidht">
+                      <button class= "btnEditarInfo" id="btnEditarNumTel">Editar</button>
+                      <button class= "btnGuardarInfo" id="btnGuardarNumTel" style="display: none;">Guardar</button>
+                      <button class= "btnCancelarInfo" id="btnCancelarNumTel" style="display: none;">Cancelar</button>
                       </td>
                   </tr>
                   <tr id="trFechaNacimiento">
-                      <td id="tdFechaNacimiento" class="table-header">
+                      <td id="tdFechaNacimiento" class="table-header colwidhtMain">
                       Fecha de Nacimiento
                       </td>
-                      <td id="tdFechaNacimientoLS">
+                      <td id="tdFechaNacimientoLS" class="colwidht">
                       <!--Aqui se agrega la información-->
                       </td>
-                      <td id="editarFechaNacimiento">
-                      <button class: class= "btnEditarInfo">Editar</button>
+                      <td id="editarFechaNacimiento" class="colwidht">
+                      <button class= "btnEditarInfo" id="btnEditarFechaNacimiento">Editar</button>
+                      <button class= "btnGuardarInfo" id="btnGuardarFechaNacimiento" style="display: none;">Guardar</button>
+                      <button class= "btnCancelarInfo" id="btnCancelarFechaNacimiento" style="display: none;">Cancelar</button>
                       </td>
                   </tr>
                 </table>

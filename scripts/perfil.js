@@ -2,6 +2,29 @@ const txtDatosUsuario = document.getElementById("datos-usuario");
 const tablaDatos = document.getElementById("tabla-datos");
 const fotoPerfil = document.getElementById("fotoPerfil");
 
+const alertValidacionesNombre = document.getElementById("alertValidacionesNombre");
+const alertValidacionesTextoNombre = document.getElementById("alertValidacionesTextoNombre");
+
+const alertValidacionesTel = document.getElementById("alertValidacionesTel");
+const alertValidacionesTextoTel = document.getElementById("alertValidacionesTextoTel");
+
+const alertValidacionesFechaNacimiento = document.getElementById("alertValidacionesFechaNacimiento");
+const alertValidacionesTextoFechaNacimiento = document.getElementById("alertValidacionesTextoFechaNacimiento");
+
+//Botones
+const btnEditarNombre = document.getElementById("btnEditarNombre");
+const btnGuardarNombre = document.getElementById("btnGuardarNombre");
+const btnCancelarNombre = document.getElementById("btnCancelarNombre");
+//const txtNombrePerfil = document.getElementById("txtNombrePerfil");
+
+const btnEditarNumTel = document.getElementById("btnEditarNumTel");
+const btnGuardarNumTel = document.getElementById("btnGuardarNumTel");
+const btnCancelarNumTel = document.getElementById("btnCancelarNumTel");
+
+const btnEditarFechaNacimiento = document.getElementById("btnEditarFechaNacimiento");
+const btnGuardarFechaNacimiento = document.getElementById("btnGuardarFechaNacimiento");
+const btnCancelarFechaNacimiento = document.getElementById("btnCancelarFechaNacimiento");
+
 //DOM de Tabla
 const tdNombreLS = document.getElementById("tdNombreLS");
 const tdCorreoLS = document.getElementById("tdCorreoLS");
@@ -10,6 +33,8 @@ const tdFechaNacimientoLS = document.getElementById("tdFechaNacimientoLS");
 
 //Obteniendo información de Local Storage
 const currentUser = JSON.parse(localStorage.getItem("currentUser")) || {};
+const allUsers = JSON.parse(localStorage.getItem("users")) || [];
+
 
 //Si no hay elemento en current user
 if(Object.keys(currentUser).length === 0){
@@ -18,22 +43,339 @@ if(Object.keys(currentUser).length === 0){
   loginReminder.style.display = "block";
 }
 
-// Actualizando los campos
-tdNombreLS.innerText = currentUser.userName || "";
+// Actualizando los campos de la tabla
+//Nombre
+tdNombreLS.insertAdjacentHTML("afterbegin", `<span id="spanNombreLS">${currentUser.userName || ""}</span>
+<input type="text" class="form-control custom-input input-bgc" id="txtNombrePerfil" style="display: none;">`);
+const spanNombreLS = document.getElementById("spanNombreLS");
+const txtNombrePerfil = document.getElementById("txtNombrePerfil");
+
+//Teléfono
+tdTelefonoLS.insertAdjacentHTML("afterbegin", `<span id="spanTelLS">${currentUser.userTel || ""}</span>
+<input type="tel" class="form-control custom-input input-bgc" id="txtTelPerfil" style="display: none;">`);
+const spanTelLS = document.getElementById("spanTelLS");
+const txtTelPerfil = document.getElementById("txtTelPerfil"); 
+
+//Correo (no necesita editarse)
 tdCorreoLS.innerText = currentUser.userEmail || "";
-tdTelefonoLS.innerText = currentUser.userTel || "";
-tdFechaNacimientoLS.innerText = currentUser.userDateBirth || "";
+
+function formatDateString(dateStr) {
+  if (!dateStr) return "";
+  const [year, month, day] = dateStr.split("-");
+  return `${day}/${month}/${year}`;
+}
+
+const formattedDate = formatDateString(currentUser.userdateOfBirth);
+
+//Fecha de nacimiento
+tdFechaNacimientoLS.insertAdjacentHTML("afterbegin", `<span id="spanFechaNacimientoLS">${formattedDate || ""}</span>
+<input type="date" class="form-control input-bgc custom-input input-bgc" id="txtFechaNacimientoPerfil" name="dateOfBirth" min="1900-01-01" max="2010-12-31" style="display: none;">`);
+const spanFechaNacimientoLS = document.getElementById("spanFechaNacimientoLS");
+const txtFechaNacimientoPerfil = document.getElementById("txtFechaNacimientoPerfil");
+
+//tdFechaNacimientoLS.innerText = currentUser.userdateOfBirth || "";
 
 // Imagen de perfil
 fotoPerfil.src = currentUser.userPP || "./assets/profile-pictures/blank-pp.webp";
 
+//Función para obtener la edad del usuario
+function calcularEdad(dateOfBirthStr) {
+  const hoy = new Date();
+  const fechaNacimiento = new Date(dateOfBirthStr);
 
+  let edad = hoy.getFullYear() - fechaNacimiento.getFullYear();
+  const mes = hoy.getMonth() - fechaNacimiento.getMonth();
+
+  // Si aún no ha cumplido años este año
+  if (mes < 0 || (mes === 0 && hoy.getDate() < fechaNacimiento.getDate())) {
+    edad--;
+  }
+
+  return edad;
+}
+
+//Asignamos la edad a una nueva constante que llama al método para calcular edad y pasa como parámetro lo obtenido del local storage
+const edad = calcularEdad(currentUser.userdateOfBirth);
+
+//Agregando datos en el resumen de biografia al lado de foto de perfil
 txtDatosUsuario.innerHTML = "";
 txtDatosUsuario.insertAdjacentHTML("afterbegin", 
     `<div>
-        <h3>${currentUser.userName || ""}</h3>
+        <h3 id="nombreDeUsuarioPerfil">${currentUser.userName || ""}</h3>
         <h5>${currentUser.userEmail || ""}</h5>
+        <h5 id="edadDeUsuarioPerfil">${edad || ""} años</h5>
     </div>`);
+
+//Datos a un lado de perfil que pueden variar si se actualiza la información
+const nombreDeUsuarioPerfil = document.getElementById("nombreDeUsuarioPerfil");
+const edadDeUsuarioPerfil = document.getElementById("edadDeUsuarioPerfil");
+
+//Editar Nombre
+btnEditarNombre.addEventListener("click", () => {
+  txtNombrePerfil.style.border="";
+  spanNombreLS.style.display = "none"
+  txtNombrePerfil.style.display = "inline-block";
+  txtNombrePerfil.value = currentUser.userName || "";
+  
+  btnEditarNombre.style.display = "none";
+  btnGuardarNombre.style.display = "inline-block";
+  btnCancelarNombre.style.display = "inline-block";
+});
+
+//Cancelar Nombre
+btnCancelarNombre.addEventListener("click", () => {
+  alertValidacionesTextoNombre.innerHTML = ""; 
+  alertValidacionesNombre.style.display = "none";
+
+  txtNombrePerfil.style.display = "none";
+  spanNombreLS.style.display = "inline-block"
+  btnGuardarNombre.style.display = "none";
+  btnCancelarNombre.style.display = "none";
+  btnEditarNombre.style.display = "inline-block";
+});
+
+//Guardar Nombre
+btnGuardarNombre.addEventListener("click", () => {
+  //Bandera
+  let isValid = true;
+
+  //alertValidacionesTexto.innerHTML = ""; 
+  alertValidacionesNombre.style.display = "none";
+   
+  txtNombrePerfil.style.border="";
+  txtNombrePerfil.value = txtNombrePerfil.value.trim();
+  const nuevoNombre = txtNombrePerfil.value.trim();
+
+  //Validación nombre es mayor a 3 letras
+  if(txtNombrePerfil.value.length <= 2){
+      txtNombrePerfil.style.border="solid medium red";
+      alertValidacionesTextoNombre.innerHTML +="<strong>Favor de escribir tu nombre de forma correcta.</strong><br/>";
+      alertValidacionesNombre.style.display="block";
+      isValid=false;
+  }
+
+if(isValid){
+  Swal.fire({
+    title: 'Guardando nueva información',
+    text: `¿Es correcto el nombre ingresado: ${nuevoNombre}?`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#EB5A3C',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: 'Sí, guardar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Actualiza en currentUser
+      currentUser.userName = nuevoNombre;
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+      // Actualiza también en users
+      const index = allUsers.findIndex(u => u.userEmail === currentUser.userEmail);
+      if (index !== -1) {
+        allUsers[index].userName = nuevoNombre;
+        localStorage.setItem("users", JSON.stringify(allUsers));
+      }
+
+      // Actualiza la vista
+      spanNombreLS.innerText = nuevoNombre;
+      nombreDeUsuarioPerfil.innerText = nuevoNombre;
+
+      // Oculta botones y input
+      txtNombrePerfil.style.display = "none";
+      spanNombreLS.style.display = "inline-block";
+      btnGuardarNombre.style.display = "none";
+      btnCancelarNombre.style.display = "none";
+      btnEditarNombre.style.display = "inline-block";
+
+      Swal.fire({
+          title: '¡Guardado!',
+          text: 'Tu nombre fue actualizado correctamente.',
+          icon: 'success',
+          confirmButtonColor: '#EB5A3C'});
+    }//sweetAlert
+  });
+}//if isValid
+});//function guardar nombre
+
+
+
+//Editar Teléfono
+btnEditarNumTel.addEventListener("click", () => {
+  txtTelPerfil.style.border="";
+  spanTelLS.style.display = "none"
+  txtTelPerfil.style.display = "inline-block";
+  txtTelPerfil.value = currentUser.userTel || "";
+  
+  btnEditarNumTel.style.display = "none";
+  btnGuardarNumTel.style.display = "inline-block";
+  btnCancelarNumTel.style.display = "inline-block";
+});
+
+//Cancelar Teléfono
+btnCancelarNumTel.addEventListener("click", () => {
+  alertValidacionesTextoTel.innerHTML = ""; 
+  alertValidacionesTel.style.display = "none";
+
+  txtTelPerfil.style.display = "none";
+  spanTelLS.style.display = "inline-block"
+  btnGuardarNumTel.style.display = "none";
+  btnCancelarNumTel.style.display = "none";
+  btnEditarNumTel.style.display = "inline-block";
+});
+
+//Guardar Número de Teléfono
+btnGuardarNumTel.addEventListener("click", () => {
+const telefonoValidacionPerfil = new RegExp("^(?!.*(\\d)\\1{4})[0-9]{10}$");
+  //Bandera
+  let isValid = true;
+
+  //alertValidacionesTexto.innerHTML = ""; 
+  alertValidacionesTel.style.display = "none";
+   
+  txtTelPerfil.style.border="";
+  txtTelPerfil.value = txtTelPerfil.value.trim();
+  const nuevoTel = txtTelPerfil.value.trim();
+
+  //Si el teléfono no es válido
+    if(!telefonoValidacionPerfil.test(txtTelPerfil.value)){
+      txtTelPerfil.style.border="solid medium red";
+      alertValidacionesTextoTel.innerHTML +="<strong>Ingresa un número de teléfono válido (10 dígitos).</strong><br/>";
+      alertValidacionesTel.style.display="block";
+      isValid=false;
+    }
+if(isValid){
+  Swal.fire({
+    title: 'Guardando nueva información',
+    text: `¿Es correcto el número ingresado: ${nuevoTel}?`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#EB5A3C',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: 'Sí, guardar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Actualiza en currentUser
+      currentUser.userTel = nuevoTel;
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+      // Actualiza también en users
+      const index = allUsers.findIndex(u => u.userEmail === currentUser.userEmail);
+      if (index !== -1) {
+        allUsers[index].userTel = nuevoTel;
+        localStorage.setItem("users", JSON.stringify(allUsers));
+      }
+
+      // Actualiza la vista
+      spanTelLS.innerText = nuevoTel;
+
+      // Oculta botones y input
+      txtTelPerfil.style.display = "none";
+      spanTelLS.style.display = "inline-block";
+      btnGuardarNumTel.style.display = "none";
+      btnCancelarNumTel.style.display = "none";
+      btnEditarNumTel.style.display = "inline-block";
+
+
+      Swal.fire({
+          title: '¡Guardado!',
+          text: 'Tu número de teléfono fue actualizado correctamente.',
+          icon: 'success',
+          confirmButtonColor: '#EB5A3C'});
+    }
+  });
+}
+});
+
+//Editar Fecha de nacimiento
+btnEditarFechaNacimiento.addEventListener("click", () => {
+  txtFechaNacimientoPerfil.style.border="";
+  alertValidacionesTextoFechaNacimiento.style.display = "none";
+  alertValidacionesFechaNacimiento.style.display = "none";
+
+  spanFechaNacimientoLS.style.display = "none"
+  txtFechaNacimientoPerfil.style.display = "inline-block";
+  txtFechaNacimientoPerfil.value = currentUser.userdateOfBirth || "";
+  
+  btnEditarFechaNacimiento.style.display = "none";
+  btnGuardarFechaNacimiento.style.display = "inline-block";
+  btnCancelarFechaNacimiento.style.display = "inline-block";
+});
+
+//Cancelar Fecha de Nacimiento
+btnCancelarFechaNacimiento.addEventListener("click", () => {
+
+  alertValidacionesFechaNacimiento.style.display = "none";
+  alertValidacionesTextoFechaNacimiento.style.display = "none";
+
+  txtFechaNacimientoPerfil.style.display = "none";
+  spanFechaNacimientoLS.style.display = "inline-block"
+  btnGuardarFechaNacimiento.style.display = "none";
+  btnCancelarFechaNacimiento.style.display = "none";
+  btnEditarFechaNacimiento.style.display = "inline-block";
+});
+
+//Guardar Fecha de Nacimiento
+btnGuardarFechaNacimiento.addEventListener("click", () => {
+  const nuevaFechaNacimiento = txtFechaNacimientoPerfil.value;
+let isValid = true;
+  
+  alertValidacionesFechaNacimiento.style.display = "none";
+
+  //Si no se ingresa una fecha de nacimiento
+  if (txtFechaNacimientoPerfil.value.trim() === "") {
+    txtFechaNacimientoPerfil.style.border = "solid medium red";
+    alertValidacionesTextoFechaNacimiento.innerHTML += "<strong>Selecciona tu fecha de nacimiento.</strong><br/>";
+    alertValidacionesFechaNacimiento.style.display = "block";
+    alertValidacionesTextoFechaNacimiento.style.display = "inline-block";
+    isValid = false;
+}
+
+if(isValid){
+  Swal.fire({
+    title: 'Guardando nueva información',
+    text: `¿Es correcta la fecha de nacimiento ingresada: ${nuevaFechaNacimiento}?`,
+    icon: 'question',
+    showCancelButton: true,
+    confirmButtonColor: '#EB5A3C',
+    cancelButtonColor: '#6c757d',
+    confirmButtonText: 'Sí, guardar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      // Actualiza en currentUser
+      currentUser.userdateOfBirth = nuevaFechaNacimiento;
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
+
+      // Actualiza también en users
+      const index = allUsers.findIndex(u => u.userEmail === currentUser.userEmail);
+      if (index !== -1) {
+        allUsers[index].userdateOfBirth = nuevaFechaNacimiento;
+        localStorage.setItem("users", JSON.stringify(allUsers));
+      }
+
+      // Actualiza la vista
+      spanFechaNacimientoLS.innerText = formatDateString(nuevaFechaNacimiento);
+      const nuevaEdad = calcularEdad(nuevaFechaNacimiento);
+      edadDeUsuarioPerfil.innerText = `${nuevaEdad} años`;
+
+      // Oculta botones y input
+      txtFechaNacimientoPerfil.style.display = "none";
+      spanFechaNacimientoLS.style.display = "inline-block";
+      btnGuardarFechaNacimiento.style.display = "none";
+      btnCancelarFechaNacimiento.style.display = "none";
+      btnEditarFechaNacimiento.style.display = "inline-block";
+
+      Swal.fire({
+          title: '¡Guardado!',
+          text: 'Tu fecha de nacimiento fue actualizada correctamente.',
+          icon: 'success',
+          confirmButtonColor: '#EB5A3C'});
+    }
+  });
+}
+});
 
 //Uso de Cloudinary en overlay de foto de perfil
 document.querySelector('.foto-overlay').addEventListener('click', function () {

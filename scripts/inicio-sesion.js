@@ -76,6 +76,7 @@ btnLogin.addEventListener("click", function(event){
             "userName" : userCheck.userName,
             "userTel" : userCheck.userTel,
             "userEmail" : userCheck.userEmail,
+            "userdateOfBirth" : userCheck.userdateOfBirth,
             "userPass" : userCheck.userPass,
             "userPP" : userCheck.userPP
         }
@@ -86,7 +87,8 @@ btnLogin.addEventListener("click", function(event){
         Swal.fire({
             title: "Inicio de sesión exitoso",
             text: "Serás redirigido a la página de inicio",
-            icon: "success"
+            icon: "success",
+            confirmButtonColor: "#EB5A3C"
           }).then((result) => {
             if (result.isConfirmed) {
               window.location.href = "./index.html"; 
