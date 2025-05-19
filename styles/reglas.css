@@ -106,9 +106,18 @@ p {
 
 .accordion-body {
   background-color: #ffffff;
-  border-color: #09122C !important;
   color: #333333;
   padding: 1rem;
   font-size: 0.95rem;
   line-height: 1.5;
+}
+
+.heroDos {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.heroDos img {
+  max-width: 50%;
+  height: auto;
 }
