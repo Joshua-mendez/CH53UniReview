@@ -148,6 +148,15 @@ h1{
   margin-bottom: 20px !important;
 }
 
+/* option por defecto en gris */
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select .dropdown-toggle:active,
+.bootstrap-select .dropdown-toggle:focus:active {
+  border-color: #EB5A3C !important;
+  /* box-shadow: 0 0 0 0.25rem rgba(235, 90, 60, 0.25) !important; */
+  outline: none !important;
+}
+
 .filtro-titulo {
   color: #fd6b4d !important;
   position: absolute;
@@ -184,6 +193,55 @@ select {
   appearance: auto !important;
   -webkit-appearance: auto !important;
   -moz-appearance: auto !important;
+}
+
+/* Etiquetas */
+.tag {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 15px;
+  margin: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: white;
+  transition: transform 0.2s;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+}
+
+/* Colores específicos por valor */
+.tag[data-value="Retícula"] { background-color: #e74c3c; }
+.tag[data-value="Ubicación"] { background-color: #00A5CF; }
+.tag[data-value="Atención"] { background-color: #f39c12; }
+.tag[data-value="Colegiatura"] { background-color: #05853a; }
+.tag[data-value="Dificultad"] { background-color: #8e44ad; }
+.tag[data-value="Experiencia personal"] { background-color: #865011 ; }
+.tag[data-value="Campo laboral"] { background-color: #f395df; }
+.tag[data-value="Instalaciones"] { background-color: #3fa83f; }
+.tag[data-value="Profesores"] { background-color: #0b72f8; }
+.tag[data-value="Sueldo de egresado"] { background-color: #af3d3d; }
+.tag[data-value="Tips/Consejos"] { background-color: #fda655; }
+
+/* Estado activo */
+.tag.tag-selected {
+  background-color: #ccc !important;
+  color: #333 !important;
+}
+
+.btnListaCarreras{
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  color: white;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  line-height: 1.5;
 }
 
 /* Acomodar foto de perfil arriba del comentario en vista móvil */

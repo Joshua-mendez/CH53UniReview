@@ -11,9 +11,33 @@ const alertValidaciones = document.getElementById("alertValidaciones");
 //const txtUser = document.getElementById("txtUser"); //Nombre de usuario
 const schoolSelect = document.getElementById("schoolSelect");//Selección de escuela
 const careerSelect = document.getElementById("careerSelect");//Selección de carrera
+const userTypeSelect = document.getElementById("userTypeSelect"); //Selección de tipo de usuario
 const txtComment = document.getElementById("txtComment"); //Comentario
+const selectedTags = document.getElementById("selectedTags"); //Etiquetas seleccionadas
+const txtEtiquetas = document.getElementById("txtEtiquetas"); //label de etiquetas
 const charCounter = document.getElementById("charCounter")//contador de limite de caracteres en mensaje
 
+//ETIQUETAS
+
+const tags = document.querySelectorAll('.tag');
+const selectedTagsInput = document.getElementById('selectedTags');
+selectedTagsInput.value="";
+//console.log(selectedTagsInput.value)
+
+tags.forEach(tag => {
+  tag.addEventListener('click', () => {
+    tag.classList.toggle('tag-selected'); //agrega la clase tag-selected para visualizarla en gris al ser presionada
+
+    const selected = Array.from(tags)
+      .filter(t => t.classList.contains('tag-selected')) //filtras todos los elementos que contengan la clase tag-selected
+      .map(t => t.dataset.value); //obtienes el valor de la selección
+
+    selectedTagsInput.value = selected.join(', '); //convierte el arreglo en un string, separado por coma , y un espacio
+    //console.log(selectedTagsInput.value);
+  });
+});
+//Llamada a modal-carrera.js
+cargarModalCarrera();
 
 //contador dinámico de caracteres
 txtComment.addEventListener('input', () => {
@@ -83,23 +107,27 @@ function highlightStars(stars, rating) {
 let allComments = [
   //Objeto 1
 {
-  'username': 'Maru.97',
-  'img': './assets/profile-pictures/user-2.webp',
-  'career': 'Ing. Tecnologías de la Información y Comunicaciones',
-  'school': 'Instituto Tecnológico de Reynosa',
-  'stars': 4,
-  'message': 'Mi experiencia estudiando Ing. TICs en el Tec de Reynosa fue buena en general, el temario fue completo, se vieron temas desde programación, soporte técnico y fundamentos de redes. Lo único a considerar es la asistencia de los profesores y la atención individual que brindan, ya que la mayoría no cuenta con la apertura para salirse del temario para explicar otras dudas técnicas que no forman parte del plan de retícula.',
-  'date': '2025-04-29'
-},
-//Objeto 2
-{
   'username': 'Itzel.Annet',
   'img': './assets/profile-pictures/user-3.webp',
   'career': 'Ing. Telemática',
   'school' : 'Centro de Investigación y de Estudios Avanzados del Instituto Politécnico Nacional',
+  "userType" : 'Egresada/o',
   'stars': 3,
   'message': 'La carrera puede resultar demandante, ya que abarca una amplia variedad de temas relacionados con las telecomunicaciones. Entre ellos se encuentran el estudio de señales AM y FM, antenas, conexión de redes y los distintos protocolos de Internet. Además, se incluyen asignaturas de programación, siempre orientadas al ámbito de las telecomunicaciones. Es importante mencionar que las matemáticas tienen un papel fundamental a lo largo de los cinco años de estudio, por lo que, si no existe afinidad por esta área, podría no ser la opción más adecuada. Asimismo, el conocimiento del idioma inglés representa una herramienta valiosa, ya que gran parte de los libros y referencias técnicas se encuentran en este idioma. Comprenderlo facilita el aprendizaje y la comprensión de los conceptos relacionados con las telecomunicaciones.',
+  'tags' : 'Retícula, Dificultad',
   'date': '2025-03-25'
+},
+//Objeto 2
+{
+  'username': 'Maru.97',
+  'img': './assets/profile-pictures/user-2.webp',
+  'career': 'Ing. Tecnologías de la Información y Comunicaciones',
+  'school': 'Instituto Tecnológico de Reynosa',
+  "userType" : 'Egresada/o',
+  'stars': 4,
+  'message': 'Mi experiencia estudiando Ing. TICs en el Tec de Reynosa fue buena en general, el temario fue completo, se vieron temas desde programación, soporte técnico y fundamentos de redes. Lo único a considerar es la asistencia de los profesores y la atención individual que brindan, ya que la mayoría no cuenta con la apertura para salirse del temario para explicar otras dudas técnicas que no forman parte del plan de retícula.',
+  'tags' : 'Retícula, Atención, Profesores',
+  'date': '2025-04-29'
 },
 //Objeto 3
 {
@@ -107,8 +135,10 @@ let allComments = [
   'img': './assets/profile-pictures/user-5.webp',
   'career': 'Lic. Comunicación y Periodismo',
   'school': 'Universidad Nacional Autónoma de México',
+  "userType" : 'Egresada/o',
   'stars': 2,
   'message': 'La ubicación de Fes Aragón no es la mejor, pero tiene el plan de estudios más actualizado del área. Los primeros semestres son de teoría, pero en su mayoría la carrera es muy práctica. Antes de titularse, tienes la opción de elegir el área profesional que quieres (prensa, radio, tv). Si eres sociable y te gusta saber de todo un poco, la recomiendo 100%. ¡También diría que es una carrera que necesita amor a la profesión, si solo te llama un poco la atención, piensa dos veces tu decisión! ',
+  'tags' : 'Retícula, Ubicación, Tips/Consejos',
   'date': '2025-03-18'
 },
 //Objeto 4
@@ -117,8 +147,10 @@ let allComments = [
   'img': './assets/profile-pictures/user-1.webp',
   'career': 'Lic. Arquitectura',
   'school': 'Universidad Nacional Autónoma de México',
+  "userType" : 'Alumna/o',
   'stars': 4,
   'message': 'La carrera de arquitectura es muy buena, si te gusta la parte de las matemáticas, el diseño, los materiales, la creatividad y sobre todo un compromiso social. La arquitectura te da las herramientas para  crear espacios con un sentido de pertenencia y buscar las opciones más óptimas para hacerlo realidad.',
+  'tags' : 'Experiencia personal',
   'date': '2025-03-03'
 },
 //Objeto 5
@@ -127,8 +159,10 @@ let allComments = [
   'img': './assets/profile-pictures/user-9.webp',
   'career': 'Ing. Tecnologías de la Información y Comunicaciones',
   'school' : 'Instituto Tecnológico de Tláhuac',
+  "userType" : 'Egresada/o',
   'stars': 4,
   'message': 'La carrera es buena, pues a lo largo de mi formación, el temario fue concreto. La experiencia fue muy enriquecedora porque te enfocan a desarrollar diferentes habilidades, aplicar conocimientos en problemas planteados de casos reales.',
+  'tags' : 'Retícula, Experiencia personal',
   'date': '2025-02-22'
 },
 //Objeto 6
@@ -137,8 +171,10 @@ let allComments = [
   'img': './assets/profile-pictures/user-4.webp',
   'career': 'Lic. Educación Física',
   'school' : 'Escuela Superior de Educación Física',
+  "userType" : 'Aspirante a nuevo ingreso',
   'stars': 4,
   'message': 'Es una carrera enfocada en la formación integral de docentes especializados en el movimiento humano, con énfasis en la enseñanza de la actividad física, el deporte y la promoción de estilos de vida saludable, esta licenciatura está dirigida a personas con vocación educativa y gusto por el deporte, trabajo en equipo y promoción del bienestar físico y emocional.',
+  'tags' : 'Experiencia personal',
   'date': '2025-02-18'
 },
 //Objeto 7
@@ -147,18 +183,22 @@ let allComments = [
   'img': './assets/profile-pictures/user-6.webp',
   'career': 'Ing. Mecatrónica',
   'school' : 'Universidad Tecmilenio',
+  "userType" : 'Egresada/o',
   'stars': 4,
   'message': 'La carrera es muy buena, y las instalaciones que proporciona la universidad para ello, en ocasiones, son malas. Algunas partes de los laboratorios son inservibles, nunca llegué a usarlos en los 4 años que estudié ahí. Algunos profesores eran muy buenos y se les notaba que les gustaba enseñar, unos otros solo estaban ahí por compromiso y en ocasiones pareciese que no sabían lo que explicaban. Sí, recomiendo la carrera, más no la universidad.',
+  'tags' : 'Instalaciones, Profesores, Experiencia personal',
   'date': '2025-02-15'
 },
 //Objeto 8
 {
   'username': 'Jennifer.gonzalez',
   'img': './assets/profile-pictures/user-10.webp',
-  'career': ' Ing. Mecatrónica',
+  'career': 'Ing. Mecatrónica',
   'school' : 'Instituto Tecnológico de Puebla',
+  "userType" : 'Exalumna/o (estudios inconclusos)',
   'stars': 5,
   'message': 'Mi experiencia en mecatrónica fue buena, los maestros están bien preparados y el temario fue lo que esperaba, lo malo es que solo tienes oportunidad de recursar dos materias a la vez por lo que se debe tener en cuenta si por tema de tiempos o trabajo no puedes llevar ese ritmo de estudio, ya que al igual las materias se aprueban con un mínimo de 8.',
+  'tags' : 'Retícula, Dificultad, Profesores',
   'date': '2025-02-12'
 },
 //Objeto 9
@@ -167,8 +207,10 @@ let allComments = [
   'img': './assets/profile-pictures/user-7.webp',
   'career': 'Lic. Psicología Clínica',
   'school': 'Centro de Enseñanza Técnica y Superior',
-  'stars': 1,
+  "userType" : 'Egresada/o',
+  'stars': 3,
   'message': 'La carrera es muy teórica, el plan de estudios es bueno pero desactualizado.  Fuera de eso, las instalaciones de la universidad son muy buenas, hay oportunidades de poder desarrollarte profesionalmente. Hay que tener en cuenta que la sede de la institución está en Toluca.',
+  'tags' : 'Ubicación, Instalaciones',
   'date': '2025-02-03'
 },
 //Objeto 10
@@ -177,8 +219,10 @@ let allComments = [
   'img': './assets/profile-pictures/user-8.webp',
   'career': 'Ing. En Sistemas Computacionales',
   'school' : 'Universidad Autónoma de Aguascalientes (UAA)',
+  "userType" : 'Alumna/o',
   'stars': 4,
   'message': 'La carrera es buena, hay profesores preparados. Es recomendable que tengas carrera técnica en algo similar a sistemas o aprender lo básico antes para que no te sientas desorientado al inicio. La carrera se siente pesada, son 9 semestres, pero vale la pena. Te puedes titular con un proyecto.',
+  'tags' : 'Dificultad, Profesores, Tips/Consejos',
   'date': '2025-01-28'
 }];// Array allComments
 
@@ -212,6 +256,12 @@ function renderComment(comment,positionIndicator=0) {//positionIndicator, si es 
   for (let i = 1; i <= 5; i++) {
     starsHTML += `<span class="star ${i <= rating ? 'selected' : ''}" data-value="${i}">&#9733;</span>`;
   }
+
+  const etiquetasConHash = comment.tags
+  .split(',')
+  .map(etiqueta => `#${etiqueta.trim()}`)
+  .join(' ');
+
 let orderprint="beforeend";
 if(positionIndicator==1){
   orderprint="afterbegin";
@@ -222,7 +272,10 @@ if(positionIndicator==1){
         <div class="d-flex flex-column flex-md-row">
           <img src="${comment.img}" class="rounded-circle mb-2 mb-md-0 me-md-3 perfil-comentario-img" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
           <div>
-            <h4 class="card-title mb-1">${comment.username}</h4>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <h4 class="card-title mb-0" style="line-height: 1;">${comment.username} </h4>
+              <p class="text-muted mb-0" style="line-height: 1;"> — ${comment.userType}</p>
+            </div>
             <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
             <div class="d-flex align-items-center mb-2">
               <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
@@ -231,6 +284,9 @@ if(positionIndicator==1){
               </div>
             </div>
             <p class="card-text mb-0">${comment.message}</p>
+            <div class="mt-2">
+             <span style="color: #fd6b4d">${etiquetasConHash}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -248,7 +304,9 @@ btnPublicar.addEventListener("click", function(event){
   //Limpiando formatos de alerta e input
   schoolSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
   careerSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
+  userTypeSelect.closest('.bootstrap-select').querySelector('.dropdown-toggle').classList.remove('is-invalid');
   txtComment.style.border=""; //sin estilo para comentario
+  txtEtiquetas.style.color=""; //sin estilo para label de etiquetas
   //txtUser.style.border=""; //sin estilo para usuario
 
   const validarUsuario = new RegExp("^[a-zA-Z0-9.-]{8,20}$"); //limitacion que debe de tener el nombre de usuario
@@ -263,7 +321,6 @@ btnPublicar.addEventListener("click", function(event){
   //Validaciones
 
   //Si todos los campos están vacíos a la vez
-  //txtUser.value==="" && 
 
   if(nameUser==="Inicia sesión para poder comentar"){
     isValid = false;
@@ -279,11 +336,21 @@ btnPublicar.addEventListener("click", function(event){
              });
   } 
 
-  if(schoolSelect.value === "" && careerSelect.value === "" && selectedRating == 0 && txtComment.value===""){
-      [txtComment].forEach(el => el.style.border = "solid medium red");
+  if (
+  !schoolSelect.value.trim() &&
+  !careerSelect.value.trim() &&
+  selectedRating === 0 &&
+  !txtComment.value.trim() &&
+  (!userTypeSelect.value || userTypeSelect.value === "Selecciona una opción") &&
+  !selectedTagsInput.value.trim()
+){
+    console.log("entro a condición")
+      txtComment.style.border = "solid medium red";
       schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
       careerSelect.closest('.bootstrap-select').classList.add('is-invalid');
+      userTypeSelect.closest('.bootstrap-select').classList.add('is-invalid');
       ratingValue.style.color = "red";
+      txtEtiquetas.style.color = "red";
       alertValidacionesTexto.innerHTML = "<strong>Todos los campos son requeridos.</strong><br/>";
       alertValidaciones.style.display = "block";
       isValid = false;
@@ -299,7 +366,7 @@ btnPublicar.addEventListener("click", function(event){
   //   isValid=false;
   // }
 
-  if(schoolSelect.value === ""){ //valida que el campo de escuela tengo una opcion.
+  if(schoolSelect.value === ""){ //valida que el campo de escuela tenga una selección.
     schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
     alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para Escuela. </strong><br/>";
     alertValidaciones.style.display="block";
@@ -310,7 +377,7 @@ btnPublicar.addEventListener("click", function(event){
   }
   
 
-  if(careerSelect.value === ""){//el campo de carrera debe de estar seleccionado
+  if(careerSelect.value === ""){//el campo de carrera debe tener selección
     careerSelect.closest('.bootstrap-select').classList.add('is-invalid');
     alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para Carrera. </strong><br/>";
     alertValidaciones.style.display="block";
@@ -318,6 +385,16 @@ btnPublicar.addEventListener("click", function(event){
   }else{
     // Si el valor es válido, eliminamos la clase is-invalid
     careerSelect.closest('.bootstrap-select').classList.remove('is-invalid');
+  }
+
+  if(!userTypeSelect.value || userTypeSelect.value === "Selecciona una opción"){//el campo de tipo de usuario debe tener selección
+    userTypeSelect.closest('.bootstrap-select').classList.add('is-invalid');
+    alertValidacionesTexto.innerHTML +="<strong> Selecciona una opción válida para tu relación académica. </strong><br/>";
+    alertValidaciones.style.display="block";
+    isValid=false;
+  }else{
+    // Si el valor es válido, eliminamos la clase is-invalid
+    userTypeSelect.closest('.bootstrap-select').classList.remove('is-invalid');
   }
 
   if(selectedRating == 0){ // si no contiene una calificacion, cambia el texto y lo pone en rojo
@@ -338,6 +415,12 @@ btnPublicar.addEventListener("click", function(event){
     charCounter.style.color="";
   }
 
+  if(!selectedTagsInput.value.trim()){
+    txtEtiquetas.style.color= "red";
+    alertValidacionesTexto.innerHTML +="<strong> Selecciona al menos una etiqueta. </strong><br/>";
+    alertValidaciones.style.display="block";
+  }
+
   if(isValid){
 
     let elemento =  { //Creando OBJETO con notación JSON (clave, valor)
@@ -345,8 +428,10 @@ btnPublicar.addEventListener("click", function(event){
                         "img" : currentUser.userPP,
                         "career" : careerSelect.value,
                         "school" : schoolSelect.value,
+                        "userType" : userTypeSelect.value,
                         "stars" : selectedRating,
                         "message" : txtComment.value,
+                        "tags" : selectedTagsInput.value,
                         "date": isoDate
                     };
     //Agregando el objeto al inicio del array
@@ -413,13 +498,57 @@ function mostrarTopCarreras() {
   const lista = document.getElementById("listaCarreras");
   lista.innerHTML = ""; // Limpiar si ya hay contenido
 
-  topCarreras.forEach((carrera, index) => {
-    lista.insertAdjacentHTML(
-      "beforeend",
-      `<li style="line-height: 1.8; margin-bottom: 6px;">${index + 1}. ${carrera}</li>`
-    );
+  //Para acceder a su tamaño después
+  const resumenCarreras = {};
+
+
+  //Calculando promedio de carreras y mostrándolo en orden ascendente
+topCarreras.forEach((carrera) => {
+  const comentariosCarrera = comentariosGuardados.filter(
+    c => c.career.trim() === carrera
+  );
+
+  const cantidad = comentariosCarrera.length;
+  const promedio = (
+    comentariosCarrera.reduce((acc, curr) => acc + curr.stars, 0) / cantidad
+  ).toFixed(1);
+
+  resumenCarreras[carrera] = {
+    promedio,
+    cantidad
+  };
+
+  lista.insertAdjacentHTML(
+    "beforeend",
+    `<li style="line-height: 1.8; margin-bottom: 6px;">
+       <button class="btnListaCarreras" 
+               data-carrera="${carrera}" 
+               data-promedio="${promedio}"
+               data-cantidad-eval="${cantidad}">
+               ${carrera} <!-- Lo que muestra el botón -->
+       </button>
+     </li>`
+  );
+});
+
+  document.querySelectorAll('.btnListaCarreras').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.preventDefault(); // Evita comportamiento predeterminado
+    e.stopPropagation(); // Evita que otros listeners reaccionen
+
+    const nombre = btn.dataset.carrera;
+    const promedio = btn.dataset.promedio;
+    const numEvaluaciones = btn.dataset.cantidadEval;
+    mostrarModalCarrera({
+      nombre,
+      promedio,
+      numEvaluaciones,
+      urlDetalles: "https://ejemplo.com/carrera/mecatronica",
+      urlResenas: "https://ejemplo.com/resenas/mecatronica"
+    });
   });
+});
+
 }
 
 document.addEventListener("DOMContentLoaded", mostrarTopCarreras);
-

@@ -9,7 +9,7 @@
       //console.log("Universidades cargadas:", data.length);
 
       select.empty(); // elimina todas las opciones
-      select.append('<option value="">Selecciona tu universidad</option>'); // reinsertar la opción inicial
+      select.append('<option value="" selected disabled>Selecciona tu universidad</option>'); // reinsertar la opción inicial
 
       const nombresAgregados = new Set(); // para evitar duplicados
       data.sort((a, b) => a.nombre.localeCompare(b.nombre, 'es', { sensitivity: 'base' }));
@@ -32,7 +32,7 @@
 
     $.getJSON('carreras.json', function (data) {
       careerSelect.empty();
-      careerSelect.append('<option value="">Selecciona tu carrera</option>');
+      careerSelect.append('<option value="" selected disabled>Selecciona tu carrera</option>');
 
       const carrerasAgregadas = new Set();
 
