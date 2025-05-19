@@ -257,7 +257,7 @@ function renderComment(comment,positionIndicator=0) {//positionIndicator, si es 
     starsHTML += `<span class="star ${i <= rating ? 'selected' : ''}" data-value="${i}">&#9733;</span>`;
   }
 
-  const etiquetasConHash = comment.tags
+  const etiquetasConHash = (comment.tags || '')
   .split(',')
   .map(etiqueta => `#${etiqueta.trim()}`)
   .join(' ');
@@ -324,17 +324,24 @@ btnPublicar.addEventListener("click", function(event){
 
   if(nameUser==="Inicia sesión para poder comentar"){
     isValid = false;
-   Swal.fire({
-               title: "¡Oh no!",
-               text: "No has iniciado sesión",
-               text: "Queremos saber tu experiencia, pero antes dirígete a la página de inicio de sesión para continuar navegando",
-               imageUrl: "../assets/elemento-triste.jpg",
-               imageWidth: 150,
-               imageHeight: 300,
-               imageAlt: "Inicia Sesión",
-               confirmButtonColor: "#EB5A3C"
-             });
-  } 
+    Swal.fire({
+      icon: "error",
+      title: "¡Oh no!",
+      html: `
+        <p>Necesitas iniciar sesión para poder comentar.</p>
+        <p>Queremos saber tu experiencia, pero primero dirígete a la página de inicio de sesión.</p>
+      `,
+      showCancelButton: true,
+      confirmButtonText: "Ir a Iniciar Sesión",
+      cancelButtonText: "Cancelar",
+      confirmButtonColor: "#EB5A3C",
+      cancelButtonColor: "#6c757d",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        window.location.href = "./inicio-sesion.html";
+      }
+    });
+}
 
   if (
   !schoolSelect.value.trim() &&
@@ -344,7 +351,7 @@ btnPublicar.addEventListener("click", function(event){
   (!userTypeSelect.value || userTypeSelect.value === "Selecciona una opción") &&
   !selectedTagsInput.value.trim()
 ){
-    console.log("entro a condición")
+   // console.log("entro a condición")
       txtComment.style.border = "solid medium red";
       schoolSelect.closest('.bootstrap-select').classList.add('is-invalid');
       careerSelect.closest('.bootstrap-select').classList.add('is-invalid');
@@ -431,7 +438,7 @@ btnPublicar.addEventListener("click", function(event){
                         "userType" : userTypeSelect.value,
                         "stars" : selectedRating,
                         "message" : txtComment.value,
-                        "tags" : selectedTagsInput.value,
+                        "tags" : selectedTagsInput.value || '',
                         "date": isoDate
                     };
     //Agregando el objeto al inicio del array
