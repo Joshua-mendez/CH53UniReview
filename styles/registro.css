@@ -151,7 +151,7 @@
 
 .watermark-container {
   position: relative;
-  min-height: 100vh; /* Para que ocupe toda la altura visible */
+  min-height: 80vh; /* Para que ocupe toda la altura visible */
   padding: 20px;
   background-color: white; /* o lo que tengas */
   z-index: 1;
