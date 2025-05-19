@@ -460,6 +460,11 @@ comentariosUsuario.forEach(comment => {
     starsHTML += `<span class="star ${i <= rating ? 'selected' : ''}" data-value="${i}">&#9733;</span>`;
   }
 
+  const etiquetasConHash = comment.tags
+  .split(',')
+  .map(etiqueta => `#${etiqueta.trim()}`)
+  .join(' ');
+
   // Crea el nodo desde string
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = `
@@ -468,13 +473,19 @@ comentariosUsuario.forEach(comment => {
         <div class="d-flex flex-column flex-md-row">
           <img src="${comment.img}" class="rounded-circle me-md-3 mb-2 mb-md-0 perfil-comentario-img" alt="Foto de usuario" width="60" height="60" style="object-fit: cover;">
           <div>
-            <h4 class="card-title mb-1">${comment.username}</h4>
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <h4 class="card-title mb-0" style="line-height: 1;">${comment.username} </h4>
+              <p class="text-muted mb-0" style="line-height: 1;"> — ${comment.userType}</p>
+            </div>
             <h6 class="card-subtitle mb-2 text-muted">${comment.career} / ${comment.school}</h6>
             <div class="d-flex align-items-center mb-2">
               <h6 class="card-subtitle text-muted mb-0 me-2">${comment.date}</h6>
               <div class="rating d-flex static-rating">${starsHTML}</div>
             </div>
             <p class="card-text mb-0">${comment.message}</p>
+            <div class="mt-2">
+             <span style="color: #fd6b4d">${etiquetasConHash}</span>
+            </div>
           </div>
         </div>
         <div class="eliminar-contenedor mt-2 mt-md-0">

@@ -43,11 +43,19 @@
           <!--div para el fomrulario del foro-->
         <main class="col-12 col-md-8 col-lg-9 order-1 order-md-2 tarjeta-resena">
           
-           <h3 >Deja tu Reseña</h3>
-           <p class="text-muted">Tu opinión puede ser clave para quienes aún están decidiendo qué camino profesional seguir. 
-              <br>Cuéntanos cómo ha sido estudiar tu carrera en tu universidad: lo bueno, lo difícil y lo que te hubiera gustado saber antes de empezar.
-              <br>Te invitamos expresarte de forma honesta, clara y respetuosa. Cada reseña ayuda a futuros estudiantes a tomar una decisión informada sobre su futuro.
-           </p>
+           <h3 >Deja tu Evaluación</h3>
+           <div class="mb-4">
+            <span><strong>Tu experiencia puede marcar la diferencia.</strong></span>
+            <span>Este foro está pensado para ayudarte a compartir tu punto de vista sobre la carrera y universidad donde estudiaste o estudias actualmente.</span><br>
+            <span>Cuéntanos lo bueno de haberla estudiado, los retos a los que te enfrentaste en el camino, lo inesperado… ¿Qué te hubiera gustado saber antes de empezar?, ó ¿A qué aspecto recomiendas prestar atención?</span><br>
+            <span><strong>Sé honesto(a), objetivo(a), claro(a) y respetuoso(a).</strong> Todas las evaluaciones ayudan a que futuros estudiantes tomen decisiones mejor informadas sobre su camino profesional.</span><br>
+            <span>También puedes usar las etiquetas disponibles para complementar tu opinión con aspectos clave como la calidad de las instalaciones, el campo laboral de tu carrera o el costo de las colegiaturas.</span><br><br>
+            <i class="bi bi-exclamation-triangle-fill"></i><span><strong>Importante: </strong><br> Este sitio web busca ser un espacio seguro y respetuoso para todas las personas. Por ello, no se permiten expresiones ofensivas, discriminatorias, amenazas o comentarios 
+              que afecten la integridad de otros usuarios, personas o instituciones ajenas mencionadas aquí. Si se detecta alguna conducta de este tipo, los comentarios o cuentas involucradas podrían ser eliminados sin previo aviso para mantener un ambiente de sana participación.</span><br>
+            <a href="https://www.infoem.org.mx/es/iniciativas/micrositio/violencia-digital?utm_source=chatgpt.com" target="_blank" rel="noopener noreferrer" class="text-muted">
+              Conoce más sobre la violencia digital en México. <i class="bi bi-box-arrow-up-right"></i></a>
+           </div>
+           
            <!-- Aviso de manipulación de datos externos -->
            <div class="alert alert-secondary d-flex align-items-center" role="alert">
               <i class="bi bi-info-circle-fill me-2"></i>
@@ -77,7 +85,7 @@
               <!-- Aqui se cargarán de forma dinámica las universidades con el penúltimo script del documento -->
             </select>
             
-          </div>
+          </div><!--Universidad-->
 
             <div class="mb-1">
               <label for="careerSelect">Carrera:</label>
@@ -86,7 +94,21 @@
                 <!-- Aqui se cargarán de forma dinámica las carreras con el último script del documento -->
               </select>
               
-            </div>
+            </div><!--Carrera-->
+
+            <div class="mt-4 mb-4" >
+              <label for="userTypeSelect">Relación académica actual:</label>
+              <select class="selectpicker w-100"  id="userTypeSelect"  data-width="100%" >
+                <option selected disabled>Selecciona una opción</option>
+                <option value="Aspirante a nuevo ingreso">Aspirante a nuevo ingreso</option>
+                <option value="Alumna/o">Alumna/o</option>
+                <option value="Egresada/o">Egresada/o</option>
+                <option value="Exalumna/o (estudios inconclusos)">Exalumna/o (estudios inconclusos)</option>
+                <option value="Docente">Docente</option>
+              </select>
+              
+              
+            </div><!--Tipo de usuario-->
 
          
             <div id="rating"  class="interactive-rating">
@@ -101,6 +123,27 @@
             <label for="txtComment" class="form-label"> Escribe tu experiencia en esta carrera e institución: </label>
             <textarea class="form-control" id="txtComment" rows="3"></textarea>
             <div class="form-text" id="charCounter" style="text-align: right;">0/830 </div>
+            
+            <!-- Etiquetas de experiencia -->
+             <div id="tag-container" class="mb-3">
+              <p id="txtEtiquetas">Complementa tu información haciendo uso de etiquetas:</p>
+              <div class="tag-options">
+                <span class="tag" data-value="Retícula">Retícula</span>
+                <span class="tag" data-value="Ubicación">Ubicación</span>
+                <span class="tag" data-value="Atención">Atención</span>
+                <span class="tag" data-value="Colegiatura">Colegiatura</span>
+                <span class="tag" data-value="Dificultad">Dificultad</span>
+                <span class="tag" data-value="Experiencia personal">Experiencia personal</span>
+                <span class="tag" data-value="Campo laboral">Campo laboral</span>
+                <span class="tag" data-value="Instalaciones">Instalaciones</span>
+                <span class="tag" data-value="Profesores">Profesores</span>
+                <span class="tag" data-value="Sueldo de egresado">Sueldo de egresado</span>
+                <span class="tag" data-value="Tips/Consejos">Tips/Consejos</span>
+              </div>
+            </div>
+
+            <!-- Campo oculto para enviar etiquetas seleccionadas -->
+            <input type="hidden" id="selectedTags" name="selectedTags">
          
         <div class="text-center">
             <button type="button" class="btn btn-primary btn-lg" id="btnPublicar"> Publicar </button>
@@ -187,10 +230,10 @@
     <!-- Alertas -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- JS  -->
-      <script src="./scripts/load-scripts.js"></script>
+    <script src="./scripts/load-scripts.js"></script>
+    <script src="./scripts/modal-carrera.js"></script>
      <script src="./scripts/foro-discusiones.js"></script>
      <script src="./scripts/foro-ranking.js"></script>
-     <script src="./scripts/options-select-foro.js"></script>
-     
+     <script src="./scripts/options-select-foro.js"></script>     
 </body>
 </html>
