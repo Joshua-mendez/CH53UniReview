@@ -8,14 +8,24 @@
     background-color: #eeeeea;
   }
   
+<<<<<<< HEAD
   .wrapper {
+=======
+  /* .wrapper {
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
   width: 100%;
   min-height: calc(100vh - 80px); 
   display: flex;
   align-items: flex-start;        
   justify-content: center;
+<<<<<<< HEAD
   padding-top: 20px !important;        
 }
+=======
+  padding-top: 20px;
+  margin-top: -10px;        
+} */
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
   .container {
   height: 400px;
   display: flex;
@@ -86,12 +96,21 @@
     transform: translateY(0) !important;
   }
   
+<<<<<<< HEAD
   .wrapper {
   width: 100%;
   height: 100vh;
   display: flex;
   align-items: center;      /* centra verticalmente */
   justify-content: center;  /* centra horizontalmente */
+=======
+.wrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 0; /* ↑↓ espacio arriba y abajo */
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
 }
 .card[for="c1"]{
     background-image: url('../assets/Inicio/inicio.jpg');
@@ -119,6 +138,7 @@ form {
     margin-top: 20px;
   }
   #inputB{
+<<<<<<< HEAD
     width: 500px;              /* Ancho personalizado */
     height: 40px;              /* Alto personalizado */
     padding: 10px;             /* Espaciado interno */
@@ -128,6 +148,17 @@ form {
     border: 2px solid #007bff; /* Borde azul */
     border-radius: 5px;        /* Bordes redondeados */
     outline: none;             /* Quita el borde azul al hacer clic */
+=======
+    width: 500px;              
+    height: 40px;              
+    padding: 10px;            
+    font-size: 16px;           
+    color: #333;               
+    background-color: #ffffff; 
+    border: 2px solid #007bff; 
+    border-radius: 5px;       
+    outline: none;             
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
     transition: border-color 0.3s;
     align-self: start;
   }
@@ -167,17 +198,29 @@ form {
   .container {
     display: flex;
     flex-wrap: nowrap;               /* tarjetas en una sola línea */
+<<<<<<< HEAD
     overflow-x: auto;                /* habilita scroll horizontal */
     scroll-snap-type: x mandatory;   /* scroll con efecto "snap" */
     -webkit-overflow-scrolling: touch; /* scroll suave en iOS */
+=======
+    overflow-x: auto;                
+    scroll-snap-type: x mandatory;  
+    -webkit-overflow-scrolling: touch; 
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
     gap: 16px;                       /* separación entre tarjetas */
     padding: 0 16px;
   }
 
   .card {
+<<<<<<< HEAD
     flex: 0 0 90vw !important;       /* ocupa el 90% del ancho del viewport */
     height: 200px !important;        /* más baja en móviles */
     scroll-snap-align: start;        /* hace snap al inicio de la tarjeta */
+=======
+    flex: 0 0 90vw !important;       
+    height: 200px !important; 
+    scroll-snap-align: start;        
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
     border-radius: 1rem;
     background-size: contain !important;
     background-position: center !important;
@@ -201,7 +244,11 @@ form {
   justify-content: center; /* o space-between / space-around según prefieras */
   align-items: center;
   gap: 20px; /* Espacio entre logos */
+<<<<<<< HEAD
   flex-wrap: wrap; /* Para que se acomoden en varias líneas si la pantalla es pequeña */
+=======
+  flex-wrap: wrap; 
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
   padding: 10px;
 }
 .circle-image {
@@ -211,7 +258,11 @@ form {
   overflow: hidden;
   display: inline-block;
   transition: transform 0.2s ease;
+<<<<<<< HEAD
   cursor: pointer; /* 👆 cambia a manita */
+=======
+  cursor: pointer; 
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
 }
 
 .circle-image img {
@@ -230,4 +281,25 @@ form {
 h2{
     font-family: "Josefin Sans", sans-serif !important;
      font-size: 48px;
+<<<<<<< HEAD
  }
+=======
+ }
+
+  @media (max-width: 768px) {
+  .wrapper {
+    display: none;
+  }
+
+  .static-image {
+    display: block !important;
+    background-image: url('../assets/inicio/inicio.jpg'); 
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  width: 100vw;
+   height: 200px;
+   margin-bottom: 30px;
+  }
+}
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b

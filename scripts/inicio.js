@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 
   const total = 4; // cantidad de tarjetas
+=======
+const total = 4; // cantidad de tarjetas
+>>>>>>> ed9eee2613ec1e6caa4e160e4d783ff0c89d947b
   let current = 1;
 
   setInterval(() => {
