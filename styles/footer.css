@@ -88,3 +88,9 @@ div#logo{
         margin: 10px 0; /* espacio entre elementos */
       }
   }
+
+  a:hover,
+  a:focus {
+  color: #EB5A3C !important;  /* Color naranja */
+  text-decoration: none; /* Si no quieres el subrayado */
+}

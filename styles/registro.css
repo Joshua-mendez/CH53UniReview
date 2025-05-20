@@ -182,7 +182,7 @@ main {
 
 .watermark-container{
   position: relative;
-  min-height: 85vh; /* Para que ocupe toda la altura visible */
+  min-height: 88vh; /* Para que ocupe toda la altura visible */
   padding: 20px;
   background-color: white; /* o lo que tengas */
   z-index: 1;
@@ -252,7 +252,7 @@ main {
   }
 }
 
-
+/* 
 html, body {
   height: 100%;
   margin: 0;
@@ -274,7 +274,7 @@ footer {
   padding: 20px;
   text-align: center;
 }
-
+ */
 
 
 

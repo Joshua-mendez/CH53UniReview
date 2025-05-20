@@ -159,11 +159,10 @@ if (localStorage.getItem("users")) {
         //SwetAlert2 
          Swal.fire({
                title: "¡Ya estás registrado!",
-               text: "Vamos a la página principal",
+               text: "Ir a Inicio de Sesión",
                imageUrl: "../assets/grafic-element.png",
                imageWidth: 150,
                imageHeight: 300,
-               imageAlt: "Mensaje enviado",
                confirmButtonColor: "#EB5A3C"
              }).then((result) => {
             if (result.isConfirmed) {
