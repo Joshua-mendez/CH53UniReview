@@ -559,3 +559,100 @@ topCarreras.forEach((carrera) => {
 }
 
 document.addEventListener("DOMContentLoaded", mostrarTopCarreras);
+
+
+window.addEventListener("load", function(event){
+  event.preventDefault();
+
+  const carreraBuscada = localStorage.getItem("carreraBuscada")?.toLowerCase();
+
+  if (localStorage.getItem("comments") != null) {
+    allComments = JSON.parse(localStorage.getItem("comments"));
+  }
+
+  let comentariosFiltrados = allComments;
+
+  if (carreraBuscada) {
+    comentariosFiltrados = allComments.filter(comment =>
+      comment.career.toLowerCase().includes(carreraBuscada)
+    );
+  }
+
+  for (let j = 0; j < comentariosFiltrados.length; j++) {
+    renderComment(comentariosFiltrados[j]);
+  }
+
+  // Opcional: limpiar carrera buscada después de mostrar
+  localStorage.removeItem("carreraBuscada");
+});
+
+
+function mostrarComentariosFiltrados() {
+  const comentariosFiltrados = JSON.parse(localStorage.getItem("filteredComments") || "[]");
+
+  if (comentariosFiltrados.length > 0) {
+    const titulo = localStorage.getItem("searchedCareer") || "";
+    document.getElementById("tituloCarrera").textContent = `Resultados para: ${titulo}`;
+
+    const contenedorTop4 = document.getElementById("top4Cards");
+    contenedorTop4.innerHTML = "";
+
+    comentariosFiltrados.forEach(comment => {
+      const starsHTML = Array.from({ length: 5 }, (_, i) => {
+        return `<span class="star ${i < comment.stars ? 'selected' : ''}" data-value="${i + 1}">&#9733;</span>`;
+      }).join("");
+
+      const cardHTML = `
+        <div class="col">
+          <div class="card-section">
+            <div class="card-body">
+              <div class="interactive-rating">
+                ${starsHTML}
+              </div>
+              <h5 class="card-title">${comment.career}</h5>
+              <p class="card-text">${comment.message.length > 150 ? comment.message.substring(0, 150) + '...' : comment.message}</p>
+            </div>
+            <div class="card-footer d-flex align-items-center">
+              <img src="${comment.img}" class="rounded-circle me-2" alt="${comment.username}" width="40" height="40">
+              <div>
+                <small class="text-muted">${comment.username}</small><br>
+                <small class="text-muted">${comment.date}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+
+      contenedorTop4.insertAdjacentHTML("beforeend", cardHTML);
+    });
+  } else {
+    mostrarTop4Cards(); // si no hay filtro, mostrar top 4
+  }
+}
+
+
+window.addEventListener("load", function(event){
+  event.preventDefault();
+
+  const carreraBuscada = localStorage.getItem("carreraBuscada")?.toLowerCase();
+
+  if (localStorage.getItem("comments") != null) {
+    allComments = JSON.parse(localStorage.getItem("comments"));
+  }
+
+  let comentariosFiltrados = allComments;
+
+  if (carreraBuscada) {
+    comentariosFiltrados = allComments.filter(comment =>
+      comment.career.toLowerCase().includes(carreraBuscada)
+    );
+  }
+
+  for (let j = 0; j < comentariosFiltrados.length; j++) {
+    renderComment(comentariosFiltrados[j]);
+  }
+
+  // Limpia búsqueda
+  localStorage.removeItem("carreraBuscada");
+});
+
