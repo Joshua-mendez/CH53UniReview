@@ -232,3 +232,20 @@ h2{
     font-family: "Josefin Sans", sans-serif !important;
      font-size: 48px;
  }
+
+  @media (max-width: 768px) {
+  .wrapper {
+    display: none;
+  }
+
+  .static-image {
+    display: block !important;
+    background-image: url('../assets/inicio/inicio.jpg'); 
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  width: 100vw;
+   height: 200px;
+   margin-bottom: 30px;
+  }
+}
