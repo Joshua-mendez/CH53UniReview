@@ -138,6 +138,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   mostrarTop4Cards();
 });
+
 document.getElementById("btnBuscar").addEventListener("click", function (e) {
   e.preventDefault();
 

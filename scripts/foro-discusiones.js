@@ -630,29 +630,54 @@ function mostrarComentariosFiltrados() {
   }
 }
 
-
-window.addEventListener("load", function(event){
-  event.preventDefault();
+window.addEventListener("load", function () {
+  const commentsContainer = document.getElementById("list-comments");
+  commentsContainer.innerHTML = ""; // Limpiar comentarios anteriores
 
   const carreraBuscada = localStorage.getItem("carreraBuscada")?.toLowerCase();
+  let allComments = JSON.parse(localStorage.getItem("comments") || "[]");
 
-  if (localStorage.getItem("comments") != null) {
-    allComments = JSON.parse(localStorage.getItem("comments"));
-  }
-
+  // Si hay búsqueda, filtramos por carrera
   let comentariosFiltrados = allComments;
-
   if (carreraBuscada) {
     comentariosFiltrados = allComments.filter(comment =>
       comment.career.toLowerCase().includes(carreraBuscada)
     );
   }
 
-  for (let j = 0; j < comentariosFiltrados.length; j++) {
-    renderComment(comentariosFiltrados[j]);
+  // Mensaje superior
+  const titulo = document.querySelector(".comentarios-titulo");
+  if (comentariosFiltrados.length > 0) {
+    titulo.innerHTML = `Comentarios sobre: <strong>${carreraBuscada}</strong>`;
+  } else {
+    titulo.textContent = "No se encontraron comentarios para esta carrera.";
   }
 
-  // Limpia búsqueda
+  // Mostrar cards o mensaje de vacío
+  if (comentariosFiltrados.length === 0) {
+    commentsContainer.innerHTML = `<p class="text-center text-muted">No hay comentarios disponibles para la carrera buscada.</p>`;
+  } else {
+    comentariosFiltrados.forEach(comment => {
+      renderCommentCard(comment, commentsContainer);
+    });
+  }
+
   localStorage.removeItem("carreraBuscada");
 });
 
+// Función para renderizar una card de comentario
+function renderCommentCard(comment, container) {
+  const card = document.createElement("div");
+  card.className = "card mb-3 shadow-sm";
+
+  card.innerHTML = `
+    <div class="card-body">
+      <h5 class="card-title">${comment.name || "Usuario anónimo"}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">Carrera: ${comment.career}</h6>
+      <p class="card-text">${comment.message}</p>
+      <div class="text-muted small text-end">${new Date(comment.date).toLocaleString()}</div>
+    </div>
+  `;
+
+  container.appendChild(card);
+}
