@@ -20,104 +20,97 @@
   <link rel="stylesheet" href="./styles/enlaceRedireccion.css">
 
 </head>
-<body>
+<body style="background-color: #F6F4F0;">
     <!-- Navbar -->
     <div id="navbar"></div>
-    <!-- Acomoda el Footer -->
-<div class="wrapper">
 
-    <!-- Contenido main -->
-    <h1 style="text-align: center;">Registro de Nuevo Usuario</h1>
-      <div class="container">
-        <div id="alerta" class="super d-flex justify-content-center">
-          <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidaciones">
-            <p id="alertValidacionesTexto" class="mb-0"></p>
-          </div>
-      </div>
 
-      <form class="container-fluid">
-        <div class="row justify-content-center mb-3">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <label for="txtName" class="form-label">Nombre completo:</label>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12" >
-            <input type="text" class="form-control input-bgc custom-input" id="txtName" placeholder="Escribe tu nombre completo" required>
-          </div>
-        </div>
-
-        <div class="row justify-content-center mb-3">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <label for="txtTel" class="form-label">Número de teléfono:</label>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <input type="tel" class="form-control input-bgc custom-input" id="txtTel" placeholder="Escribe tu número de teléfono" required>
-          </div>
-        </div>
-
-        <div class="row justify-content-center mb-3">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <label for="txtEmail" class="form-label">E-mail:</label>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <input type="email" class="form-control input-bgc custom-input" id="txtEmail" placeholder="tucorreo@dominio.com" required>
-          </div>
-        <!-- Fecha de Nacimiento -->
-        </div>
-        <div class="row justify-content-center mb-3">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <label for="txtdateOfBirth" class="form-label">Fecha de Nacimiento:</label>
-          </div>
-          <div class="col-lg-6 col-md-6 col-sm-12">
-            <input type="date" class="form-control input-bgc custom-input" id="txtdateOfBirth" name="dateOfBirth"
-            min="1900-01-01" max="2010-12-31">
-          </div>
-        </div>
-
-        <div class="row justify-content-center mb-3">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <label for="txtPass" class="form-label">Contraseña:
-              <i class="bi bi-info-circle" 
-                data-bs-toggle="tooltip" 
-                data-bs-placement="right" 
-                title="La contraseña debe tener al menos 8 caracteres, una minúscula, una mayúscula y un número.">
-              </i>
-            </label>
-          </div>
-            <!-- Campo de contraseña -->
-          <div class="col-lg-6 col-md-6 col-sm-12 position-relative">
-            <input type="password" class="form-control input-bgc custom-input" id="txtPass" placeholder="Escribe una contraseña significativa" required>
-              <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 toggle-password" 
-                data-target="txtPass" style="cursor: pointer;"></i>
-            </div>
-        </div>
-
-        <div class="row justify-content-center mb-3">
-          <div class="col-lg-4 col-md-4 col-sm-12">
-            <label for="txtConfirmPass" class="form-label">Confirmar contraseña:</label>
-          </div>
-          <!-- Confirmar contraseña -->
-          <div class="col-lg-6 col-md-6 col-sm-12 position-relative">
-            <input type="password" class="form-control input-bgc custom-input" id="txtConfirmPass" placeholder="Repite tu contraseña" required>
-            <i class="bi bi-eye-slash position-absolute top-50 end-0 translate-middle-y me-3 toggle-password" 
-              data-target="txtConfirmPass" style="cursor: pointer;"></i>
-          </div>
-        </div>
-        <!-- Botones -->
-        <div class="d-flex justify-content-center gap-5 mt-4">
-          <button type="button" id="btnCancel" class="btn btn-light border-danger text-danger rounded-pill btn-lg me-5">Cancelar</button>
-          <button type="submit" id="btnRegister" class="btn btn-dark rounded-pill btn-lg">Registrarse</button>
-        </div>
-        <div id="enlaceRedireccion">
-          <span>Al continuar con tu registro aceptas los <a href="./terminos-condiciones.html">Términos y Condiciones</a> y el <a href="./privacidad.html">Aviso de Privacidad</a></span>
-        </div>
-        <div id="enlaceRedireccion">
-          <span>¿Ya tienes una cuenta? <a href="./inicio-sesion.html">Inicia sesión</a></span>
-        </div>
-
-      </form>
-    </div>
+<div class="watermark-container-dos">
+ <!-- Alerta -->
+   <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+<div id="alerta" class="d-flex justify-content-center">
+  <div class="alert alert-warning alert-dismissible fade show text-center" style="display:none; padding: 16px;" role="alert" id="alertValidaciones">
+    <p id="alertValidacionesTexto" class="mb-0"></p>
+  </div>
+</div>
+</div>
 </div>
 
+<!-- Contenedor del formulario-->
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card shadow-lg p-4 border-0" style="background-color: #ffcc80;"> <!-- naranja claro -->
+
+        <h1 class="text-center fw-bold mb-4" style="color: #F6F4F0;">Crear mi cuenta</h1>
+        <div style="width: 60px; height: 3px; background-color: #09122C; margin: 0 auto 10px;"></div>
+
+
+        <form>
+          <div class="mb-3">
+            <label for="txtName" class="form-label" style="font-weight: bold">Nombre completo:</label>
+            <input type="text" class="form-control input-bgc" id="txtName" placeholder="Escribe tu nombre completo" required>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="txtTel" class="form-label" style="font-weight: bold">Número de teléfono:</label>
+            <input type="tel" class="form-control input-bgc" id="txtTel" placeholder="Escribe tu número de teléfono" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="txtEmail" class="form-label" style="font-weight: bold">E-mail:</label>
+            <input type="email" class="form-control input-bgc" id="txtEmail" placeholder="tucorreo@dominio.com" required>
+          </div>
+        <!-- Fecha de Nacimiento -->
+       
+
+        <div class="mb-3">
+            <label for="txtdateOfBirth" class="form-label" style="font-weight: bold">Fecha de Nacimiento:</label>
+            <input type="date" class="form-control input-bgc custom-input" id="txtdateOfBirth" name="dateOfBirth"
+            min="1900-01-01" max="2010-12-31">
+        </div>
+          
+
+           <div class="mb-3 input-con-ojo">
+            <label for="txtPass" class="form-label" style="font-weight: bold">Contraseña:</label>
+            <input type="password" class="form-control input-bgc pe-5" id="txtPass" placeholder="Escribe una contraseña significativa" required>
+            <i class="toggle-password" data-target="txtPass"></i>
+          </div>
+
+          <div class="mb-3 position-relative">
+             <label for="txtConfirmPass" class="form-label" style="font-weight: bold">Confirmar contraseña:</label>
+             <input type="password" class="form-control input-bgc pe-5" id="txtConfirmPass" placeholder="Repite tu contraseña" required>
+             <i class="toggle-password position-absolute end-0 me-3"
+                data-target="txtConfirmPass"></i>
+          </div>
+
+
+
+          <div class="d-flex justify-content-center gap-4 mt-4 flex-wrap">
+            <button type="button" id="btnCancel" class="boton-cancelar rounded-pill btn-lg">Cancelar</button>
+            <button type="submit" id="btnRegister" class="boton-enviar rounded-pill btn-lg">Registrarse</button>
+          </div>
+
+          <div class="text-center mt-3">
+            <small>Al continuar con tu registro aceptas los <a style="color: #09122C;" href="./terminos-condiciones.html">Términos y Condiciones</a>, el <a style="color: #09122C;" href="./privacidad.html">Aviso de Privacidad</a> y las <a style="color: #09122C;" href="./reglas_comunidad.html">Reglas de la Comunidad</a></small>
+          </div>
+          <div class="text-center mt-2">
+            <small>¿Ya tienes una cuenta? <a style="color: #09122C;" href="./inicio-sesion.html">Inicia sesión</a></small>
+          </div>
+        </form>
+      </div>
+    </div>
+
+</div>
+
+  </div>
+</div>
+
+
+
+   
     <!-- Footer -->
     <div id="footer"></div>
 
