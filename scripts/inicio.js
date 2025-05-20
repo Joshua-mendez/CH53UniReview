@@ -1,5 +1,5 @@
 
-  const total = 4; // cantidad de tarjetas
+const total = 4; // cantidad de tarjetas
   let current = 1;
 
   setInterval(() => {
