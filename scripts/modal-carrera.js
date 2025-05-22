@@ -53,32 +53,38 @@ function mostrarModalCarrera({ nombre, promedio, numEvaluaciones }) {
     btnIrAlForo.replaceWith(btnIrAlForo.cloneNode(true));
     const nuevoBoton = document.getElementById('btnIrAlForo');
 
+    //Cambia el texto del botón dependiendo de donde se acceda
+    const estaEnForo = window.location.pathname.includes("foro-discusiones.html");
+    nuevoBoton.textContent = estaEnForo ? "Ver en el foro" : "Ir al foro";
+
     nuevoBoton.addEventListener('click', () => {
-        // Selecciona el filtro de carrera
-        const careerFilter = document.getElementById('careerFilter');
-        careerFilter.value = nombre; // el nombre ya está recibido como parámetro
+    const isForoPage = window.location.pathname.includes("foro-discusiones.html");
 
-        //refresca el select
-        if ($(careerFilter).hasClass('selectpicker')) {
-            $(careerFilter).selectpicker('refresh');
-        }
+  if (isForoPage) {
+    // Estamos en foro → aplicar filtros y hacer scroll
+    const careerFilter = document.getElementById('careerFilter');
+    careerFilter.value = nombre;
 
-        // Aplica el filtro existente en options-select-foro.js
-        aplicarFiltros();
+    if ($(careerFilter).hasClass('selectpicker')) {
+      $(careerFilter).selectpicker('refresh');
+    }
 
-        // Cierra el modal
-        const modal = bootstrap.Modal.getInstance(document.getElementById('modalCarrera'));
-        modal.hide();
+    aplicarFiltros();
 
-        
-        // Hace scroll hacia la sección de comentarios
-        
-        setTimeout(() => {
-        const comentarios = document.getElementById('list-comments');
-        if (comentarios) {
+    const modal = bootstrap.Modal.getInstance(document.getElementById('modalCarrera'));
+    modal.hide();
+
+    setTimeout(() => {
+      const comentarios = document.getElementById('list-comments');
+      if (comentarios) {
         comentarios.scrollIntoView({ behavior: 'smooth' });
-        }
-        }, 300);
-    });//Botón cerrar modal
+      }
+    }, 300);
+
+  } else {
+    // Estamos en inicio → solo redirigir sin filtros
+    window.location.href = 'foro-discusiones.html';
+  }
+});
 
 }
