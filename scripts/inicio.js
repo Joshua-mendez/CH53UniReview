@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 //Array de todos los comentarios, iniciando por los 10 predefinidos
 let allComments = [
   //Objeto 1
@@ -153,7 +151,6 @@ if (!localStorage.getItem("comments")) {
       careerSelect.selectpicker();
     });
   });
->>>>>>> 0f964333ca2c0cf64c7b16c138154ef505d87452
 
 const total = 4; // cantidad de tarjetas
   let current = 1;
@@ -366,4 +363,3 @@ document.getElementById("btnBuscar").addEventListener("click", function (e) {
 
   // // Redirigir a foro de discusión
   // window.location.href = "foro-discusiones.html";
-
