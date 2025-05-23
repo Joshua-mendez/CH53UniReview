@@ -10,9 +10,9 @@
             const scriptsToLoad = [
                 
               "./scripts/navbar.js"
-              // otros js necesarios
+
             ];
-          
+
             scriptsToLoad.forEach(src => {
               const script = document.createElement("script");
               script.src = `${src}?v=${Math.random().toString(36).substring(2, 8)}`;

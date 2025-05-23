@@ -55,6 +55,19 @@ txtComment.addEventListener('input', () => {
 
 });
 
+// Al salir del campo de comentario, aplicar trim y actualizar contador
+txtComment.addEventListener('blur', () => {
+  txtComment.value = txtComment.value.trim();
+  const longitud = txtComment.value.length;
+  charCounter.innerText = `${longitud}/830`;
+
+  if (longitud >= 831) {
+    charCounter.style.color = "red";
+  } else {
+    charCounter.style.color = "";
+  }
+});
+
 //Fecha actual
 const isoDate = new Date().toISOString().split('T')[0];
 
@@ -629,3 +642,5 @@ function mostrarComentariosFiltrados() {
     mostrarTop4Cards(); // si no hay filtro, mostrar top 4
   }
 }
+
+

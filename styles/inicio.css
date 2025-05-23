@@ -2,10 +2,11 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Josefin Sans", sans-serif !important;
 }
   body{
     background-color: #eeeeea;
+    overflow-x: hidden;
   }
   
   /* .wrapper {
@@ -26,7 +27,7 @@
 }
 
 .card{
-    width: 80px;
+    width: 800px;
     height: 100%;
     border-radius:.85rem !important;
     background-repeat: no-repeat;
@@ -232,3 +233,62 @@ h2{
     font-family: "Josefin Sans", sans-serif !important;
      font-size: 48px;
  }
+
+  @media (max-width: 768px) {
+  .wrapper {
+    display: none;
+  }
+
+  .static-image {
+    display: block !important;
+    background-image: url('../assets/inicio/inicio.jpg'); 
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  width: 100vw;
+   height: 200px;
+   margin-bottom: 30px;
+  }
+}
+
+  a:hover,
+  a:focus {
+  color: #EB5A3C !important;  /* Color naranja */
+  text-decoration: none; /* Si no quieres el subrayado */
+}
+  .btn-primary {
+    background-color: #EB5A3C !important;
+    border-color: #EB5A3C !important;
+  }
+
+  .btn-primary:hover {
+    background-color: #00A5CF !important;
+    border-color: #ccc !important;
+    color: #EB5A3C;
+    
+  }
+
+  /* option por defecto en gris */
+.bootstrap-select .dropdown-toggle:focus,
+.bootstrap-select .dropdown-toggle:active,
+.bootstrap-select .dropdown-toggle:focus:active {
+  border-color: #EB5A3C !important;
+  /* box-shadow: 0 0 0 0.25rem rgba(235, 90, 60, 0.25) !important; */
+  outline: none !important;
+}
+
+.btn-link-foro {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: #EB5A3C;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  text-decoration: none;
+}
+
+.btn-link-foro:hover {
+  background-color: #c5c5c5;
+  color: #c4421f;
+}
