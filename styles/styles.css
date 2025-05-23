@@ -33,7 +33,6 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
  
  p{
      font-size: 18px;
-     text-align: justify;
 
  }
 
@@ -163,40 +162,33 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
         height: 150px;
     }
   }
-
-  txt-about{
-    margin-top: 100px;
-    margin-bottom: auto;
-    text-align: justify;
-
-  } 
-
-
-  .boton-social {
-  background-color: #1A8FBF; 
-  color: #FFFFFF; 
-  border: none;
-  padding: 8px 16px; 
-  font-size: 14px; 
-  font-weight: bold;
-  border-radius: 8px;
+.avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  width: auto;
-  max-width: 200px; 
-  display: inline-block; 
-  text-align: center; 
-  margin: 10px 5px; 
-   text-decoration: none; 
+  transition: transform 0.3s;
 }
 
-.boton-social:hover {
-  background-color: #00A5CF; 
-  transform: scale(1.03); 
+.avatar:hover {
+  transform: scale(1.1);
 }
 
-.boton-social svg {
-  vertical-align: middle; 
-  margin-right: 8px; 
+.profile-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
 }
 
+swiper-container {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
