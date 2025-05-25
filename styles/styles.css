@@ -10,7 +10,7 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
  h1{
     font-family: "Josefin Sans", sans-serif !important;
      font-size: 48px;
-     color: #212121 !important;
+     color: #212121 ;
  }
  
  h2{

@@ -1,47 +1,6 @@
-
-
-//  new Glider(document.getElementById('glider-personas'), {
-//       slidesToShow: 2,
-//       slidesToScroll: 1,
-//       draggable: true,
-//       arrows: {
-//         prev: '.glider-prev',
-//         next: '.glider-next'
-//       },
-//       responsive: [
-//         {
-//           breakpoint: 768,
-//           settings: {
-//             slidesToShow: 3
-//           }
-//         },
-//         {
-//           breakpoint: 992,
-//           settings: {
-//             slidesToShow: 4
-//           }
-//         }
-//       ]
-//     });
-
-//     // Datos de las personas
-//     const personas = [
-//       { nombre: "Ana López", descripcion: "Diseñadora UX con 5 años de experiencia." },
-//       { nombre: "Carlos Méndez", descripcion: "Desarrollador Full Stack apasionado por Vue.js." },
-//       { nombre: "Lucía Torres", descripcion: "Product Manager experta en metodologías ágiles." }
-//     ];
-
-//     function mostrarInfo(index) {
-//       const persona = personas[index];
-//       document.getElementById("nombre").textContent = persona.nombre;
-//       document.getElementById("descripcion").textContent = persona.descripcion;
-//       document.getElementById("infoBox").style.display = "block";
-//     }
-
-//     function cerrarInfo() {
-//       document.getElementById("infoBox").style.display = "none";
-//     }
-
+document.addEventListener("DOMContentLoaded", () => {
+  mostrarInfo(null);
+}); //Agrega tarjeta con indicacion para selccionar la foto
 
 
 const personas = [
@@ -98,11 +57,29 @@ const personas = [
 
 function mostrarInfo(index) {
   const card = document.getElementById("infoCard");
-  const persona = personas[index];
-  document.getElementById("name").textContent = persona.nombre;
-  document.getElementById("role").textContent = persona.rol;
-  document.getElementById("bio").textContent = persona.bio;
-  document.getElementById("linkedin").href = persona.linkedin;
+  const name = document.getElementById("name");
+  const role = document.getElementById("role");
+  const bio = document.getElementById("bio");
+  const linkedin = document.getElementById("linkedin");
+  const github = document.getElementById("github");
+
+  if (index === null || index === undefined) {
+    // Tarjeta genérica
+    name.textContent = "Selecciona una foto...";
+    role.textContent = "";
+    bio.textContent = "y conoce a cada miembro del equipo de UniReview. 🧡";
+    linkedin.style.display = "none";
+    github.style.display = "none";
+  } else {
+    const persona = personas[index];
+    name.textContent = persona.nombre;
+    role.textContent = persona.rol;
+    bio.textContent = persona.bio;
+    linkedin.href = persona.linkedin;
+    github.href = persona.github;
+    linkedin.style.display = "inline-block";
+    github.style.display = "inline-block";
+  }
+
   card.classList.remove("d-none");
-  card.scrollIntoView({ behavior: "smooth" });
 }
