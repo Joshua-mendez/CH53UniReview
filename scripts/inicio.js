@@ -388,9 +388,12 @@ document.getElementById("btnBuscar").addEventListener("click", function (e) {
 
   if (!nombreCarrera) {
     Swal.fire({
-      icon: 'warning',
+      //icon: 'warning',
       title: 'Selecciona una carrera',
       text: 'Por favor selecciona una carrera para ver más información.',
+      imageUrl: "../assets/think.svg",
+      imageWidth: 300,
+      imageHeight: 190,
       confirmButtonColor: '#EB5A3C'
     });
     return;
@@ -406,9 +409,11 @@ document.getElementById("btnBuscar").addEventListener("click", function (e) {
 
   if (cantidad === 0) {
     Swal.fire({
-      icon: 'info',
       title: 'Sin evaluaciones',
       text: 'Aún no hay reseñas para esta carrera.',
+      imageUrl: "../assets/sad.svg",
+      imageWidth: 300,
+      imageHeight: 190,
       confirmButtonColor: '#EB5A3C'
     });
     return;
