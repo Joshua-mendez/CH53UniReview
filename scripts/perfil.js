@@ -158,12 +158,15 @@ if(isValid){
   Swal.fire({
     title: 'Guardando nueva información',
     text: `¿Es correcto el nombre ingresado: ${nuevoNombre}?`,
-    icon: 'question',
+    imageUrl: "../assets/think.svg",
+    imageWidth: 300,
+    imageHeight: 190,
+    reverseButtons: true,
     showCancelButton: true,
     confirmButtonColor: '#EB5A3C',
     cancelButtonColor: '#6c757d',
     confirmButtonText: 'Sí, guardar',
-    cancelButtonText: 'Cancelar'
+    cancelButtonText: 'Cancelar',
   }).then((result) => {
     if (result.isConfirmed) {
       // Actualiza en currentUser
@@ -191,7 +194,9 @@ if(isValid){
       Swal.fire({
           title: '¡Guardado!',
           text: 'Tu nombre fue actualizado correctamente.',
-          icon: 'success',
+          imageUrl: "../assets/love.svg",
+          imageWidth: 300,
+          imageHeight: 190,
           confirmButtonColor: '#EB5A3C'});
     }//sweetAlert
   });
@@ -248,7 +253,10 @@ if(isValid){
   Swal.fire({
     title: 'Guardando nueva información',
     text: `¿Es correcto el número ingresado: ${nuevoTel}?`,
-    icon: 'question',
+    imageUrl: "../assets/think.svg",
+    imageWidth: 300,
+    imageHeight: 190,
+    reverseButtons: true,
     showCancelButton: true,
     confirmButtonColor: '#EB5A3C',
     cancelButtonColor: '#6c757d',
@@ -281,7 +289,9 @@ if(isValid){
       Swal.fire({
           title: '¡Guardado!',
           text: 'Tu número de teléfono fue actualizado correctamente.',
-          icon: 'success',
+          imageUrl: "../assets/love.svg",
+          imageWidth: 300,
+          imageHeight: 190,
           confirmButtonColor: '#EB5A3C'});
     }
   });
@@ -336,7 +346,10 @@ if(isValid){
   Swal.fire({
     title: 'Guardando nueva información',
     text: `¿Es correcta la fecha de nacimiento ingresada: ${nuevaFechaNacimiento}?`,
-    icon: 'question',
+    imageUrl: "../assets/think.svg",
+    imageWidth: 300,
+    imageHeight: 190,
+    reverseButtons: true,
     showCancelButton: true,
     confirmButtonColor: '#EB5A3C',
     cancelButtonColor: '#6c757d',
@@ -370,7 +383,9 @@ if(isValid){
       Swal.fire({
           title: '¡Guardado!',
           text: 'Tu fecha de nacimiento fue actualizada correctamente.',
-          icon: 'success',
+          imageUrl: "../assets/love.svg",
+          imageWidth: 300,
+          imageHeight: 190,
           confirmButtonColor: '#EB5A3C'});
     }
   });
@@ -508,7 +523,10 @@ comentariosUsuario.forEach(comment => {
     Swal.fire({
       title: '¿Eliminar comentario?',
       text: 'Esta acción no se puede revertir.',
-      icon: 'warning',
+      imageUrl: "../assets/warning.svg",
+      imageWidth: 300,
+      imageHeight: 190,
+      reverseButtons: true,
       showCancelButton: true,
       confirmButtonColor: '#EB5A3C',
       cancelButtonColor: '#6c757d',
@@ -526,7 +544,9 @@ comentariosUsuario.forEach(comment => {
         Swal.fire({
           title: 'Eliminado',
           text: 'Tu comentario ha sido eliminado.',
-          icon: 'success',
+         imageUrl: "../assets/relax.svg",
+         imageWidth: 300,
+         imageHeight: 190,
           confirmButtonColor: '#EB5A3C'
         });
         const tempDiv = document.createElement('divNoHayComentarios');

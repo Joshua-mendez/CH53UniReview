@@ -160,9 +160,9 @@ if (localStorage.getItem("users")) {
          Swal.fire({
                title: "¡Ya estás registrado!",
                text: "Ir a Inicio de Sesión",
-               imageUrl: "../assets/grafic-element.png",
-               imageWidth: 150,
-               imageHeight: 300,
+               imageUrl: "../assets/love.svg",
+               imageWidth: 300,
+               imageHeight: 190,
                confirmButtonColor: "#EB5A3C"
              }).then((result) => {
             if (result.isConfirmed) {

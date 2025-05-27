@@ -87,7 +87,9 @@ btnLogin.addEventListener("click", function(event){
         Swal.fire({
             title: "Inicio de sesión exitoso",
             text: "Serás redirigido a la página de inicio",
-            icon: "success",
+            imageUrl: "../assets/love.svg",
+            imageWidth: 300,
+            imageHeight: 190,
             confirmButtonColor: "#EB5A3C"
           }).then((result) => {
             if (result.isConfirmed) {

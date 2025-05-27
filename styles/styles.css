@@ -10,11 +10,11 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
  h1{
     font-family: "Josefin Sans", sans-serif !important;
      font-size: 48px;
-     color: #212121 !important;
+     color: #212121 ;
  }
  
  h2{
-     font-size: 36px;
+     font-size: 38px;
  }
  
  h3{
@@ -32,70 +32,10 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
  }
  
  p{
-     font-size: 18px;
-     text-align: justify;
+     font-size: 20px;
 
  }
 
- div.card-body p{
-      text-align: center !important;
- }
-
- 
- .header-page-light{
-    color: #F6F4F0 !important;
-    text-align: center;
- }
-
- .transparent-card{
-     background-color: transparent !important;
-     border: none !important; 
-     box-shadow: none !important;
-     color: #F6F4F0 !important;
-     text-align: center;
- }
- 
- .imagen-circular{
-     width: 200px;
-     height: 200px;
-     object-fit: cover;
-     border-radius: 50%;
- }
- 
- .carrusel-nosotros{
-    /* margin-bottom: 80px !important; */
-    padding-top: 10px;
-    padding-bottom: 80px;
-     background-color: #EB5A3C;
-     padding-left: 5% !important;
-     padding-right: 5% !important;
- }
- 
- .carousel-inner {
-     position: relative !important;
-    
-   }
-   
-   /* Estilo de las flechas */
-   .carousel-control-prev,
-   .carousel-control-next {
-     position: absolute !important; /* Esto asegura que las flechas estén posicionadas de forma absoluta */
-     top: 50% !important; /* Centra verticalmente las flechas */
-     transform: translateY(-50%) !important; /* Ajusta la posición para que esté centrado */
-     z-index: 10 !important; /* Asegura que las flechas estén por encima del contenido */
-     width: 5% !important; /* Ajusta el tamaño de las flechas si es necesario */
-     height: 100% !important; /* Para cubrir toda la altura del carrusel */
-   }
-   
-   /* Flecha anterior (izquierda) */
-   .carousel-control-prev {
-     left: -20px !important; /* Ajusta la distancia del borde izquierdo */
-   }
-   
-   /* Flecha siguiente (derecha) */
-   .carousel-control-next {
-     right: -20px !important; /* Ajusta la distancia del borde derecho */
-   }
    
    .container {
     margin-top: 20px;
@@ -115,68 +55,44 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
     /* height: 400px; */
    }
 
-   .zoom-hover {
-    transition: transform 0.3s ease-in-out;
-  }
-  
-  .zoom-hover:hover {
-    transform: scale(1.05); /* puedes ajustar el valor si quieres más o menos zoom */
-  }
-
-  .cuadro-imagen {
-    padding: 20px;
-    margin-top: 20px;
-  }
-
-.card-text{
-  color: #212121 !important;
+   .swiper-container .swiper-button-next::after,
+.swiper-container .swiper-button-prev::after {
+  color: #EB5A3C !important;
 }
-/*MEDIA QUERYS*/
-
-/* Teléfonos pequeños (hasta 575px) */
-@media (max-width: 575px) {
-    .card-text{
-        height: 100px;
-    }
-  }
-  
-  /* Teléfonos medianos a grandes (576px a 767px) */
-  @media (min-width: 576px) and (max-width: 767px) {
-    .card-text{
-        height: 135px;
-    }
-  }
-  
-  /* Tablets (768px a 991px) */
-  @media (min-width: 768px) and (max-width: 991px) {
-    .card-text{
-        height: 100px;
-    }
-  }
-  
-  /* Laptops y pantallas pequeñas (992px a 1199px) */
-  @media (min-width: 992px) and (max-width: 1199px) {
-    .card-text{
-        height: 200px;
-    }
-  }
-  
-  /* Escritorios grandes (1200px en adelante) */
-  @media (min-width: 1200px) {
-    .card-text{
-        height: 150px;
-    }
-  }
-
-  txt-about{
-    margin-top: 100px;
-    margin-bottom: auto;
-    text-align: justify;
-
-  } 
 
 
-  .boton-social {
+.avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.avatar:hover {
+  transform: scale(1.1);
+}
+
+.profile-card {
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  background: #fff;
+}
+
+swiper-container {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.boton-social {
   background-color: #1A8FBF; 
   color: #FFFFFF; 
   border: none;
@@ -203,4 +119,5 @@ Cuerpo: 16px para contenido y 14px para cláusulas.
   vertical-align: middle; 
   margin-right: 8px; 
 }
+
 

@@ -168,5 +168,15 @@ footer {
   text-align: center;
 } */
 
+.mi-boton-cancelar {
+  background-color: #F6F4F0;
+  color: #EB5A3C;
+  border: 1px solid #EB5A3C;
+}
+
+.swal2-cancel {
+  background-color: #F6F4F0 !important;
+  color: #EB5A3C !important;
+}
 
 

@@ -126,30 +126,62 @@ if (!localStorage.getItem("comments")) {
   localStorage.setItem("comments", JSON.stringify(allComments));
 }
 
+
 //Cargando las carreras de carreras.json
   $(document).ready(function () {
     const careerSelect = $('#careerSelect');
+    /* // ----------------------------
+    const requestOptions = {
+      method: "GET",
+      redirect: "follow"
+    };
 
-    $.getJSON('carreras.json', function (data) {
-      careerSelect.empty();
-      careerSelect.append('<option value="" selected disabled>Selecciona tu carrera</option>');
+    fetch("http://localhost:8080/unireview/carreras/", requestOptions)
+      .then((response) => response.text())
+      .then((result) => {
+        const data = JSON.parse(result);
+        //console.log(data);
+          careerSelect.empty();
+          careerSelect.append('<option value="" selected disabled>Selecciona tu carrera</option>');
+          const carrerasAgregadas = new Set();
+          // Ordenar por nombre de carrera
+          data
+            .filter(item => item.carr_nombre) // ignorar entradas vacías
+            .sort((a, b) => a.carr_nombre.localeCompare(b.carr_nombre, 'es', { sensitivity: 'base' }))
+            .forEach(item => {
+              if (!carrerasAgregadas.has(item.carr_nombre)) {
+                careerSelect.append(new Option(item.carr_nombre, item.carr_nombre));
+                carrerasAgregadas.add(item.carr_nombre);
+              }
+            });
 
-      const carrerasAgregadas = new Set();
+          careerSelect.selectpicker('destroy');
+          careerSelect.selectpicker();
 
-      // Ordenar por nombre de carrera
-      data
-        .filter(item => item.nombre_carrera) // ignorar entradas vacías
-        .sort((a, b) => a.nombre_carrera.localeCompare(b.nombre_carrera, 'es', { sensitivity: 'base' }))
-        .forEach(item => {
-          if (!carrerasAgregadas.has(item.nombre_carrera)) {
-            careerSelect.append(new Option(item.nombre_carrera, item.nombre_carrera));
-            carrerasAgregadas.add(item.nombre_carrera);
-          }
-        });
+      })
+      .catch((error) => console.error(error)); */
+         //-----------------------------original>
+ $.getJSON('carreras.json', function (data) {
+          careerSelect.empty();
+          careerSelect.append('<option value="" selected disabled>Selecciona tu carrera</option>');
 
-      careerSelect.selectpicker('destroy');
-      careerSelect.selectpicker();
-    });
+          const carrerasAgregadas = new Set();
+
+          // Ordenar por nombre de carrera
+          data
+            .filter(item => item.nombre_carrera) // ignorar entradas vacías
+            .sort((a, b) => a.nombre_carrera.localeCompare(b.nombre_carrera, 'es', { sensitivity: 'base' }))
+            .forEach(item => {
+              if (!carrerasAgregadas.has(item.nombre_carrera)) {
+                careerSelect.append(new Option(item.nombre_carrera, item.nombre_carrera));
+                carrerasAgregadas.add(item.nombre_carrera);
+              }
+            });
+
+          careerSelect.selectpicker('destroy');
+          careerSelect.selectpicker();
+        }); 
+        //------------------------------ 
   });
 
 const total = 4; // cantidad de tarjetas
@@ -252,8 +284,59 @@ const total = 4; // cantidad de tarjetas
   const contenedorTop4 = document.getElementById("top4Cards");
   contenedorTop4.innerHTML = ""; // Limpiar antes de volver a insertar
 
+  //---------------------------con fetch}
+
+/*   const requestOptions = {
+  method: "GET",
+  redirect: "follow"
+  };
+
+fetch("http://localhost:8080/unireview/publicaciones/filter/publisDestacadas", requestOptions)
+  .then((response) => response.text())
+  .then((result) => { 
+    const comentarios = JSON.parse(result);
+
+    const top4 = comentarios
+    .sort((a, b) => b.publi_calificacion - a.publi_calificacion)
+    .slice(0, 4); // solo los 4 primeros
+
+  top4.forEach(comment => {
+    const starsHTML = Array.from({ length: 5 }, (_, i) => {
+      return `<span class="star ${i < comment.publi_calificacion ? 'selected' : ''}" data-value="${i + 1}">&#9733;</span>`;
+    }).join("");
+
+    const cardHTML = `
+
+      <div class="col">
+        <div class="card-section">
+          <div class="card-body">
+            <div class="interactive-rating">
+              ${starsHTML}
+            </div>
+            <h5 class="card-title">${comment.carrera.carr_nombre}</h5>
+            <p class="card-text">${comment.publi_comentario.length > 150 ? comment.publi_comentario.substring(0, 150) + '...' : comment.publi_comentario}</p>
+          </div>
+          <div class="card-footer d-flex align-items-center">
+            <img src="${comment.usuario.usu_foto_perfil}" class="rounded-circle me-2" alt="${comment.usuario.usu_email}" width="40" height="40">
+            <div>
+              <small class="text-muted">${comment.usuario.usu_nombre}</small><br>
+              <small class="text-muted">${comment.publi_fecha}</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    contenedorTop4.insertAdjacentHTML("beforeend", cardHTML);
+  });
+
+  })
+  .catch((error) => console.error(error)); */
+
+  //-----------------------------
+
   // Obtener y ordenar los comentarios por calificación
-  const comentarios = JSON.parse(localStorage.getItem("comments") || "[]");
+   const comentarios = JSON.parse(localStorage.getItem("comments") || "[]");
 
   const top4 = comentarios
     .sort((a, b) => b.stars - a.stars)
@@ -287,7 +370,7 @@ const total = 4; // cantidad de tarjetas
     `;
 
     contenedorTop4.insertAdjacentHTML("beforeend", cardHTML);
-  });
+  }); 
 }
 document.addEventListener("DOMContentLoaded", () => {
   mostrarTop4Cards();
@@ -305,9 +388,12 @@ document.getElementById("btnBuscar").addEventListener("click", function (e) {
 
   if (!nombreCarrera) {
     Swal.fire({
-      icon: 'warning',
+      //icon: 'warning',
       title: 'Selecciona una carrera',
       text: 'Por favor selecciona una carrera para ver más información.',
+      imageUrl: "../assets/think.svg",
+      imageWidth: 300,
+      imageHeight: 190,
       confirmButtonColor: '#EB5A3C'
     });
     return;
@@ -323,9 +409,11 @@ document.getElementById("btnBuscar").addEventListener("click", function (e) {
 
   if (cantidad === 0) {
     Swal.fire({
-      icon: 'info',
       title: 'Sin evaluaciones',
       text: 'Aún no hay reseñas para esta carrera.',
+      imageUrl: "../assets/sad.svg",
+      imageWidth: 300,
+      imageHeight: 190,
       confirmButtonColor: '#EB5A3C'
     });
     return;

@@ -338,17 +338,20 @@ btnPublicar.addEventListener("click", function(event){
   if(nameUser==="Inicia sesión para poder comentar"){
     isValid = false;
     Swal.fire({
-      icon: "error",
       title: "¡Oh no!",
+
       html: `
         <p>Necesitas iniciar sesión para poder comentar.</p>
         <p>Queremos saber tu experiencia, pero primero dirígete a la página de inicio de sesión.</p>
       `,
+      imageUrl: "../assets/think.svg",
+      imageWidth: 300,
+      imageHeight: 190,
       showCancelButton: true,
-      confirmButtonText: "Ir a Iniciar Sesión",
       cancelButtonText: "Cancelar",
+      confirmButtonText: "Iniciar Sesión",
+      reverseButtons: true,
       confirmButtonColor: "#EB5A3C",
-      cancelButtonColor: "#6c757d",
     }).then((result) => {
       if (result.isConfirmed) {
         window.location.href = "./inicio-sesion.html";
