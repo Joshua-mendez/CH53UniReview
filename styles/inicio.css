@@ -96,16 +96,16 @@
   padding: 60px 0; /* ↑↓ espacio arriba y abajo */
 }
 .card[for="c1"]{
-    background-image: url('../assets/Inicio/inicio.jpg');
+    background-image: url('../assets/Inicio/card1/1.webp');
 }
 .card[for="c2"]{
-    background-image: url('../assets/Inicio/2.jpg');
+    background-image: url('../assets/Inicio/card1/2.webp');
 }
 .card[for="c3"]{
-    background-image: url('../assets/Inicio/3.jpg');
+    background-image: url('../assets/Inicio/card1/4.webp');
 }
 .card[for="c4"]{
-    background-image: url('../assets/Inicio/4.jpg');
+    background-image: url('../assets/Inicio/card1/3.webp');
 }
   .card {
   background-repeat: no-repeat;
@@ -241,7 +241,7 @@ h2{
 
   .static-image {
     display: block !important;
-    background-image: url('../assets/inicio/inicio.jpg'); 
+    background-image: url('../assets/inicio/inicio.webp'); 
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
