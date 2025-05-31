@@ -65,6 +65,7 @@ function cargarFiltrosDesdeLocalStorage() {
   
 
   data.forEach(comment => {
+    console.log(comment);
     //Agregando a los sets el valor obtenido de localstorage si existe
     if (comment.career) careersOptions.add(comment.career.trim());
     if (comment.school) schoolsOptions.add(comment.school.trim());
